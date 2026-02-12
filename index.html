@@ -219,9 +219,7 @@
         <button class="btn-lang active" onclick="changeLang('es', this)">ES</button>
         <button class="btn-lang" onclick="changeLang('en', this)">EN</button>
     </div>
-
-    <div style="font-size: 0.8rem; color: #888;"><i class="fas fa-database"></i> <span data-key="srv"></span></div>
-</header>
+    </header>
 
 <div class="contact-bar">
     <div class="contact-item">
@@ -389,7 +387,7 @@
 <script>
     const dictionary = {
         'es': {
-            'srv': 'Servidor Local Activo', 'dir': 'Dallas, Texas', 'h-t': 'Alcance Técnico Especializado',
+            'dir': 'Dallas, Texas', 'h-t': 'Alcance Técnico Especializado',
             'h-s': 'Diseño Estructurado | Desarrollo RPA | Trazabilidad', 'c1-t': '🔧 Área de Diseño y Proyección',
             'c1-s': 'Elaboración de planos, mapeo y simulaciones técnicas.', 'btn-e': 'Ver Especialidades',
             's1-t': '1️⃣ Elaboración de Planos Técnicos', 's1-p': 'Planos eléctricos, civiles e industriales bajo normativa.',
@@ -405,7 +403,7 @@
             'c3-p': 'Gestión avanzada de activos con soporte visual.', 'f-t': '© 2026 Organización de Ingeniería'
         },
         'en': {
-            'srv': 'Local Server Active', 'dir': 'Dallas, Texas', 'h-t': 'Specialized Technical Scope',
+            'dir': 'Dallas, Texas', 'h-t': 'Specialized Technical Scope',
             'h-s': 'Structured Design | RPA Development | Traceability', 'c1-t': '🔧 Design & Projection Area',
             'c1-s': 'Blueprints, mapping and technical simulations.', 'btn-e': 'View Specialties',
             's1-t': '1️⃣ Technical Drawing Production', 's1-p': 'Electrical, civil and industrial plans under regulation.',
@@ -425,7 +423,7 @@
     function changeLang(lang, btn) {
         document.querySelectorAll('[data-key]').forEach(el => {
             const key = el.getAttribute('data-key');
-            el.innerText = dictionary[lang][key];
+            el.innerText = dictionary[lang][key] || '';
         });
         document.querySelectorAll('.btn-lang').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
