@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingeniería Pro | Servidor Local</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0a3d62;
+            --secondary: #3c6382;
+            --accent: #e67e22;
+            --bg: #f4f7f6;
+            --text: #2f3640;
+            --white: #ffffff;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Tahoma, sans-serif; 
+            margin: 0; 
+            background: var(--bg); 
+            color: var(--text); 
+            line-height: 1.6;
+        }
+
+        header { 
+            background: var(--white); 
+            padding: 1.5rem 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
+        .logo span { color: var(--accent); }
+
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+            margin-left: auto;
+            margin-right: 20px;
+        }
+        .btn-lang {
+            padding: 6px 12px;
+            border: 2px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .btn-lang.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .contact-bar {
+            background: var(--primary);
+            color: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            box-shadow: inset 0 -2px 5px rgba(0,0,0,0.2);
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+        .contact-item i { color: var(--accent); }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(10, 61, 98, 0.9), rgba(60, 99, 130, 0.8)), 
+                        url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover; 
+            color: white; 
+            padding: 40px 5%;
+            text-align: center;
+        }
+
+        .container { padding: 40px 5%; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            align-items: start;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary);
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .card h3 { color: var(--primary); margin: 15px 0; font-size: 1.4rem; }
+        .main-icon { color: var(--accent); font-size: 2.5rem; }
+
+        .btn-expand {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        .card.open .details {
+            max-height: 2000px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            margin-top: 15px;
+        }
+
+        .sub-area {
+            border: 1px solid #edf2f7;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            background: #f8fafc;
+        }
+
+        .sub-header {
+            padding: 12px 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .sub-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .sub-content.active {
+            max-height: 1200px;
+            padding: 15px;
+            border-top: 1px solid #edf2f7;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .img-container {
+            text-align: center;
+            background: #f1f5f9;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .img-container img, .img-container video {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .img-container small {
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        footer { background: #1e272e; color: white; padding: 30px; text-align: center; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">INGENIERÍA<span>PRO</span></div>
+    
+    <div class="lang-switcher">
+        <button class="btn-lang active" onclick="changeLang('es', this)">ES</button>
+        <button class="btn-lang" onclick="changeLang('en', this)">EN</button>
+    </div>
+
+    <div style="font-size: 0.8rem; color: #888;"><i class="fas fa-database"></i> <span data-key="srv">Servidor Local Activo</span></div>
+</header>
+
+<div class="contact-bar">
+    <div class="contact-item"><i class="fas fa-phone-alt"></i><span>+1 214 949 3289</span></div>
+    <div class="contact-item"><i class="fas fa-envelope"></i><span>contacto@ingenieria.com</span></div>
+    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span data-key="dir">Dirección, Ciudad</span></div>
+</div>
+
+<section class="hero">
+    <h1 data-key="h-t">Alcance Técnico Especializado</h1>
+    <p data-key="h-s">Diseño Estructurado | Desarrollo RPA | Trazabilidad</p>
+</section>
+
+<div class="container">
+    <div class="grid">
+        
+        <div class="card" id="card1">
+            <i class="fas fa-drafting-compass main-icon"></i>
+            <h3 data-key="c1-t">🔧 Área de Diseño y Proyección</h3>
+            <p data-key="c1-s">Elaboración de planos, mapeo y simulaciones técnicas.</p>
+            
+            <button class="btn-expand" onclick="toggleCard('card1')">
+                <span data-key="btn-e">Ver Especialidades</span> <i class="fas fa-chevron-down"></i>
+            </button>
+
+            <div class="details">
+                <div class="sub-area">
+                    <div class="sub-header" onclick="toggleSub('sub1', this)">
+                        <span data-key="s1-t">1️⃣ Elaboración de Planos Técnicos</span>
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div id="sub1" class="sub-content">
+                        <p data-key="s1-p">Planos eléctricos, civiles e industriales bajo normativa.</p>
+                        <div class="gallery-grid">
+                            <div class="img-container">
+                                <img src="plano_electrico.jpg" alt="Plano Eléctrico">
+                                <small data-key="img-1">Plano Eléctrico</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sub-area">
+                    <div class="sub-header" onclick="toggleSub('sub2', this)">
+                        <span data-key="s2-t">2️⃣ Mapeo y Análisis Geoespacial</span>
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div id="sub2" class="sub-content">
+                        <p data-key="s2-p">Georreferenciación de activos y redes en ArcGIS.</p>
+                        <div class="gallery-grid">
+                            <div class="img-container">
+                                <img src="mapeo_geoespacial.jpg" alt="Mapeo Geoespacial">
+                                <small data-key="img-2">Mapeo Geoespacial</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sub-area">
+                    <div class="sub-header" onclick="toggleSub('sub3', this)">
+                        <span data-key="s3-t">3️⃣ Simulación y Cálculo Lumínico</span>
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div id="sub3" class="sub-content">
+                        <p data-key="s3-p">Cálculos de niveles lux y optimización en DIALux.</p>
+                        <div class="gallery-grid">
+                            <div class="img-container">
+                                <img src="dialux.png" alt="Dialux 1">
+                                <small>Dialux Foto 1</small>
+                            </div>
+                            <div class="img-container">
+                                <img src="dialux2.jpg" alt="Dialux 2">
+                                <small>Dialux Foto 2</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" id="card_gallery">
+            <i class="fas fa-bolt main-icon"></i>
+            <h3 data-key="cg-t">⚡ Galería de Coordinación Eléctrica</h3>
+            <p data-key="cg-s">Registro fotográfico de trabajos eléctricos y supervisión de campo.</p>
+            <button class="btn-expand" onclick="toggleCard('card_gallery')" data-key="btn-g">Ver Galería de Trabajos</button>
+            <div class="details">
+                <p data-key="cg-p">Evidencia técnica de coordinación y ejecución de obras eléctricas:</p>
+                <div class="gallery-grid">
+                    <div class="img-container">
+                        <img src="coordinacion.jpeg" alt="Coordinación 1">
+                        <small data-key="img-3">Coordinación Campo</small>
+                    </div>
+                    <div class="img-container">
+                        <img src="coordinacion1.jpeg" alt="Coordinación 2">
+                        <small data-key="img-4">Supervisión Obra</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" id="card2">
+            <i class="fas fa-code main-icon"></i>
+            <h3 data-key="c2-t">⚙️ Área de Desarrollo</h3>
+            <p data-key="c2-s">Software a medida y automatización de procesos inteligentes.</p>
+            <button class="btn-expand" onclick="toggleCard('card2')" data-key="btn-r">Ver Procesos de Desarrollo</button>
+            
+            <div class="details">
+                <div class="sub-area">
+                    <div class="sub-header" onclick="toggleSub('sub_dev1', this)">
+                        <span data-key="dev1-t">💻 Programas para Computadora</span>
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div id="sub_dev1" class="sub-content">
+                        <p data-key="dev1-p">Desarrollo de aplicaciones de escritorio y herramientas técnicas locales.</p>
+                        <div class="gallery-grid">
+                            <div class="img-container">
+                                <img src="PS.png" alt="Demo Software">
+                                <small>Interface Demo</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sub-area">
+                    <div class="sub-header" onclick="toggleSub('sub_dev2', this)">
+                        <span data-key="dev2-t">🤖 Robots y Procesos RPA</span>
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div id="sub_dev2" class="sub-content">
+                        <p data-key="dev2-p">Automatización robótica con UiPath para tareas repetitivas y gestión de datos.</p>
+                        <div class="gallery-grid">
+                            <div class="img-container">
+                                <video controls autoplay muted loop playsinline>
+                                    <source src="VIDEO.mp4" type="video/mp4">
+                                    Tu navegador no soporta videos.
+                                </video>
+                                <small>Bot en Ejecución</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" id="card3">
+            <i class="fas fa-shield-alt main-icon"></i>
+            <h3 data-key="c3-t">📡 Trazabilidad y Calidad</h3>
+            <p data-key="c3-s">Control digital de activos y reportes técnicos.</p>
+            <button class="btn-expand" onclick="toggleCard('card3')" data-key="btn-t">Ver Trazabilidad</button>
+            <div class="details">
+                <p data-key="c3-p">Gestión avanzada de activos con soporte visual.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <p data-key="f-t">© 2026 Organización de Ingeniería | Servidor Local</p>
+</footer>
+
+<script>
+    const dictionary = {
+        'es': {
+            'srv': 'Servidor Local Activo', 'dir': 'Dirección, Ciudad', 'h-t': 'Alcance Técnico Especializado',
+            'h-s': 'Diseño Estructurado | Desarrollo RPA | Trazabilidad', 'c1-t': '🔧 Área de Diseño y Proyección',
+            'c1-s': 'Elaboración de planos, mapeo y simulaciones técnicas.', 'btn-e': 'Ver Especialidades',
+            's1-t': '1️⃣ Elaboración de Planos Técnicos', 's1-p': 'Planos eléctricos, civiles e industriales bajo normativa.',
+            'img-1': 'Plano Eléctrico', 's2-t': '2️⃣ Mapeo y Análisis Geoespacial', 's2-p': 'Georreferenciación de activos y redes en ArcGIS.',
+            'img-2': 'Mapeo Geoespacial', 's3-t': '3️⃣ Simulación y Cálculo Lumínico', 's3-p': 'Cálculos de niveles lux y optimización en DIALux.',
+            'cg-t': '⚡ Galería de Coordinación Eléctrica', 'cg-s': 'Registro fotográfico de trabajos eléctricos y supervisión de campo.',
+            'btn-g': 'Ver Galería de Trabajos', 'cg-p': 'Evidencia técnica de coordinación y ejecución de obras eléctricas:',
+            'img-3': 'Coordinación Campo', 'img-4': 'Supervisión Obra', 
+            'c2-t': '⚙️ Área de Desarrollo', 'c2-s': 'Software a medida y automatización de procesos inteligentes.', 'btn-r': 'Ver Procesos de Desarrollo',
+            'dev1-t': '💻 Programas para Computadora', 'dev1-p': 'Desarrollo de aplicaciones de escritorio y herramientas técnicas locales.',
+            'dev2-t': '🤖 Robots y Procesos RPA', 'dev2-p': 'Automatización robótica con UiPath para tareas repetitivas y gestión de datos.',
+            'c3-t': '📡 Trazabilidad y Calidad', 'c3-s': 'Control digital de activos y reportes técnicos.', 'btn-t': 'Ver Trazabilidad',
+            'c3-p': 'Gestión avanzada de activos con soporte visual.', 'f-t': '© 2026 Organización de Ingeniería | Servidor Local'
+        },
+        'en': {
+            'srv': 'Local Server Active', 'dir': 'Address, City', 'h-t': 'Specialized Technical Scope',
+            'h-s': 'Structured Design | RPA Development | Traceability', 'c1-t': '🔧 Design & Projection Area',
+            'c1-s': 'Blueprints, mapping and technical simulations.', 'btn-e': 'View Specialties',
+            's1-t': '1️⃣ Technical Drawing Production', 's1-p': 'Electrical, civil and industrial plans under regulation.',
+            'img-1': 'Electrical Plan', 's2-t': '2️⃣ Mapping & Geospatial Analysis', 's2-p': 'Asset and network georeferencing in ArcGIS.',
+            'img-2': 'Geospatial Mapping', 's3-t': '3️⃣ Lighting Simulation & Calculation', 's3-p': 'Lux level calculations and DIALux optimization.',
+            'cg-t': '⚡ Electrical Coordination Gallery', 'cg-s': 'Photo record of electrical works and field supervision.',
+            'btn-g': 'View Works Gallery', 'cg-p': 'Technical evidence of coordination and electrical execution:',
+            'img-3': 'Field Coordination', 'img-4': 'Site Supervision', 
+            'c2-t': '⚙️ Development Area', 'c2-s': 'Custom software and intelligent process automation.', 'btn-r': 'View Development Processes',
+            'dev1-t': '💻 Computer Programs', 'dev1-p': 'Desktop application development and local technical tools.',
+            'dev2-t': '🤖 Robots & RPA Processes', 'dev2-p': 'Robotic automation with UiPath for repetitive tasks and data management.',
+            'c3-t': '📡 Traceability & Quality', 'c3-s': 'Digital asset control and technical reporting.', 'btn-t': 'View Traceability',
+            'c3-p': 'Advanced asset management with visual support.', 'f-t': '© 2026 Engineering Organization | Local Server'
+        }
+    };
+
+    function changeLang(lang, btn) {
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            el.innerText = dictionary[lang][key];
+        });
+        document.querySelectorAll('.btn-lang').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+
+    function toggleCard(id) { document.getElementById(id).classList.toggle('open'); }
+    function toggleSub(id, header) {
+        const sub = document.getElementById(id);
+        const icon = header.querySelector('i');
+        sub.classList.toggle('active');
+        icon.classList.toggle('fa-plus-circle');
+        icon.classList.toggle('fa-minus-circle');
+    }
+</script>
+</body>
+</html>
