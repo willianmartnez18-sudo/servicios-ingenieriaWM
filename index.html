@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingeniería Pro | Servidor Local</title>
+    <title>Ingeniería Pro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -77,6 +77,14 @@
             font-size: 0.9rem;
         }
         .contact-item i { color: var(--accent); }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
         .hero {
             background: linear-gradient(135deg, rgba(10, 61, 98, 0.9), rgba(60, 99, 130, 0.8)), 
@@ -216,7 +224,11 @@
 </header>
 
 <div class="contact-bar">
-    <div class="contact-item"><i class="fas fa-phone-alt"></i><span>+1 214 949 3289</span></div>
+    <div class="contact-item">
+        <a href="https://wa.me/12149493289" target="_blank">
+            <i class="fab fa-whatsapp"></i><span>+1 214 949 3289</span>
+        </a>
+    </div>
     <div class="contact-item"><i class="fas fa-envelope"></i><span>Willianmatnez18@gmail.com</span></div>
     <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span data-key="dir">Dallas, Texas</span></div>
 </div>
@@ -371,13 +383,13 @@
 </div>
 
 <footer>
-    <p data-key="f-t">© 2026 Organización de Ingeniería </p>
+    <p data-key="f-t">© 2026 Organización de Ingeniería</p>
 </footer>
 
 <script>
     const dictionary = {
         'es': {
-            'srv': 'Servidor Local Activo', 'dir': 'Dirección, Ciudad', 'h-t': 'Alcance Técnico Especializado',
+            'srv': 'Servidor Local Activo', 'dir': 'Dallas, Texas', 'h-t': 'Alcance Técnico Especializado',
             'h-s': 'Diseño Estructurado | Desarrollo RPA | Trazabilidad', 'c1-t': '🔧 Área de Diseño y Proyección',
             'c1-s': 'Elaboración de planos, mapeo y simulaciones técnicas.', 'btn-e': 'Ver Especialidades',
             's1-t': '1️⃣ Elaboración de Planos Técnicos', 's1-p': 'Planos eléctricos, civiles e industriales bajo normativa.',
@@ -390,10 +402,10 @@
             'dev1-t': '💻 Programas para Computadora', 'dev1-p': 'Desarrollo de aplicaciones de escritorio y herramientas técnicas locales.',
             'dev2-t': '🤖 Robots y Procesos RPA', 'dev2-p': 'Automatización robótica con UiPath para tareas repetitivas y gestión de datos.',
             'c3-t': '📡 Trazabilidad y Calidad', 'c3-s': 'Control digital de activos y reportes técnicos.', 'btn-t': 'Ver Trazabilidad',
-            'c3-p': 'Gestión avanzada de activos con soporte visual.', 'f-t': '© 2026 Organización de Ingeniería | Servidor Local'
+            'c3-p': 'Gestión avanzada de activos con soporte visual.', 'f-t': '© 2026 Organización de Ingeniería'
         },
         'en': {
-            'srv': 'Local Server Active', 'dir': 'Address, City', 'h-t': 'Specialized Technical Scope',
+            'srv': 'Local Server Active', 'dir': 'Dallas, Texas', 'h-t': 'Specialized Technical Scope',
             'h-s': 'Structured Design | RPA Development | Traceability', 'c1-t': '🔧 Design & Projection Area',
             'c1-s': 'Blueprints, mapping and technical simulations.', 'btn-e': 'View Specialties',
             's1-t': '1️⃣ Technical Drawing Production', 's1-p': 'Electrical, civil and industrial plans under regulation.',
@@ -406,7 +418,7 @@
             'dev1-t': '💻 Computer Programs', 'dev1-p': 'Desktop application development and local technical tools.',
             'dev2-t': '🤖 Robots & RPA Processes', 'dev2-p': 'Robotic automation with UiPath for repetitive tasks and data management.',
             'c3-t': '📡 Traceability & Quality', 'c3-s': 'Digital asset control and technical reporting.', 'btn-t': 'View Traceability',
-            'c3-p': 'Advanced asset management with visual support.', 'f-t': '© 2026 Engineering Organization | Local Server'
+            'c3-p': 'Advanced asset management with visual support.', 'f-t': '© 2026 Engineering Organization'
         }
     };
 
