@@ -387,6 +387,94 @@
             letter-spacing: 0.02em;
         }
 
+        /* ====== NUEVO: LINK "MAS INFORMACIÓN" (TEXTO AZUL) ====== */
+        .more-info-link{
+            color: #1e66ff;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 0.78rem;
+            display: inline-block;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+        .more-info-link:hover{
+            text-decoration: underline;
+        }
+
+        /* ====== NUEVO: SECCIÓN FORMULARIO (NEUTRA, SIN ROMPER TU DISEÑO) ====== */
+        .request-section{
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid var(--primary);
+            border-radius: 12px;
+            padding: 16px 16px 10px 16px;
+            margin-top: 16px;
+        }
+        .request-section h2{
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.15rem;
+        }
+        .request-form{
+            max-width: 650px;
+        }
+        .request-form label{
+            display:block;
+            margin: 10px 0;
+            font-weight: 800;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+        .request-form input,
+        .request-form select,
+        .request-form textarea{
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            outline: none;
+            margin-top: 6px;
+            font-family: inherit;
+        }
+        .request-form textarea{
+            resize: vertical;
+            min-height: 110px;
+        }
+        .request-actions{
+            display:flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+        .btn-send{
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 900;
+            display: inline-flex;
+            align-items:center;
+            gap: 10px;
+        }
+        .btn-clear{
+            background: #f1f5f9;
+            color: var(--primary);
+            border: 1px solid #e2e8f0;
+            padding: 12px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 900;
+        }
+        .form-hint{
+            margin: 10px 0 0 0;
+            font-size: 0.9rem;
+            color: #334155;
+            font-weight: 700;
+        }
+
         /* ESTILOS DEL MODAL */
         .modal {
             display: none;
@@ -652,6 +740,7 @@
                         <div data-key="mat-desc-sf6" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
                             Interruptor de potencia para maniobra y protección en subestaciones HV/MV. Interrumpe fallas (corto circuito) y permite operación segura del sistema.
                         </div>
+                        <a class="more-info-link" href="#solicitud" data-material="SF6 Circuit Breakers">Más información</a>
                     </div>
 
                     <div class="material-item img-container" onclick="openModal(this)">
@@ -661,6 +750,7 @@
                         <div data-key="mat-desc-vcb" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
                             Interruptor en vacío (MV) ideal para celdas y tableros metal-clad. Muy confiable para conmutación frecuente y despeje de fallas en alimentadores.
                         </div>
+                        <a class="more-info-link" href="#solicitud" data-material="Vacuum Circuit Breakers">Más información</a>
                     </div>
 
                     <div class="material-item img-container" onclick="openModal(this)">
@@ -670,6 +760,7 @@
                         <div data-key="mat-desc-disconnect" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
                             Seccionador para aislar equipos (transformador, barra, línea) con apertura visible. No es para cortar carga: se usa para mantenimiento y seguridad operacional.
                         </div>
+                        <a class="more-info-link" href="#solicitud" data-material="Disconnect Switches">Más información</a>
                     </div>
 
                     <div class="material-item img-container" onclick="openModal(this)">
@@ -679,6 +770,7 @@
                         <div data-key="mat-desc-recloser" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
                             Reconectador automático para redes de distribución. Abre ante falla y reintenta el cierre para despejar fallas temporales, reduciendo interrupciones al cliente.
                         </div>
+                        <a class="more-info-link" href="#solicitud" data-material="Reclosers">Más información</a>
                     </div>
                 </div>
             </div>
@@ -701,6 +793,7 @@
                         <div data-key="mat-desc-ct" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
                             Transformador de corriente para medición y protección. Reduce alta corriente a valores estándar (1A/5A) para relés y medidores sin perder precisión.
                         </div>
+                        <a class="more-info-link" href="#solicitud" data-material="Current Transformers (CT)">Más información</a>
                     </div>
 
                     <div class="material-item img-container" onclick="openModal(this)">
@@ -710,6 +803,7 @@
                         <div data-key="mat-desc-vt" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
                             Transformador de potencial/tensión para medición y sincronismo. Escala la tensión a niveles seguros (ej. 120V) para relés, control y metering.
                         </div>
+                        <a class="more-info-link" href="#solicitud" data-material="Voltage Transformers (PT/VT)">Más información</a>
                     </div>
 
                     <div class="material-item img-container" onclick="openModal(this)">
@@ -719,6 +813,7 @@
                         <div data-key="mat-desc-relay" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
                             Relés digitales (50/51, 27/59, 87, 21, etc.) que detectan condiciones anormales y ordenan disparo al breaker. Clave para selectividad y coordinación.
                         </div>
+                        <a class="more-info-link" href="#solicitud" data-material="Digital Protection Relays">Más información</a>
                     </div>
 
                     <div class="material-item img-container" onclick="openModal(this)">
@@ -728,6 +823,7 @@
                         <div data-key="mat-desc-scada" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
                             Integración SCADA para monitoreo y control remoto (estados, alarmas, mediciones). Permite operación centralizada y trazabilidad de eventos en subestaciones.
                         </div>
+                        <a class="more-info-link" href="#solicitud" data-material="SCADA Integration">Más información</a>
                     </div>
                 </div>
             </div>
@@ -750,6 +846,7 @@
                         <div data-key="mat-desc-mv-cable" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
                             Cable MV (XLPE/EPR) para alimentadores de subestación a cargas o switchgear. Diseñado para soportar niveles de tensión y esfuerzos térmicos.
                         </div>
+                        <a class="more-info-link" href="#solicitud" data-material="Medium Voltage Cables">Más información</a>
                     </div>
 
                     <div class="material-item img-container" onclick="openModal(this)">
@@ -759,6 +856,7 @@
                         <div data-key="mat-desc-hv-cable" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
                             Cable HV para transmisión/subtransmisión (subterránea o ductos). Requiere control de campo eléctrico, pruebas y accesorios especializados.
                         </div>
+                        <a class="more-info-link" href="#solicitud" data-material="High Voltage Cables">Más información</a>
                     </div>
 
                     <div class="material-item img-container" onclick="openModal(this)">
@@ -768,6 +866,7 @@
                         <div data-key="mat-desc-termination" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
                             Terminaciones (indoor/outdoor) para conectar cable a bushings/switchgear. Controlan el gradiente eléctrico y evitan descargas parciales y tracking.
                         </div>
+                        <a class="more-info-link" href="#solicitud" data-material="Cable Terminations">Más información</a>
                     </div>
 
                     <div class="material-item img-container" onclick="openModal(this)">
@@ -777,6 +876,7 @@
                         <div data-key="mat-desc-joint" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
                             Empalmes para extensión o reparación de cable. Mantienen continuidad eléctrica y control de campo; críticos para confiabilidad en redes MV/HV.
                         </div>
+                        <a class="more-info-link" href="#solicitud" data-material="Cable Joints / Splices">Más información</a>
                     </div>
                 </div>
             </div>
@@ -799,6 +899,7 @@
                         <div data-key="mat-desc-grid" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
                             Elemento esencial en sistemas de transmisión y distribución eléctrica. Permite la conversión segura de niveles de voltaje para optimizar el transporte de energía a largas distancias y su posterior uso en redes industriales y urbanas.
                         </div>
+                        <a class="more-info-link" href="#solicitud" data-material="Transformador de Potencia">Más información</a>
                     </div>
 
                     <div class="material-item img-container" onclick="openModal(this)">
@@ -808,6 +909,7 @@
                         <div data-key="mat-desc-rods" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
                             Varillas copper-clad para mejorar resistencia de tierra. Se usan en mallas, bajantes y puntos de puesta a tierra donde el suelo requiere refuerzo.
                         </div>
+                        <a class="more-info-link" href="#solicitud" data-material="Copper-Clad Ground Rods">Más información</a>
                     </div>
 
                     <div class="material-item img-container" onclick="openModal(this)">
@@ -817,6 +919,7 @@
                         <div data-key="mat-desc-arrester" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
                             Pararrayos MOV para limitar sobretensiones por rayo o maniobras. Se instala cerca de transformadores y equipos críticos para proteger aislamiento.
                         </div>
+                        <a class="more-info-link" href="#solicitud" data-material="Surge Arresters (MOV)">Más información</a>
                     </div>
 
                     <div class="material-item img-container" onclick="openModal(this)">
@@ -826,8 +929,65 @@
                         <div data-key="mat-desc-spd" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
                             SPD para tableros de control/auxiliares (AC/DC). Protege electrónica y comunicaciones contra transientes, complementando la protección primaria MV/HV.
                         </div>
+                        <a class="more-info-link" href="#solicitud" data-material="Surge Protection Devices (SPD)">Más información</a>
                     </div>
                 </div>
+            </div>
+
+            <!-- ====== NUEVO: FORMULARIO DE SOLICITUD ====== -->
+            <div id="solicitud" class="request-section">
+                <h2>Solicitud de información</h2>
+
+                <form id="solicitudForm" class="request-form" autocomplete="on">
+                    <label>
+                        Material
+                        <input type="text" id="materialInput" name="material" placeholder="Selecciona un material" required>
+                    </label>
+
+                    <label>
+                        Nombre
+                        <input type="text" name="nombre" placeholder="Tu nombre" required>
+                    </label>
+
+                    <label>
+                        Teléfono
+                        <input type="tel" name="telefono" placeholder="(214) 000-0000">
+                    </label>
+
+                    <label>
+                        Correo
+                        <input type="email" name="email" placeholder="tucorreo@email.com" required>
+                    </label>
+
+                    <label>
+                        Tipo de solicitud
+                        <select name="tipo" required>
+                            <option value="" selected disabled>Selecciona una opción</option>
+                            <option>Precio</option>
+                            <option>Disponibilidad</option>
+                            <option>Especificaciones técnicas</option>
+                            <option>Tiempo de entrega</option>
+                            <option>Cotización completa</option>
+                            <option>Otro</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Mensaje
+                        <textarea name="mensaje" rows="5" placeholder="Escribe lo que necesitas..." required></textarea>
+                    </label>
+
+                    <div class="request-actions">
+                        <button type="submit" class="btn-send">
+                            <i class="fas fa-paper-plane"></i> Enviar solicitud
+                        </button>
+                        <button type="button" class="btn-clear" onclick="document.getElementById('solicitudForm').reset(); document.getElementById('formHint').textContent='';">
+                            Limpiar
+                        </button>
+                    </div>
+
+                    <p id="formHint" class="form-hint"></p>
+                </form>
             </div>
 
         </div>
@@ -992,6 +1152,54 @@
         document.getElementById("mainContent").style.display = "block";
         document.getElementById("mainHero").style.display = "block";
         window.scrollTo(0, 0);
+    }
+
+    // ====== NUEVO: RELLENAR FORMULARIO AL CLICKEAR "MÁS INFORMACIÓN" ======
+    document.querySelectorAll('.more-info-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Evita que el click se lo "coma" el openModal del contenedor padre
+            e.stopPropagation();
+
+            const material = link.getAttribute('data-material') || '';
+            const input = document.getElementById('materialInput');
+            if (input) input.value = material;
+
+            // deja que el href #solicitud haga el scroll natural
+        });
+    });
+
+    // ====== NUEVO: ENVIAR POR MAILTO (SIN BACKEND) ======
+    const TO_EMAIL = 'Willianmatnez18@gmail.com'; // <-- CAMBIA AQUÍ si quieres otro
+
+    const form = document.getElementById('solicitudForm');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const data = new FormData(form);
+            const material = (data.get('material') || '').toString();
+            const nombre = (data.get('nombre') || '').toString();
+            const telefono = (data.get('telefono') || '').toString();
+            const email = (data.get('email') || '').toString();
+            const tipo = (data.get('tipo') || '').toString();
+            const mensaje = (data.get('mensaje') || '').toString();
+
+            const subject = encodeURIComponent(`Solicitud: ${tipo} - ${material}`);
+            const body = encodeURIComponent(
+                `Material: ${material}\n` +
+                `Tipo: ${tipo}\n` +
+                `Nombre: ${nombre}\n` +
+                `Teléfono: ${telefono}\n` +
+                `Correo: ${email}\n\n` +
+                `Mensaje:\n${mensaje}\n`
+            );
+
+            const mailto = `mailto:${TO_EMAIL}?subject=${subject}&body=${body}`;
+            window.location.href = mailto;
+
+            const hint = document.getElementById('formHint');
+            if (hint) hint.textContent = 'Abriendo tu correo para enviar la solicitud...';
+        });
     }
 </script>
 </body>
