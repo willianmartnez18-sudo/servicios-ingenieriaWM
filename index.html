@@ -188,7 +188,11 @@
             padding: 8px;
             border-radius: 6px;
             border: 1px solid #e2e8f0;
+            cursor: pointer; /* Indicar que es clickeable */
+            transition: transform 0.2s;
         }
+
+        .img-container:hover { transform: scale(1.03); }
 
         .img-container img, .img-container video {
             width: 100%;
@@ -207,6 +211,29 @@
             text-transform: uppercase;
         }
 
+        /* ESTILOS DEL MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            cursor: zoom-out;
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 5px;
+            animation: zoom 0.3s;
+        }
+        @keyframes zoom { from {transform:scale(0)} to {transform:scale(1)} }
+
         footer { background: #1e272e; color: white; padding: 30px; text-align: center; margin-top: 50px; }
     </style>
 </head>
@@ -219,7 +246,7 @@
         <button class="btn-lang active" onclick="changeLang('es', this)">ES</button>
         <button class="btn-lang" onclick="changeLang('en', this)">EN</button>
     </div>
-    </header>
+</header>
 
 <div class="contact-bar">
     <div class="contact-item">
@@ -257,7 +284,7 @@
                     <div id="sub1" class="sub-content">
                         <p data-key="s1-p">Planos eléctricos, civiles e industriales bajo normativa.</p>
                         <div class="gallery-grid">
-                            <div class="img-container">
+                            <div class="img-container" onclick="openModal(this)">
                                 <img src="Plano_electrico.jpg" alt="Plano Eléctrico">
                                 <small data-key="img-1">Plano Eléctrico</small>
                             </div>
@@ -273,7 +300,7 @@
                     <div id="sub2" class="sub-content">
                         <p data-key="s2-p">Georreferenciación de activos y redes en ArcGIS.</p>
                         <div class="gallery-grid">
-                            <div class="img-container">
+                            <div class="img-container" onclick="openModal(this)">
                                 <img src="mapeo_geoespacial.jpg" alt="Mapeo Geoespacial">
                                 <small data-key="img-2">Mapeo Geoespacial</small>
                             </div>
@@ -289,11 +316,11 @@
                     <div id="sub3" class="sub-content">
                         <p data-key="s3-p">Cálculos de niveles lux y optimización en DIALux.</p>
                         <div class="gallery-grid">
-                            <div class="img-container">
+                            <div class="img-container" onclick="openModal(this)">
                                 <img src="dialux.png" alt="Dialux 1">
                                 <small>Dialux Foto 1</small>
                             </div>
-                            <div class="img-container">
+                            <div class="img-container" onclick="openModal(this)">
                                 <img src="dialux2.jpg" alt="Dialux 2">
                                 <small>Dialux Foto 2</small>
                             </div>
@@ -311,11 +338,11 @@
             <div class="details">
                 <p data-key="cg-p">Evidencia técnica de coordinación y ejecución de obras eléctricas:</p>
                 <div class="gallery-grid">
-                    <div class="img-container">
+                    <div class="img-container" onclick="openModal(this)">
                         <img src="coordinacion.jpeg" alt="Coordinación 1">
                         <small data-key="img-3">Coordinación Campo</small>
                     </div>
-                    <div class="img-container">
+                    <div class="img-container" onclick="openModal(this)">
                         <img src="coordinacion1.jpeg" alt="Coordinación 2">
                         <small data-key="img-4">Supervisión Obra</small>
                     </div>
@@ -338,9 +365,17 @@
                     <div id="sub_dev1" class="sub-content">
                         <p data-key="dev1-p">Desarrollo de aplicaciones de escritorio y herramientas técnicas locales.</p>
                         <div class="gallery-grid">
-                            <div class="img-container">
-                                <img src="PS.png" alt="Demo Software">
-                                <small>Interface Demo</small>
+                            <div class="img-container" onclick="openModal(this)">
+                                <img src="PS.png" alt="Pro Staf Manameng">
+                                <small>Pro Staff Management Platform</small>
+                            </div>
+                            <div class="img-container" onclick="openModal(this)">
+                                <img src="Crest.jpeg" alt="Software Extra 1">
+                                <small data-key="img-soft-ext1">Work Order & Materials Intelligence System</small>
+                            </div>
+                            <div class="img-container" onclick="openModal(this)">
+                                <img src="Crest1.jpeg" alt="Software Extra 2">
+                                <small data-key="img-soft-ext2">Cress Electrical Operations Suite</small>
                             </div>
                         </div>
                     </div>
@@ -376,7 +411,7 @@
             <div class="details">
                 <p data-key="c3-p">Gestión avanzada de activos con soporte visual:</p>
                 <div class="gallery-grid">
-                    <div class="img-container">
+                    <div class="img-container" onclick="openModal(this)">
                         <img src="control.png" alt="Control de Activos">
                         <small>Sistema de Control</small>
                     </div>
@@ -384,7 +419,28 @@
             </div>
         </div>
 
+        <div class="card" id="card4">
+            <i class="fas fa-boxes main-icon"></i>
+            <h3 data-key="c4-t">📦 Área de Materiales</h3>
+            <p data-key="c4-s">Gestión, suministro y especificación de insumos técnicos.</p>
+            <button class="btn-expand" onclick="toggleCard('card4')" data-key="btn-m">Ver Materiales</button>
+            
+            <div class="details">
+                <p data-key="c4-p">Control de calidad y logística de materiales especializados.</p>
+                <div class="gallery-grid">
+                    <div class="img-container" onclick="openModal(this)">
+                        <img src="materiales.jpg" alt="Materiales">
+                        <small data-key="img-mat1">Stock de Materiales</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+</div>
+
+<div id="imgModal" class="modal" onclick="this.style.display='none'">
+    <img class="modal-content" id="imgFull">
 </div>
 
 <footer>
@@ -405,9 +461,12 @@
             'img-3': 'Coordinación Campo', 'img-4': 'Supervisión Obra', 
             'c2-t': '⚙️ Área de Desarrollo', 'c2-s': 'Software a medida y automatización de procesos inteligentes.', 'btn-r': 'Ver Procesos de Desarrollo',
             'dev1-t': '💻 Programas para Computadora', 'dev1-p': 'Desarrollo de aplicaciones de escritorio y herramientas técnicas locales.',
+            'img-soft-ext1': 'Vista Técnica 1', 'img-soft-ext2': 'Vista Técnica 2',
             'dev2-t': '🤖 Robots y Procesos RPA', 'dev2-p': 'Automatización robótica con UiPath para tareas repetitivas y gestión de datos.',
             'c3-t': '📡 Trazabilidad y Calidad', 'c3-s': 'Control digital de activos y reportes técnicos.', 'btn-t': 'Ver Trazabilidad',
-            'c3-p': 'Gestión avanzada de activos con soporte visual.', 'f-t': '© 2026 Organización de Ingeniería'
+            'c3-p': 'Gestión avanzada de activos con soporte visual.', 
+            'c4-t': '📦 Área de Materiales', 'c4-s': 'Gestión, suministro y especificación de insumos técnicos.', 'btn-m': 'Ver Materiales', 'c4-p': 'Control de calidad y logística de materiales especializados.', 'img-mat1': 'Stock de Materiales',
+            'f-t': '© 2026 Organización de Ingeniería'
         },
         'en': {
             'dir': 'Dallas, Texas', 'h-t': 'Specialized Technical Scope',
@@ -421,9 +480,12 @@
             'img-3': 'Field Coordination', 'img-4': 'Site Supervision', 
             'c2-t': '⚙️ Development Area', 'c2-s': 'Custom software and intelligent process automation.', 'btn-r': 'View Development Processes',
             'dev1-t': '💻 Computer Programs', 'dev1-p': 'Desktop application development and local technical tools.',
+            'img-soft-ext1': 'Technical View 1', 'img-soft-ext2': 'Technical View 2',
             'dev2-t': '🤖 Robots & RPA Processes', 'dev2-p': 'Robotic automation with UiPath for repetitive tasks and data management.',
             'c3-t': '📡 Traceability & Quality', 'c3-s': 'Digital asset control and technical reporting.', 'btn-t': 'View Traceability',
-            'c3-p': 'Advanced asset management with visual support.', 'f-t': '© 2026 Engineering Organization'
+            'c3-p': 'Advanced asset management with visual support.', 
+            'c4-t': '📦 Materials Area', 'c4-s': 'Management, supply and specification of technical inputs.', 'btn-m': 'View Materials', 'c4-p': 'Quality control and logistics of specialized materials.', 'img-mat1': 'Materials Stock',
+            'f-t': '© 2026 Engineering Organization'
         }
     };
 
@@ -443,6 +505,15 @@
         sub.classList.toggle('active');
         icon.classList.toggle('fa-plus-circle');
         icon.classList.toggle('fa-minus-circle');
+    }
+
+    // FUNCIÓN PARA AMPLIAR IMÁGENES
+    function openModal(element) {
+        const modal = document.getElementById("imgModal");
+        const modalImg = document.getElementById("imgFull");
+        const clickedImg = element.querySelector("img");
+        modal.style.display = "block";
+        modalImg.src = clickedImg.src;
     }
 </script>
 </body>
