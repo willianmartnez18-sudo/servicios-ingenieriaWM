@@ -188,7 +188,7 @@
             padding: 8px;
             border-radius: 6px;
             border: 1px solid #e2e8f0;
-            cursor: pointer; /* Indicar que es clickeable */
+            cursor: pointer;
             transition: transform 0.2s;
         }
 
@@ -209,6 +209,182 @@
             font-weight: bold;
             color: var(--primary);
             text-transform: uppercase;
+        }
+
+        /* ====== NUEVA VISUAL FULLSCREEN PARA MATERIALES ====== */
+        .materials-view {
+            display: none;
+            position: fixed;
+            z-index: 1500;
+            inset: 0;
+            background: var(--bg);
+            overflow-y: auto;
+        }
+
+        .materials-view.active {
+            display: block;
+        }
+
+        .materials-topbar {
+            position: sticky;
+            top: 0;
+            z-index: 1600;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            padding: 14px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .materials-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 900;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .materials-title i { color: var(--accent); }
+
+        .btn-back {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .materials-body {
+            padding: 22px 5% 40px 5%;
+        }
+
+        .materials-intro{
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid var(--accent);
+            border-radius: 10px;
+            padding: 14px 15px;
+        }
+
+        .materials-intro p{
+            margin: 0;
+        }
+
+        .materials-tags{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0 0 0;
+        }
+
+        .materials-tag{
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            color: var(--primary);
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .materials-catalog{
+            margin-top: 16px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        .materials-group{
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .materials-group-head{
+            display:flex;
+            align-items:center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 12px 14px;
+            background: linear-gradient(135deg, rgba(10,61,98,0.08), rgba(60,99,130,0.06));
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .materials-group-title{
+            display:flex;
+            align-items:center;
+            gap: 10px;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .materials-group-title i{
+            color: var(--accent);
+        }
+
+        .materials-count{
+            font-size: 0.8rem;
+            color: var(--secondary);
+            font-weight: 800;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 4px 10px;
+            border-radius: 999px;
+        }
+
+        .materials-items{
+            padding: 12px 12px 14px 12px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 12px;
+        }
+
+        .material-item{
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 10px;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .material-item:hover{ transform: scale(1.02); }
+
+        .material-thumb{
+            width: 100%;
+            height: 110px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            display:block;
+        }
+
+        .material-name{
+            margin: 8px 0 0 0;
+            font-size: 0.85rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .material-meta{
+            margin: 3px 0 0 0;
+            font-size: 0.72rem;
+            color: #64748b;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
         }
 
         /* ESTILOS DEL MODAL */
@@ -258,12 +434,13 @@
     <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span data-key="dir">Dallas, Texas</span></div>
 </div>
 
-<section class="hero">
+<section class="hero" id="mainHero">
     <h1 data-key="h-t">Alcance Técnico Especializado</h1>
     <p data-key="h-s">Diseño Estructurado | Desarrollo RPA | Trazabilidad</p>
 </section>
 
-<div class="container">
+<!-- CONTENIDO PRINCIPAL -->
+<div class="container" id="mainContent">
     <div class="grid">
         
         <div class="card" id="card1">
@@ -419,25 +596,243 @@
             </div>
         </div>
 
+        <!-- CARD MATERIALES: ABRE OTRA VISUAL -->
         <div class="card" id="card4">
             <i class="fas fa-boxes main-icon"></i>
             <h3 data-key="c4-t">📦 Área de Materiales</h3>
             <p data-key="c4-s">Gestión, suministro y especificación de insumos técnicos.</p>
-            <button class="btn-expand" onclick="toggleCard('card4')" data-key="btn-m">Ver Materiales</button>
-            
-            <div class="details">
-                <p data-key="c4-p">Control de calidad y logística de materiales especializados.</p>
-                <div class="gallery-grid">
-                    <div class="img-container" onclick="openModal(this)">
-                        <img src="materiales.jpg" alt="Materiales">
-                        <small data-key="img-mat1">Stock de Materiales</small>
-                    </div>
-                </div>
-            </div>
+            <button class="btn-expand" onclick="openMaterialsView()" data-key="btn-m">Ver Materiales</button>
         </div>
 
     </div>
 </div>
+
+<!-- ====== NUEVA PANTALLA / VISUAL DE MATERIALES ====== -->
+<section id="materialsView" class="materials-view">
+    <div class="materials-topbar">
+        <div class="materials-title">
+            <i class="fas fa-boxes"></i>
+            <span data-key="mat-title">Catálogo de Materiales Eléctricos</span>
+        </div>
+        <button class="btn-back" onclick="closeMaterialsView()">
+            <i class="fas fa-arrow-left"></i>
+            <span data-key="mat-back">Volver</span>
+        </button>
+    </div>
+
+    <div class="materials-body">
+        <div class="materials-intro">
+            <p data-key="c4-p">Control de calidad y logística de materiales especializados.</p>
+            <div class="materials-tags">
+                <span class="materials-tag" data-key="mat-tag1">Media Tensión</span>
+                <span class="materials-tag" data-key="mat-tag2">Alta Tensión</span>
+                <span class="materials-tag" data-key="mat-tag3">Subestaciones</span>
+                <span class="materials-tag" data-key="mat-tag4">Cables & Accesorios</span>
+                <span class="materials-tag" data-key="mat-tag5">Protección</span>
+            </div>
+        </div>
+
+        <div class="materials-catalog">
+
+            <!-- GRUPO 1 -->
+            <div class="materials-group">
+                <div class="materials-group-head">
+                    <div class="materials-group-title">
+                        <i class="fas fa-bolt"></i>
+                        <span data-key="mat-g1">Switchgear & Maniobra</span>
+                    </div>
+                    <span class="materials-count" data-key="mat-g1c">8 ítems</span>
+                </div>
+
+                <div class="materials-items">
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="materiales.jpg" alt="SF6 Circuit Breaker">
+                        <div class="material-name">SF6 Circuit Breakers</div>
+                        <div class="material-meta" data-key="mat-meta">Medium/High Voltage</div>
+                        <div data-key="mat-desc-sf6" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Interruptor de potencia para maniobra y protección en subestaciones HV/MV. Interrumpe fallas (corto circuito) y permite operación segura del sistema.
+                        </div>
+                    </div>
+
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="materiales.jpg" alt="Vacuum Circuit Breaker">
+                        <div class="material-name">Vacuum Circuit Breakers</div>
+                        <div class="material-meta" data-key="mat-meta">Medium Voltage</div>
+                        <div data-key="mat-desc-vcb" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Interruptor en vacío (MV) ideal para celdas y tableros metal-clad. Muy confiable para conmutación frecuente y despeje de fallas en alimentadores.
+                        </div>
+                    </div>
+
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="materiales.jpg" alt="Disconnect Switches">
+                        <div class="material-name">Disconnect Switches</div>
+                        <div class="material-meta" data-key="mat-meta">High Voltage</div>
+                        <div data-key="mat-desc-disconnect" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Seccionador para aislar equipos (transformador, barra, línea) con apertura visible. No es para cortar carga: se usa para mantenimiento y seguridad operacional.
+                        </div>
+                    </div>
+
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="materiales.jpg" alt="Reclosers">
+                        <div class="material-name">Reclosers</div>
+                        <div class="material-meta" data-key="mat-meta">Distribution</div>
+                        <div data-key="mat-desc-recloser" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Reconectador automático para redes de distribución. Abre ante falla y reintenta el cierre para despejar fallas temporales, reduciendo interrupciones al cliente.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRUPO 2 -->
+            <div class="materials-group">
+                <div class="materials-group-head">
+                    <div class="materials-group-title">
+                        <i class="fas fa-shield-alt"></i>
+                        <span data-key="mat-g2">Protection, Metering & Control</span>
+                    </div>
+                    <span class="materials-count" data-key="mat-g2c">6 ítems</span>
+                </div>
+
+                <div class="materials-items">
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="materiales.jpg" alt="Current Transformers">
+                        <div class="material-name">Current Transformers (CT)</div>
+                        <div class="material-meta" data-key="mat-meta">Substation</div>
+                        <div data-key="mat-desc-ct" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Transformador de corriente para medición y protección. Reduce alta corriente a valores estándar (1A/5A) para relés y medidores sin perder precisión.
+                        </div>
+                    </div>
+
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="materiales.jpg" alt="Voltage Transformers">
+                        <div class="material-name">Voltage Transformers (PT/VT)</div>
+                        <div class="material-meta" data-key="mat-meta">Substation</div>
+                        <div data-key="mat-desc-vt" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Transformador de potencial/tensión para medición y sincronismo. Escala la tensión a niveles seguros (ej. 120V) para relés, control y metering.
+                        </div>
+                    </div>
+
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="materiales.jpg" alt="Protective Relays">
+                        <div class="material-name">Digital Protection Relays</div>
+                        <div class="material-meta" data-key="mat-meta">Automation</div>
+                        <div data-key="mat-desc-relay" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Relés digitales (50/51, 27/59, 87, 21, etc.) que detectan condiciones anormales y ordenan disparo al breaker. Clave para selectividad y coordinación.
+                        </div>
+                    </div>
+
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="materiales.jpg" alt="SCADA">
+                        <div class="material-name">SCADA Integration</div>
+                        <div class="material-meta" data-key="mat-meta">Monitoring</div>
+                        <div data-key="mat-desc-scada" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Integración SCADA para monitoreo y control remoto (estados, alarmas, mediciones). Permite operación centralizada y trazabilidad de eventos en subestaciones.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRUPO 3 -->
+            <div class="materials-group">
+                <div class="materials-group-head">
+                    <div class="materials-group-title">
+                        <i class="fas fa-project-diagram"></i>
+                        <span data-key="mat-g3">Cables, Terminations & Accessories</span>
+                    </div>
+                    <span class="materials-count" data-key="mat-g3c">7 ítems</span>
+                </div>
+
+                <div class="materials-items">
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="materiales.jpg" alt="MV Cables">
+                        <div class="material-name">Medium Voltage Cables</div>
+                        <div class="material-meta" data-key="mat-meta">15kV–35kV</div>
+                        <div data-key="mat-desc-mv-cable" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Cable MV (XLPE/EPR) para alimentadores de subestación a cargas o switchgear. Diseñado para soportar niveles de tensión y esfuerzos térmicos.
+                        </div>
+                    </div>
+
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="materiales.jpg" alt="HV Cables">
+                        <div class="material-name">High Voltage Cables</div>
+                        <div class="material-meta" data-key="mat-meta">69kV+</div>
+                        <div data-key="mat-desc-hv-cable" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Cable HV para transmisión/subtransmisión (subterránea o ductos). Requiere control de campo eléctrico, pruebas y accesorios especializados.
+                        </div>
+                    </div>
+
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="materiales.jpg" alt="Cable Terminations">
+                        <div class="material-name">Cable Terminations</div>
+                        <div class="material-meta" data-key="mat-meta">Kits</div>
+                        <div data-key="mat-desc-termination" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Terminaciones (indoor/outdoor) para conectar cable a bushings/switchgear. Controlan el gradiente eléctrico y evitan descargas parciales y tracking.
+                        </div>
+                    </div>
+
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="materiales.jpg" alt="Cable Joints">
+                        <div class="material-name">Cable Joints / Splices</div>
+                        <div class="material-meta" data-key="mat-meta">Accessories</div>
+                        <div data-key="mat-desc-joint" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Empalmes para extensión o reparación de cable. Mantienen continuidad eléctrica y control de campo; críticos para confiabilidad en redes MV/HV.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRUPO 4 -->
+            <div class="materials-group">
+                <div class="materials-group-head">
+                    <div class="materials-group-title">
+                        <i class="fas fa-globe"></i>
+                        <span data-key="mat-g4">Grounding & Surge Protection</span>
+                    </div>
+                    <span class="materials-count" data-key="mat-g4c">6 ítems</span>
+                </div>
+
+                <div class="materials-items">
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="materiales.jpg" alt="Grounding Grid">
+                        <div class="material-name">Copper Grounding Grid</div>
+                        <div class="material-meta" data-key="mat-meta">Earthing</div>
+                        <div data-key="mat-desc-grid" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Malla de puesta a tierra de subestación para disipar corrientes de falla y rayos. Reduce tensiones de paso/contacto y protege personas/equipos.
+                        </div>
+                    </div>
+
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="materiales.jpg" alt="Ground Rods">
+                        <div class="material-name">Copper-Clad Ground Rods</div>
+                        <div class="material-meta" data-key="mat-meta">Earthing</div>
+                        <div data-key="mat-desc-rods" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Varillas copper-clad para mejorar resistencia de tierra. Se usan en mallas, bajantes y puntos de puesta a tierra donde el suelo requiere refuerzo.
+                        </div>
+                    </div>
+
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="materiales.jpg" alt="Surge Arresters">
+                        <div class="material-name">Surge Arresters (MOV)</div>
+                        <div class="material-meta" data-key="mat-meta">Protection</div>
+                        <div data-key="mat-desc-arrester" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Pararrayos MOV para limitar sobretensiones por rayo o maniobras. Se instala cerca de transformadores y equipos críticos para proteger aislamiento.
+                        </div>
+                    </div>
+
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="materiales.jpg" alt="SPD">
+                        <div class="material-name">Surge Protection Devices (SPD)</div>
+                        <div class="material-meta" data-key="mat-meta">Protection</div>
+                        <div data-key="mat-desc-spd" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            SPD para tableros de control/auxiliares (AC/DC). Protege electrónica y comunicaciones contra transientes, complementando la protección primaria MV/HV.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
 <div id="imgModal" class="modal" onclick="this.style.display='none'">
     <img class="modal-content" id="imgFull">
@@ -465,7 +860,41 @@
             'dev2-t': '🤖 Robots y Procesos RPA', 'dev2-p': 'Automatización robótica con UiPath para tareas repetitivas y gestión de datos.',
             'c3-t': '📡 Trazabilidad y Calidad', 'c3-s': 'Control digital de activos y reportes técnicos.', 'btn-t': 'Ver Trazabilidad',
             'c3-p': 'Gestión avanzada de activos con soporte visual.', 
-            'c4-t': '📦 Área de Materiales', 'c4-s': 'Gestión, suministro y especificación de insumos técnicos.', 'btn-m': 'Ver Materiales', 'c4-p': 'Control de calidad y logística de materiales especializados.', 'img-mat1': 'Stock de Materiales',
+            'c4-t': '📦 Área de Materiales', 'c4-s': 'Gestión, suministro y especificación de insumos técnicos.', 'btn-m': 'Ver Materiales', 'c4-p': 'Control de calidad y logística de materiales especializados.',
+            'mat-title': 'Catálogo de Materiales Eléctricos',
+            'mat-back': 'Volver',
+            'mat-tag1': 'Media Tensión',
+            'mat-tag2': 'Alta Tensión',
+            'mat-tag3': 'Subestaciones',
+            'mat-tag4': 'Cables & Accesorios',
+            'mat-tag5': 'Protección',
+            'mat-g1': 'Switchgear & Maniobra',
+            'mat-g1c': '8 ítems',
+            'mat-g2': 'Protección, Medición y Control',
+            'mat-g2c': '6 ítems',
+            'mat-g3': 'Cables, Terminaciones y Accesorios',
+            'mat-g3c': '7 ítems',
+            'mat-g4': 'Puesta a Tierra & Sobretensión',
+            'mat-g4c': '6 ítems',
+            'mat-meta': 'Media/Alta Tensión',
+
+            'mat-desc-sf6': 'Interruptor de potencia para maniobra y protección en subestaciones HV/MV. Interrumpe fallas (corto circuito) y permite operación segura del sistema.',
+            'mat-desc-vcb': 'Interruptor en vacío (MV) ideal para celdas y tableros metal-clad. Muy confiable para conmutación frecuente y despeje de fallas en alimentadores.',
+            'mat-desc-disconnect': 'Seccionador para aislar equipos (transformador, barra, línea) con apertura visible. No es para cortar carga: se usa para mantenimiento y seguridad operacional.',
+            'mat-desc-recloser': 'Reconectador automático para redes de distribución. Abre ante falla y reintenta el cierre para despejar fallas temporales, reduciendo interrupciones al cliente.',
+            'mat-desc-ct': 'Transformador de corriente para medición y protección. Reduce alta corriente a valores estándar (1A/5A) para relés y medidores sin perder precisión.',
+            'mat-desc-vt': 'Transformador de potencial/tensión para medición y sincronismo. Escala la tensión a niveles seguros (ej. 120V) para relés, control y metering.',
+            'mat-desc-relay': 'Relés digitales (50/51, 27/59, 87, 21, etc.) que detectan condiciones anormales y ordenan disparo al breaker. Clave para selectividad y coordinación.',
+            'mat-desc-scada': 'Integración SCADA para monitoreo y control remoto (estados, alarmas, mediciones). Permite operación centralizada y trazabilidad de eventos en subestaciones.',
+            'mat-desc-mv-cable': 'Cable MV (XLPE/EPR) para alimentadores de subestación a cargas o switchgear. Diseñado para soportar niveles de tensión y esfuerzos térmicos.',
+            'mat-desc-hv-cable': 'Cable HV para transmisión/subtransmisión (subterránea o ductos). Requiere control de campo eléctrico, pruebas y accesorios especializados.',
+            'mat-desc-termination': 'Terminaciones (indoor/outdoor) para conectar cable a bushings/switchgear. Controlan el gradiente eléctrico y evitan descargas parciales y tracking.',
+            'mat-desc-joint': 'Empalmes para extensión o reparación de cable. Mantienen continuidad eléctrica y control de campo; críticos para confiabilidad en redes MV/HV.',
+            'mat-desc-grid': 'Malla de puesta a tierra de subestación para disipar corrientes de falla y rayos. Reduce tensiones de paso/contacto y protege personas/equipos.',
+            'mat-desc-rods': 'Varillas copper-clad para mejorar resistencia de tierra. Se usan en mallas, bajantes y puntos de puesta a tierra donde el suelo requiere refuerzo.',
+            'mat-desc-arrester': 'Pararrayos MOV para limitar sobretensiones por rayo o maniobras. Se instala cerca de transformadores y equipos críticos para proteger aislamiento.',
+            'mat-desc-spd': 'SPD para tableros de control/auxiliares (AC/DC). Protege electrónica y comunicaciones contra transientes, complementando la protección primaria MV/HV.',
+
             'f-t': '© 2026 Organización de Ingeniería'
         },
         'en': {
@@ -484,7 +913,41 @@
             'dev2-t': '🤖 Robots & RPA Processes', 'dev2-p': 'Robotic automation with UiPath for repetitive tasks and data management.',
             'c3-t': '📡 Traceability & Quality', 'c3-s': 'Digital asset control and technical reporting.', 'btn-t': 'View Traceability',
             'c3-p': 'Advanced asset management with visual support.', 
-            'c4-t': '📦 Materials Area', 'c4-s': 'Management, supply and specification of technical inputs.', 'btn-m': 'View Materials', 'c4-p': 'Quality control and logistics of specialized materials.', 'img-mat1': 'Materials Stock',
+            'c4-t': '📦 Materials Area', 'c4-s': 'Management, supply and specification of technical inputs.', 'btn-m': 'View Materials', 'c4-p': 'Quality control and logistics of specialized materials.',
+            'mat-title': 'Electrical Materials Catalog',
+            'mat-back': 'Back',
+            'mat-tag1': 'Medium Voltage',
+            'mat-tag2': 'High Voltage',
+            'mat-tag3': 'Substations',
+            'mat-tag4': 'Cables & Accessories',
+            'mat-tag5': 'Protection',
+            'mat-g1': 'Switchgear & Switching',
+            'mat-g1c': '8 items',
+            'mat-g2': 'Protection, Metering & Control',
+            'mat-g2c': '6 items',
+            'mat-g3': 'Cables, Terminations & Accessories',
+            'mat-g3c': '7 items',
+            'mat-g4': 'Grounding & Surge Protection',
+            'mat-g4c': '6 items',
+            'mat-meta': 'Medium/High Voltage',
+
+            'mat-desc-sf6': 'Power circuit breaker for HV/MV substations. Clears fault currents (short-circuits) and enables safe switching and system protection.',
+            'mat-desc-vcb': 'Medium-voltage vacuum breaker used in switchgear lineups. Highly reliable for frequent operations and feeder fault clearing.',
+            'mat-desc-disconnect': 'Disconnect switch used to isolate equipment with visible open gap. Not intended to interrupt load current—mainly for maintenance and safety.',
+            'mat-desc-recloser': 'Automatic recloser for distribution networks. Trips on faults and recloses to clear temporary faults, improving service continuity.',
+            'mat-desc-ct': 'Current transformer for metering and protection. Steps down primary current to standard values (1A/5A) for relays and meters with accuracy.',
+            'mat-desc-vt': 'Voltage/potential transformer for metering and control. Steps down system voltage to safe levels (e.g., 120V) for relays, synchronizing, and metering.',
+            'mat-desc-relay': 'Digital protective relays (50/51, 27/59, 87, 21, etc.) that detect abnormal conditions and trip breakers. Key for coordination and selectivity.',
+            'mat-desc-scada': 'SCADA integration for remote monitoring and control (status, alarms, measurements). Enables centralized operation and event traceability.',
+            'mat-desc-mv-cable': 'MV power cable (XLPE/EPR) for feeders from substations to loads or switchgear. Designed to withstand voltage stress and thermal loading.',
+            'mat-desc-hv-cable': 'HV power cable for transmission/subtransmission (underground or duct banks). Requires electric field control, testing, and specialized accessories.',
+            'mat-desc-termination': 'Indoor/outdoor terminations to connect cable to bushings/switchgear. Controls electrical stress to prevent partial discharge and tracking.',
+            'mat-desc-joint': 'Cable joints/splices for extension or repair. Maintains electrical continuity and stress control—critical for MV/HV reliability.',
+            'mat-desc-grid': 'Substation grounding grid to dissipate fault and lightning currents. Reduces step/touch voltages and protects people and equipment.',
+            'mat-desc-rods': 'Copper-clad ground rods to improve grounding resistance. Used in grids, down conductors, and grounding points where soil needs reinforcement.',
+            'mat-desc-arrester': 'MOV surge arrester that limits lightning/switching overvoltages. Installed near transformers and critical equipment to protect insulation.',
+            'mat-desc-spd': 'SPD for control/auxiliary panels (AC/DC). Protects electronics and communications from transients, complementing primary MV/HV protection.',
+
             'f-t': '© 2026 Engineering Organization'
         }
     };
@@ -507,13 +970,28 @@
         icon.classList.toggle('fa-minus-circle');
     }
 
-    // FUNCIÓN PARA AMPLIAR IMÁGENES
+    // FUNCIÓN PARA AMPLIAR IMÁGENES (sirve también en materiales)
     function openModal(element) {
         const modal = document.getElementById("imgModal");
         const modalImg = document.getElementById("imgFull");
         const clickedImg = element.querySelector("img");
         modal.style.display = "block";
         modalImg.src = clickedImg.src;
+    }
+
+    // ====== FUNCIONES PARA VISTA MATERIALES ======
+    function openMaterialsView() {
+        document.getElementById("materialsView").classList.add("active");
+        document.getElementById("mainContent").style.display = "none";
+        document.getElementById("mainHero").style.display = "none";
+        window.scrollTo(0, 0);
+    }
+
+    function closeMaterialsView() {
+        document.getElementById("materialsView").classList.remove("active");
+        document.getElementById("mainContent").style.display = "block";
+        document.getElementById("mainHero").style.display = "block";
+        window.scrollTo(0, 0);
     }
 </script>
 </body>
