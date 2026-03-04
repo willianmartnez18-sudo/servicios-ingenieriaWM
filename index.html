@@ -499,6 +499,84 @@
         @keyframes zoom { from {transform:scale(0)} to {transform:scale(1)} }
 
         footer { background: #1e272e; color: white; padding: 30px; text-align: center; margin-top: 50px; }
+
+        /* =========================================================
+           ✅ ÚNICO CAMBIO: ANIMACIONES LENTAS (ICONOS + IMÁGENES)
+           - Solo afecta las áreas pedidas:
+             Diseño/Proyección, Coordinación Galería, Desarrollo,
+             Trazabilidad/Calidad y Materiales.
+           - Movimiento suave, continuo, NO se detiene al abrir.
+           ========================================================= */
+
+        @keyframes wmFloat {
+            0%   { transform: translateY(0px); }
+            50%  { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes wmDrift {
+            0%   { transform: translateY(0px) translateX(0px); }
+            50%  { transform: translateY(-4px) translateX(3px); }
+            100% { transform: translateY(0px) translateX(0px); }
+        }
+
+        @keyframes wmPulseSoft {
+            0%   { transform: scale(1); }
+            50%  { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        /* Iconos principales de cards (lento y suave) */
+        #card1 .main-icon,
+        #card_gallery .main-icon,
+        #card2 .main-icon,
+        #card3 .main-icon,
+        #card4 .main-icon,
+        #materialsView .materials-title i,
+        #materialsView .materials-group-title i {
+            display: inline-block;
+            animation: wmFloat 4.8s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        /* Variación leve para que no se vean "idénticos" */
+        #card2 .main-icon,
+        #materialsView .materials-title i {
+            animation: wmDrift 6.2s ease-in-out infinite;
+        }
+
+        /* Imágenes y videos en las secciones pedidas (lento y continuo) */
+        #card1 .gallery-grid img,
+        #card1 .gallery-grid video,
+        #card_gallery .gallery-grid img,
+        #card_gallery .gallery-grid video,
+        #card2 .gallery-grid img,
+        #card2 .gallery-grid video,
+        #card3 .gallery-grid img,
+        #card3 .gallery-grid video,
+        #materialsView .materials-items img,
+        #materialsView .materials-items video {
+            animation: wmPulseSoft 7.5s ease-in-out infinite;
+            transform-origin: center;
+            will-change: transform;
+        }
+
+        /* Pequeño offset por tarjeta para que se vea natural */
+        #card_gallery .gallery-grid img,
+        #card_gallery .gallery-grid video {
+            animation-duration: 8.4s;
+        }
+        #card3 .gallery-grid img,
+        #card3 .gallery-grid video {
+            animation-duration: 9.0s;
+        }
+        #materialsView .materials-items img,
+        #materialsView .materials-items video {
+            animation-duration: 8.8s;
+        }
+
+        /* Mantener el hover EXACTO como lo tienes (no lo toco) */
+        /* .img-container:hover { transform: scale(1.03); }  <-- ya existe arriba */
     </style>
 </head>
 <body>
