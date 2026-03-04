@@ -15,21 +15,21 @@
             --white: #ffffff;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            margin: 0;
-            background: var(--bg);
-            color: var(--text);
+        body { 
+            font-family: 'Segoe UI', Tahoma, sans-serif; 
+            margin: 0; 
+            background: var(--bg); 
+            color: var(--text); 
             line-height: 1.6;
         }
 
-        header {
-            background: var(--white);
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        header { 
+            background: var(--white); 
+            padding: 1.5rem 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -77,7 +77,7 @@
             font-size: 0.9rem;
         }
         .contact-item i { color: var(--accent); }
-
+        
         .contact-item a {
             color: white;
             text-decoration: none;
@@ -87,10 +87,10 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, rgba(10, 61, 98, 0.9), rgba(60, 99, 130, 0.8)),
+            background: linear-gradient(135deg, rgba(10, 61, 98, 0.9), rgba(60, 99, 130, 0.8)), 
                         url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            color: white;
+            background-size: cover; 
+            color: white; 
             padding: 40px 5%;
             text-align: center;
         }
@@ -499,110 +499,13 @@
         @keyframes zoom { from {transform:scale(0)} to {transform:scale(1)} }
 
         footer { background: #1e272e; color: white; padding: 30px; text-align: center; margin-top: 50px; }
-
-        /* =========================================================
-           NUEVO: BARRA DE BOTONES (zona amarilla)
-           ========================================================= */
-        .quick-actions{
-            background: var(--white);
-            border-top: 1px solid #e2e8f0;
-            border-bottom: 1px solid #e2e8f0;
-            padding: 14px 5%;
-        }
-        .quick-actions-wrap{
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-        }
-        .quick-btn{
-            border: 2px solid var(--primary);
-            background: white;
-            color: var(--primary);
-            padding: 10px 14px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 900;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: transform .25s ease, background .25s ease, color .25s ease;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-        }
-        .quick-btn i{ color: var(--accent); }
-        .quick-btn:hover{
-            transform: translateY(-2px);
-            background: var(--primary);
-            color: white;
-        }
-        .quick-btn:hover i{ color: white; }
-
-        /* =========================================================
-           NUEVO: REVEAL MÁS LENTO + MOVIMIENTO CONTINUO SUAVE
-           ========================================================= */
-        .reveal{
-            opacity: 0;
-            transform: translate3d(0, 24px, 0);
-            filter: blur(6px);
-            transition:
-                opacity 1.35s cubic-bezier(.2,.8,.2,1),
-                transform 1.35s cubic-bezier(.2,.8,.2,1),
-                filter 1.35s cubic-bezier(.2,.8,.2,1);
-            will-change: opacity, transform, filter;
-        }
-        .reveal--left{ transform: translate3d(-38px, 0, 0); }
-        .reveal--right{ transform: translate3d(38px, 0, 0); }
-        .reveal--up{ transform: translate3d(0, 30px, 0); }
-
-        .reveal.is-visible{
-            opacity: 1;
-            transform: translate3d(0,0,0);
-            filter: blur(0);
-        }
-
-        /* Stagger más lento */
-        .reveal-item{
-            opacity: 0;
-            transform: translate3d(0, 12px, 0);
-            transition:
-                opacity 1.05s cubic-bezier(.2,.8,.2,1),
-                transform 1.05s cubic-bezier(.2,.8,.2,1);
-            will-change: opacity, transform;
-        }
-        .reveal.is-visible .reveal-item{
-            opacity: 1;
-            transform: translate3d(0,0,0);
-        }
-
-        /* Movimiento continuo MUY suave (para que “no se pare”) */
-        @keyframes floatSoft {
-            0%   { transform: translate3d(0, 0px, 0); }
-            50%  { transform: translate3d(0, -4px, 0); }
-            100% { transform: translate3d(0, 0px, 0); }
-        }
-        /* Solo aplica a los elementos que tengan "keep-moving" */
-        .keep-moving.is-visible{
-            animation: floatSoft 8.5s ease-in-out infinite;
-        }
-
-        /* Accesibilidad */
-        @media (prefers-reduced-motion: reduce){
-            .reveal, .reveal-item{
-                transition: none !important;
-                opacity: 1 !important;
-                transform: none !important;
-                filter: none !important;
-            }
-            .keep-moving.is-visible{ animation: none !important; }
-        }
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo">WM<span>AUTOMATION SUPPLY</span></div>
-
+    
     <div class="lang-switcher">
         <button class="btn-lang active" onclick="changeLang('es', this)">ES</button>
         <button class="btn-lang" onclick="changeLang('en', this)">EN</button>
@@ -619,44 +522,26 @@
     <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span data-key="dir">Dallas, Texas</span></div>
 </div>
 
-<section class="hero reveal reveal--up keep-moving" id="mainHero">
+<section class="hero" id="mainHero">
     <h1 data-key="h-t">Alcance Técnico Especializado</h1>
     <p data-key="h-s">Diseño Estructurado | Desarrollo RPA | Trazabilidad</p>
-</section>
-
-<!-- ===== NUEVO: BARRA DE BOTONES (zona amarilla) ===== -->
-<section class="quick-actions reveal reveal--up keep-moving" id="quickActions">
-    <div class="quick-actions-wrap">
-        <button type="button" class="quick-btn">
-            <i class="fas fa-eye"></i> <span data-key="qa-vision">Visión</span>
-        </button>
-        <button type="button" class="quick-btn">
-            <i class="fas fa-bullseye"></i> <span data-key="qa-mision">Misión</span>
-        </button>
-        <button type="button" class="quick-btn">
-            <i class="fas fa-address-book"></i> <span data-key="qa-contactos">Contactos</span>
-        </button>
-        <button type="button" class="quick-btn">
-            <i class="fas fa-briefcase"></i> <span data-key="qa-trabajos">Desarrollos / Trabajos</span>
-        </button>
-    </div>
 </section>
 
 <!-- CONTENIDO PRINCIPAL -->
 <div class="container" id="mainContent">
     <div class="grid">
-
-        <div class="card reveal reveal--left keep-moving" id="card1">
+        
+        <div class="card" id="card1">
             <i class="fas fa-drafting-compass main-icon"></i>
             <h3 data-key="c1-t">🔧 Área de Diseño y Proyección</h3>
             <p data-key="c1-s">Elaboración de planos, mapeo y simulaciones técnicas.</p>
-
+            
             <button class="btn-expand" onclick="toggleCard('card1')">
                 <span data-key="btn-e">Ver Especialidades</span> <i class="fas fa-chevron-down"></i>
             </button>
 
             <div class="details">
-                <div class="sub-area reveal-item">
+                <div class="sub-area">
                     <div class="sub-header" onclick="toggleSub('sub1', this)">
                         <span data-key="s1-t">1️⃣ Elaboración de Planos Técnicos</span>
                         <i class="fas fa-plus-circle"></i>
@@ -672,7 +557,7 @@
                     </div>
                 </div>
 
-                <div class="sub-area reveal-item">
+                <div class="sub-area">
                     <div class="sub-header" onclick="toggleSub('sub2', this)">
                         <span data-key="s2-t">2️⃣ Mapeo y Análisis Geoespacial</span>
                         <i class="fas fa-plus-circle"></i>
@@ -688,7 +573,7 @@
                     </div>
                 </div>
 
-                <div class="sub-area reveal-item">
+                <div class="sub-area">
                     <div class="sub-header" onclick="toggleSub('sub3', this)">
                         <span data-key="s3-t">3️⃣ Simulación y Cálculo Lumínico</span>
                         <i class="fas fa-plus-circle"></i>
@@ -710,7 +595,7 @@
             </div>
         </div>
 
-        <div class="card reveal reveal--right keep-moving" id="card_gallery">
+        <div class="card" id="card_gallery">
             <i class="fas fa-bolt main-icon"></i>
             <h3 data-key="cg-t">⚡ Galería de Coordinación Eléctrica</h3>
             <p data-key="cg-s">Registro fotográfico de trabajos eléctricos y supervisión de campo.</p>
@@ -718,11 +603,11 @@
             <div class="details">
                 <p data-key="cg-p">Evidencia técnica de coordinación y ejecución de obras eléctricas:</p>
                 <div class="gallery-grid">
-                    <div class="img-container reveal-item" onclick="openModal(this)">
+                    <div class="img-container" onclick="openModal(this)">
                         <img src="coordinacion.jpeg" alt="Coordinación 1">
                         <small data-key="img-3">Coordinación Campo</small>
                     </div>
-                    <div class="img-container reveal-item" onclick="openModal(this)">
+                    <div class="img-container" onclick="openModal(this)">
                         <img src="coordinacion1.jpeg" alt="Coordinación 2">
                         <small data-key="img-4">Supervisión Obra</small>
                     </div>
@@ -730,14 +615,14 @@
             </div>
         </div>
 
-        <div class="card reveal reveal--left keep-moving" id="card2">
+        <div class="card" id="card2">
             <i class="fas fa-code main-icon"></i>
             <h3 data-key="c2-t">⚙️ Área de Desarrollo</h3>
             <p data-key="c2-s">Software a medida y automatización de procesos inteligentes.</p>
             <button class="btn-expand" onclick="toggleCard('card2')" data-key="btn-r">Ver Procesos de Desarrollo</button>
-
+            
             <div class="details">
-                <div class="sub-area reveal-item">
+                <div class="sub-area">
                     <div class="sub-header" onclick="toggleSub('sub_dev1', this)">
                         <span data-key="dev1-t">💻 Programas para Computadora</span>
                         <i class="fas fa-plus-circle"></i>
@@ -761,7 +646,7 @@
                     </div>
                 </div>
 
-                <div class="sub-area reveal-item">
+                <div class="sub-area">
                     <div class="sub-header" onclick="toggleSub('sub_dev2', this)">
                         <span data-key="dev2-t">🤖 Robots y Procesos RPA</span>
                         <i class="fas fa-plus-circle"></i>
@@ -782,16 +667,16 @@
             </div>
         </div>
 
-        <div class="card reveal reveal--right keep-moving" id="card3">
+        <div class="card" id="card3">
             <i class="fas fa-shield-alt main-icon"></i>
             <h3 data-key="c3-t">📡 Trazabilidad y Calidad</h3>
             <p data-key="c3-s">Control digital de activos y reportes técnicos.</p>
             <button class="btn-expand" onclick="toggleCard('card3')" data-key="btn-t">Ver Trazabilidad</button>
-
+            
             <div class="details">
                 <p data-key="c3-p">Gestión avanzada de activos con soporte visual:</p>
                 <div class="gallery-grid">
-                    <div class="img-container reveal-item" onclick="openModal(this)">
+                    <div class="img-container" onclick="openModal(this)">
                         <img src="control.png" alt="Control de Activos">
                         <small>Sistema de Control</small>
                     </div>
@@ -800,7 +685,7 @@
         </div>
 
         <!-- CARD MATERIALES: ABRE OTRA VISUAL -->
-        <div class="card reveal reveal--up keep-moving" id="card4">
+        <div class="card" id="card4">
             <i class="fas fa-boxes main-icon"></i>
             <h3 data-key="c4-t">📦 Área de Materiales</h3>
             <p data-key="c4-s">Gestión, suministro y especificación de insumos técnicos.</p>
@@ -811,7 +696,7 @@
 </div>
 
 <!-- ====== NUEVA PANTALLA / VISUAL DE MATERIALES ====== -->
-<section id="materialsView" class="materials-view reveal reveal--up keep-moving">
+<section id="materialsView" class="materials-view">
     <div class="materials-topbar">
         <div class="materials-title">
             <i class="fas fa-boxes"></i>
@@ -824,7 +709,7 @@
     </div>
 
     <div class="materials-body">
-        <div class="materials-intro reveal-item">
+        <div class="materials-intro">
             <p data-key="c4-p">Control de calidad y logística de materiales especializados.</p>
             <div class="materials-tags">
                 <span class="materials-tag" data-key="mat-tag1">Media Tensión</span>
@@ -838,7 +723,7 @@
         <div class="materials-catalog">
 
             <!-- GRUPO 1 -->
-            <div class="materials-group reveal reveal--left keep-moving">
+            <div class="materials-group">
                 <div class="materials-group-head">
                     <div class="materials-group-title">
                         <i class="fas fa-bolt"></i>
@@ -848,7 +733,7 @@
                 </div>
 
                 <div class="materials-items">
-                    <div class="material-item img-container reveal-item" onclick="openModal(this)">
+                    <div class="material-item img-container" onclick="openModal(this)">
                         <img class="material-thumb" src="sf6.png" alt="SF6 Circuit Breaker">
                         <div class="material-name">SF6 Circuit Breakers</div>
                         <div class="material-meta" data-key="mat-meta">Medium/High Voltage</div>
@@ -858,7 +743,7 @@
                         <a class="more-info-link" href="#solicitud" data-material="SF6 Circuit Breakers">Más información</a>
                     </div>
 
-                    <div class="material-item img-container reveal-item" onclick="openModal(this)">
+                    <div class="material-item img-container" onclick="openModal(this)">
                         <img class="material-thumb" src="mv.png" alt="Vacuum Circuit Breaker">
                         <div class="material-name">Vacuum Circuit Breakers</div>
                         <div class="material-meta" data-key="mat-meta">Medium Voltage</div>
@@ -868,7 +753,7 @@
                         <a class="more-info-link" href="#solicitud" data-material="Vacuum Circuit Breakers">Más información</a>
                     </div>
 
-                    <div class="material-item img-container reveal-item" onclick="openModal(this)">
+                    <div class="material-item img-container" onclick="openModal(this)">
                         <img class="material-thumb" src="seccionadoresSub.jpg" alt="Disconnect Switches">
                         <div class="material-name">Disconnect Switches</div>
                         <div class="material-meta" data-key="mat-meta">High Voltage</div>
@@ -878,7 +763,7 @@
                         <a class="more-info-link" href="#solicitud" data-material="Disconnect Switches">Más información</a>
                     </div>
 
-                    <div class="material-item img-container reveal-item" onclick="openModal(this)">
+                    <div class="material-item img-container" onclick="openModal(this)">
                         <img class="material-thumb" src="recloset.png" alt="Reclosers">
                         <div class="material-name">Reclosers</div>
                         <div class="material-meta" data-key="mat-meta">Distribution</div>
@@ -891,7 +776,7 @@
             </div>
 
             <!-- GRUPO 2 -->
-            <div class="materials-group reveal reveal--right keep-moving">
+            <div class="materials-group">
                 <div class="materials-group-head">
                     <div class="materials-group-title">
                         <i class="fas fa-shield-alt"></i>
@@ -901,7 +786,7 @@
                 </div>
 
                 <div class="materials-items">
-                    <div class="material-item img-container reveal-item" onclick="openModal(this)">
+                    <div class="material-item img-container" onclick="openModal(this)">
                         <img class="material-thumb" src="ct.jpg" alt="Current Transformers">
                         <div class="material-name">Current Transformers (CT)</div>
                         <div class="material-meta" data-key="mat-meta">Substation</div>
@@ -911,7 +796,7 @@
                         <a class="more-info-link" href="#solicitud" data-material="Current Transformers (CT)">Más información</a>
                     </div>
 
-                    <div class="material-item img-container reveal-item" onclick="openModal(this)">
+                    <div class="material-item img-container" onclick="openModal(this)">
                         <img class="material-thumb" src="pts.jpg" alt="Voltage Transformers">
                         <div class="material-name">Voltage Transformers (PT/VT)</div>
                         <div class="material-meta" data-key="mat-meta">Substation</div>
@@ -921,7 +806,7 @@
                         <a class="more-info-link" href="#solicitud" data-material="Voltage Transformers (PT/VT)">Más información</a>
                     </div>
 
-                    <div class="material-item img-container reveal-item" onclick="openModal(this)">
+                    <div class="material-item img-container" onclick="openModal(this)">
                         <img class="material-thumb" src="Digital-Relay.webp" alt="Protective Relays">
                         <div class="material-name">Digital Protection Relays</div>
                         <div class="material-meta" data-key="mat-meta">Automation</div>
@@ -931,7 +816,7 @@
                         <a class="more-info-link" href="#solicitud" data-material="Digital Protection Relays">Más información</a>
                     </div>
 
-                    <div class="material-item img-container reveal-item" onclick="openModal(this)">
+                    <div class="material-item img-container" onclick="openModal(this)">
                         <img class="material-thumb" src="scada.png" alt="SCADA">
                         <div class="material-name">SCADA Integration</div>
                         <div class="material-meta" data-key="mat-meta">Monitoring</div>
@@ -944,7 +829,7 @@
             </div>
 
             <!-- GRUPO 3 -->
-            <div class="materials-group reveal reveal--left keep-moving">
+            <div class="materials-group">
                 <div class="materials-group-head">
                     <div class="materials-group-title">
                         <i class="fas fa-project-diagram"></i>
@@ -954,7 +839,7 @@
                 </div>
 
                 <div class="materials-items">
-                    <div class="material-item img-container reveal-item" onclick="openModal(this)">
+                    <div class="material-item img-container" onclick="openModal(this)">
                         <img class="material-thumb" src="Cables.png" alt="MV Cables">
                         <div class="material-name">Medium Voltage Cables</div>
                         <div class="material-meta" data-key="mat-meta">15kV–35kV</div>
@@ -964,7 +849,7 @@
                         <a class="more-info-link" href="#solicitud" data-material="Medium Voltage Cables">Más información</a>
                     </div>
 
-                    <div class="material-item img-container reveal-item" onclick="openModal(this)">
+                    <div class="material-item img-container" onclick="openModal(this)">
                         <img class="material-thumb" src="Cables2.png" alt="HV Cables">
                         <div class="material-name">High Voltage Cables</div>
                         <div class="material-meta" data-key="mat-meta">69kV+</div>
@@ -974,7 +859,7 @@
                         <a class="more-info-link" href="#solicitud" data-material="High Voltage Cables">Más información</a>
                     </div>
 
-                    <div class="material-item img-container reveal-item" onclick="openModal(this)">
+                    <div class="material-item img-container" onclick="openModal(this)">
                         <img class="material-thumb" src="terminaciones.jpg" alt="Cable Terminations">
                         <div class="material-name">Cable Terminations</div>
                         <div class="material-meta" data-key="mat-meta">Kits</div>
@@ -984,7 +869,7 @@
                         <a class="more-info-link" href="#solicitud" data-material="Cable Terminations">Más información</a>
                     </div>
 
-                    <div class="material-item img-container reveal-item" onclick="openModal(this)">
+                    <div class="material-item img-container" onclick="openModal(this)">
                         <img class="material-thumb" src="empalmes.jpg" alt="Cable Joints">
                         <div class="material-name">Cable Joints / Splices</div>
                         <div class="material-meta" data-key="mat-meta">Accessories</div>
@@ -997,7 +882,7 @@
             </div>
 
             <!-- GRUPO 4 -->
-            <div class="materials-group reveal reveal--right keep-moving">
+            <div class="materials-group">
                 <div class="materials-group-head">
                     <div class="materials-group-title">
                         <i class="fas fa-globe"></i>
@@ -1007,7 +892,7 @@
                 </div>
 
                 <div class="materials-items">
-                    <div class="material-item img-container reveal-item" onclick="openModal(this)">
+                    <div class="material-item img-container" onclick="openModal(this)">
                         <img class="material-thumb" src="transformador.jpeg" alt="Transformador de Potencia">
                         <div class="material-name">Transformador de Potencia</div>
                         <div class="material-meta" data-key="mat-meta">Power Equipment</div>
@@ -1017,7 +902,7 @@
                         <a class="more-info-link" href="#solicitud" data-material="Transformador de Potencia">Más información</a>
                     </div>
 
-                    <div class="material-item img-container reveal-item" onclick="openModal(this)">
+                    <div class="material-item img-container" onclick="openModal(this)">
                         <img class="material-thumb" src="ground-rod-installation.jpg" alt="Transformador de Potencia">
                         <div class="material-name">Copper-Clad Ground Rods</div>
                         <div class="material-meta" data-key="mat-meta">Earthing</div>
@@ -1027,7 +912,7 @@
                         <a class="more-info-link" href="#solicitud" data-material="Copper-Clad Ground Rods">Más información</a>
                     </div>
 
-                    <div class="material-item img-container reveal-item" onclick="openModal(this)">
+                    <div class="material-item img-container" onclick="openModal(this)">
                         <img class="material-thumb" src="pararayos.jpg" alt="Surge Arresters">
                         <div class="material-name">Surge Arresters (MOV)</div>
                         <div class="material-meta" data-key="mat-meta">Protection</div>
@@ -1037,7 +922,7 @@
                         <a class="more-info-link" href="#solicitud" data-material="Surge Arresters (MOV)">Más información</a>
                     </div>
 
-                    <div class="material-item img-container reveal-item" onclick="openModal(this)">
+                    <div class="material-item img-container" onclick="openModal(this)">
                         <img class="material-thumb" src="Surge-Arrester-Substation.jpg" alt="SPD">
                         <div class="material-name">Surge Protection Devices (SPD)</div>
                         <div class="material-meta" data-key="mat-meta">Protection</div>
@@ -1049,8 +934,8 @@
                 </div>
             </div>
 
-            <!-- ====== FORMULARIO DE SOLICITUD ====== -->
-            <div id="solicitud" class="request-section reveal reveal--up keep-moving">
+            <!-- ====== NUEVO: FORMULARIO DE SOLICITUD ====== -->
+            <div id="solicitud" class="request-section">
                 <h2>Solicitud de información</h2>
 
                 <form id="solicitudForm" class="request-form" autocomplete="on">
@@ -1128,13 +1013,13 @@
             'img-2': 'Mapeo Geoespacial', 's3-t': '3️⃣ Simulación y Cálculo Lumínico', 's3-p': 'Cálculos de niveles lux y optimización en DIALux.',
             'cg-t': '⚡ Galería de Coordinación Eléctrica', 'cg-s': 'Registro fotográfico de trabajos eléctricos y supervisión de campo.',
             'btn-g': 'Ver Galería de Trabajos', 'cg-p': 'Evidencia técnica de coordinación y ejecución de obras eléctricas:',
-            'img-3': 'Coordinación Campo', 'img-4': 'Supervisión Obra',
+            'img-3': 'Coordinación Campo', 'img-4': 'Supervisión Obra', 
             'c2-t': '⚙️ Área de Desarrollo', 'c2-s': 'Software a medida y automatización de procesos inteligentes.', 'btn-r': 'Ver Procesos de Desarrollo',
             'dev1-t': '💻 Programas para Computadora', 'dev1-p': 'Desarrollo de aplicaciones de escritorio y herramientas técnicas locales.',
             'img-soft-ext1': 'Vista Técnica 1', 'img-soft-ext2': 'Vista Técnica 2',
             'dev2-t': '🤖 Robots y Procesos RPA', 'dev2-p': 'Automatización robótica con UiPath para tareas repetitivas y gestión de datos.',
             'c3-t': '📡 Trazabilidad y Calidad', 'c3-s': 'Control digital de activos y reportes técnicos.', 'btn-t': 'Ver Trazabilidad',
-            'c3-p': 'Gestión avanzada de activos con soporte visual.',
+            'c3-p': 'Gestión avanzada de activos con soporte visual.', 
             'c4-t': '📦 Área de Materiales', 'c4-s': 'Gestión, suministro y especificación de insumos técnicos.', 'btn-m': 'Ver Materiales', 'c4-p': 'Control de calidad y logística de materiales especializados.',
             'mat-title': 'Catálogo de Materiales Eléctricos',
             'mat-back': 'Volver',
@@ -1170,13 +1055,7 @@
             'mat-desc-arrester': 'Pararrayos MOV para limitar sobretensiones por rayo o maniobras. Se instala cerca de transformadores y equipos críticos para proteger aislamiento.',
             'mat-desc-spd': 'SPD para tableros de control/auxiliares (AC/DC). Protege electrónica y comunicaciones contra transientes, complementando la protección primaria MV/HV.',
 
-            'f-t': '© 2026 WM Automation Supply',
-
-            /* NUEVO: etiquetas botones */
-            'qa-vision': 'Visión',
-            'qa-mision': 'Misión',
-            'qa-contactos': 'Contactos',
-            'qa-trabajos': 'Desarrollos / Trabajos'
+            'f-t': '© 2026 WM Automation Supply'
         },
         'en': {
             'dir': 'Dallas, Texas', 'h-t': 'Specialized Technical Scope',
@@ -1187,13 +1066,13 @@
             'img-2': 'Geospatial Mapping', 's3-t': '3️⃣ Lighting Simulation & Calculation', 's3-p': 'Lux level calculations and DIALux optimization.',
             'cg-t': '⚡ Electrical Coordination Gallery', 'cg-s': 'Photo record of electrical works and field supervision.',
             'btn-g': 'View Works Gallery', 'cg-p': 'Technical evidence of coordination and electrical execution:',
-            'img-3': 'Field Coordination', 'img-4': 'Site Supervision',
+            'img-3': 'Field Coordination', 'img-4': 'Site Supervision', 
             'c2-t': '⚙️ Development Area', 'c2-s': 'Custom software and intelligent process automation.', 'btn-r': 'View Development Processes',
             'dev1-t': '💻 Computer Programs', 'dev1-p': 'Desktop application development and local technical tools.',
             'img-soft-ext1': 'Technical View 1', 'img-soft-ext2': 'Technical View 2',
             'dev2-t': '🤖 Robots & RPA Processes', 'dev2-p': 'Robotic automation with UiPath for repetitive tasks and data management.',
             'c3-t': '📡 Traceability & Quality', 'c3-s': 'Digital asset control and technical reporting.', 'btn-t': 'View Traceability',
-            'c3-p': 'Advanced asset management with visual support.',
+            'c3-p': 'Advanced asset management with visual support.', 
             'c4-t': '📦 Materials Area', 'c4-s': 'Management, supply and specification of technical inputs.', 'btn-m': 'View Materials', 'c4-p': 'Quality control and logistics of specialized materials.',
             'mat-title': 'Electrical Materials Catalog',
             'mat-back': 'Back',
@@ -1229,13 +1108,7 @@
             'mat-desc-arrester': 'MOV surge arrester that limits lightning/switching overvoltages. Installed near transformers and critical equipment to protect insulation.',
             'mat-desc-spd': 'SPD for control/auxiliary panels (AC/DC). Protects electronics and communications from transients, complementing primary MV/HV protection.',
 
-            'f-t': '© 2026 WM Automation Supply',
-
-            /* NUEVO: labels botones */
-            'qa-vision': 'Vision',
-            'qa-mision': 'Mission',
-            'qa-contactos': 'Contacts',
-            'qa-trabajos': 'Development / Works'
+            'f-t': '© 2026 WM Automation Supply'
         }
     };
 
@@ -1271,33 +1144,32 @@
         document.getElementById("materialsView").classList.add("active");
         document.getElementById("mainContent").style.display = "none";
         document.getElementById("mainHero").style.display = "none";
-        document.getElementById("quickActions").style.display = "none";
         window.scrollTo(0, 0);
-
-        // fuerza el reveal dentro de la vista materiales
-        window.__revealRefresh && window.__revealRefresh();
     }
 
     function closeMaterialsView() {
         document.getElementById("materialsView").classList.remove("active");
         document.getElementById("mainContent").style.display = "block";
         document.getElementById("mainHero").style.display = "block";
-        document.getElementById("quickActions").style.display = "block";
         window.scrollTo(0, 0);
     }
 
-    // ====== RELLENAR FORMULARIO AL CLICKEAR "MÁS INFORMACIÓN" ======
+    // ====== NUEVO: RELLENAR FORMULARIO AL CLICKEAR "MÁS INFORMACIÓN" ======
     document.querySelectorAll('.more-info-link').forEach(link => {
         link.addEventListener('click', (e) => {
+            // Evita que el click se lo "coma" el openModal del contenedor padre
             e.stopPropagation();
+
             const material = link.getAttribute('data-material') || '';
             const input = document.getElementById('materialInput');
             if (input) input.value = material;
+
+            // deja que el href #solicitud haga el scroll natural
         });
     });
 
-    // ====== ENVIAR POR MAILTO (SIN BACKEND) ======
-    const TO_EMAIL = 'sales@wmautomationsupply.com';
+    // ====== NUEVO: ENVIAR POR MAILTO (SIN BACKEND) ======
+    const TO_EMAIL = 'sales@wmautomationsupply.com'; // <-- CAMBIA AQUÍ si quieres otro
 
     const form = document.getElementById('solicitudForm');
     if (form) {
@@ -1329,55 +1201,6 @@
             if (hint) hint.textContent = 'Abriendo tu correo para enviar la solicitud...';
         });
     }
-
-    /* =========================================================
-       REVEAL OBSERVER (más lento + stagger más lento)
-       ========================================================= */
-    (function(){
-        const applyStagger = (el) => {
-            const items = el.querySelectorAll('.reveal-item');
-            items.forEach((item, idx) => {
-                item.style.transitionDelay = `${220 + (idx * 140)}ms`;
-            });
-        };
-
-        let io = null;
-
-        const setup = () => {
-            if (io) io.disconnect();
-
-            io = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    const el = entry.target;
-                    applyStagger(el);
-                    el.classList.add('is-visible');
-                    io.unobserve(el);
-                });
-            }, { threshold: 0.18 });
-
-            // Solo observa lo que esté visible (materialsView solo si está activo)
-            document.querySelectorAll('.reveal').forEach(el => {
-                const inMaterials = el.closest('#materialsView');
-                if (inMaterials && !document.getElementById('materialsView').classList.contains('active')) return;
-                if (el.classList.contains('is-visible')) return;
-                io.observe(el);
-            });
-        };
-
-        window.__revealRefresh = setup;
-
-        document.addEventListener('DOMContentLoaded', () => {
-            setup();
-
-            // Para que hero/botones se vean desde el primer frame
-            const hero = document.getElementById('mainHero');
-            if (hero) hero.classList.add('is-visible');
-
-            const qa = document.getElementById('quickActions');
-            if (qa) qa.classList.add('is-visible');
-        });
-    })();
 </script>
 </body>
 </html>
