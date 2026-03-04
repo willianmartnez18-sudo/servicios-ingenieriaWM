@@ -13,28 +13,23 @@
             --bg: #f4f7f6;
             --text: #2f3640;
             --white: #ffffff;
-
-            /* === NEW (ergonomía & motion) === */
-            --shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
-            --shadow-hover: 0 16px 45px rgba(0,0,0,0.12);
-            --radius-lg: 14px;
         }
 
-        body { 
-            font-family: 'Segoe UI', Tahoma, sans-serif; 
-            margin: 0; 
-            background: var(--bg); 
-            color: var(--text); 
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
         }
 
-        header { 
-            background: var(--white); 
-            padding: 1.5rem 5%; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        header {
+            background: var(--white);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -82,7 +77,7 @@
             font-size: 0.9rem;
         }
         .contact-item i { color: var(--accent); }
-        
+
         .contact-item a {
             color: white;
             text-decoration: none;
@@ -92,10 +87,10 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, rgba(10, 61, 98, 0.9), rgba(60, 99, 130, 0.8)), 
+            background: linear-gradient(135deg, rgba(10, 61, 98, 0.9), rgba(60, 99, 130, 0.8)),
                         url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1350&q=80');
-            background-size: cover; 
-            color: white; 
+            background-size: cover;
+            color: white;
             padding: 40px 5%;
             text-align: center;
         }
@@ -505,37 +500,60 @@
 
         footer { background: #1e272e; color: white; padding: 30px; text-align: center; margin-top: 50px; }
 
+        /* =========================================================
+           NUEVO: BARRA DE BOTONES (zona amarilla)
+           ========================================================= */
+        .quick-actions{
+            background: var(--white);
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 14px 5%;
+        }
+        .quick-actions-wrap{
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .quick-btn{
+            border: 2px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            padding: 10px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 900;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform .25s ease, background .25s ease, color .25s ease;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        }
+        .quick-btn i{ color: var(--accent); }
+        .quick-btn:hover{
+            transform: translateY(-2px);
+            background: var(--primary);
+            color: white;
+        }
+        .quick-btn:hover i{ color: white; }
 
         /* =========================================================
-           === NEW: VISUAL ERGONÓMICO + ANIMACIÓN AUTOMÁTICA REVEAL ===
-           No cambia estructura, solo se activa con clases.
-        ========================================================== */
-
-        /* Mejora micro-interacción de cards (sin romper tus estilos) */
-        .card{
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-soft);
-            will-change: transform, box-shadow;
-        }
-        .card:hover{
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        /* Animación de entrada: secciones/cards entrando de costado/abajo */
+           NUEVO: REVEAL MÁS LENTO + MOVIMIENTO CONTINUO SUAVE
+           ========================================================= */
         .reveal{
             opacity: 0;
-            transform: translate3d(0, 18px, 0);
+            transform: translate3d(0, 24px, 0);
             filter: blur(6px);
             transition:
-                opacity .75s cubic-bezier(.2,.8,.2,1),
-                transform .75s cubic-bezier(.2,.8,.2,1),
-                filter .75s cubic-bezier(.2,.8,.2,1);
+                opacity 1.35s cubic-bezier(.2,.8,.2,1),
+                transform 1.35s cubic-bezier(.2,.8,.2,1),
+                filter 1.35s cubic-bezier(.2,.8,.2,1);
             will-change: opacity, transform, filter;
         }
-        .reveal--left{ transform: translate3d(-28px, 0, 0); }
-        .reveal--right{ transform: translate3d(28px, 0, 0); }
-        .reveal--up{ transform: translate3d(0, 22px, 0); }
+        .reveal--left{ transform: translate3d(-38px, 0, 0); }
+        .reveal--right{ transform: translate3d(38px, 0, 0); }
+        .reveal--up{ transform: translate3d(0, 30px, 0); }
 
         .reveal.is-visible{
             opacity: 1;
@@ -543,13 +561,13 @@
             filter: blur(0);
         }
 
-        /* Stagger interno: elementos que quieras que entren uno por uno */
+        /* Stagger más lento */
         .reveal-item{
             opacity: 0;
-            transform: translate3d(0, 10px, 0);
+            transform: translate3d(0, 12px, 0);
             transition:
-                opacity .55s cubic-bezier(.2,.8,.2,1),
-                transform .55s cubic-bezier(.2,.8,.2,1);
+                opacity 1.05s cubic-bezier(.2,.8,.2,1),
+                transform 1.05s cubic-bezier(.2,.8,.2,1);
             will-change: opacity, transform;
         }
         .reveal.is-visible .reveal-item{
@@ -557,7 +575,18 @@
             transform: translate3d(0,0,0);
         }
 
-        /* Motion-safe */
+        /* Movimiento continuo MUY suave (para que “no se pare”) */
+        @keyframes floatSoft {
+            0%   { transform: translate3d(0, 0px, 0); }
+            50%  { transform: translate3d(0, -4px, 0); }
+            100% { transform: translate3d(0, 0px, 0); }
+        }
+        /* Solo aplica a los elementos que tengan "keep-moving" */
+        .keep-moving.is-visible{
+            animation: floatSoft 8.5s ease-in-out infinite;
+        }
+
+        /* Accesibilidad */
         @media (prefers-reduced-motion: reduce){
             .reveal, .reveal-item{
                 transition: none !important;
@@ -565,7 +594,7 @@
                 transform: none !important;
                 filter: none !important;
             }
-            .card:hover{ transform:none !important; }
+            .keep-moving.is-visible{ animation: none !important; }
         }
     </style>
 </head>
@@ -573,7 +602,7 @@
 
 <header>
     <div class="logo">WM<span>AUTOMATION SUPPLY</span></div>
-    
+
     <div class="lang-switcher">
         <button class="btn-lang active" onclick="changeLang('es', this)">ES</button>
         <button class="btn-lang" onclick="changeLang('en', this)">EN</button>
@@ -590,22 +619,38 @@
     <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span data-key="dir">Dallas, Texas</span></div>
 </div>
 
-<!-- NEW: hero entra suave -->
-<section class="hero reveal reveal--up" id="mainHero">
+<section class="hero reveal reveal--up keep-moving" id="mainHero">
     <h1 data-key="h-t">Alcance Técnico Especializado</h1>
     <p data-key="h-s">Diseño Estructurado | Desarrollo RPA | Trazabilidad</p>
+</section>
+
+<!-- ===== NUEVO: BARRA DE BOTONES (zona amarilla) ===== -->
+<section class="quick-actions reveal reveal--up keep-moving" id="quickActions">
+    <div class="quick-actions-wrap">
+        <button type="button" class="quick-btn">
+            <i class="fas fa-eye"></i> <span data-key="qa-vision">Visión</span>
+        </button>
+        <button type="button" class="quick-btn">
+            <i class="fas fa-bullseye"></i> <span data-key="qa-mision">Misión</span>
+        </button>
+        <button type="button" class="quick-btn">
+            <i class="fas fa-address-book"></i> <span data-key="qa-contactos">Contactos</span>
+        </button>
+        <button type="button" class="quick-btn">
+            <i class="fas fa-briefcase"></i> <span data-key="qa-trabajos">Desarrollos / Trabajos</span>
+        </button>
+    </div>
 </section>
 
 <!-- CONTENIDO PRINCIPAL -->
 <div class="container" id="mainContent">
     <div class="grid">
-        
-        <!-- NEW: reveal + dirección -->
-        <div class="card reveal reveal--left" id="card1">
+
+        <div class="card reveal reveal--left keep-moving" id="card1">
             <i class="fas fa-drafting-compass main-icon"></i>
             <h3 data-key="c1-t">🔧 Área de Diseño y Proyección</h3>
             <p data-key="c1-s">Elaboración de planos, mapeo y simulaciones técnicas.</p>
-            
+
             <button class="btn-expand" onclick="toggleCard('card1')">
                 <span data-key="btn-e">Ver Especialidades</span> <i class="fas fa-chevron-down"></i>
             </button>
@@ -665,8 +710,7 @@
             </div>
         </div>
 
-        <!-- NEW -->
-        <div class="card reveal reveal--right" id="card_gallery">
+        <div class="card reveal reveal--right keep-moving" id="card_gallery">
             <i class="fas fa-bolt main-icon"></i>
             <h3 data-key="cg-t">⚡ Galería de Coordinación Eléctrica</h3>
             <p data-key="cg-s">Registro fotográfico de trabajos eléctricos y supervisión de campo.</p>
@@ -686,13 +730,12 @@
             </div>
         </div>
 
-        <!-- NEW -->
-        <div class="card reveal reveal--left" id="card2">
+        <div class="card reveal reveal--left keep-moving" id="card2">
             <i class="fas fa-code main-icon"></i>
             <h3 data-key="c2-t">⚙️ Área de Desarrollo</h3>
             <p data-key="c2-s">Software a medida y automatización de procesos inteligentes.</p>
             <button class="btn-expand" onclick="toggleCard('card2')" data-key="btn-r">Ver Procesos de Desarrollo</button>
-            
+
             <div class="details">
                 <div class="sub-area reveal-item">
                     <div class="sub-header" onclick="toggleSub('sub_dev1', this)">
@@ -739,13 +782,12 @@
             </div>
         </div>
 
-        <!-- NEW -->
-        <div class="card reveal reveal--right" id="card3">
+        <div class="card reveal reveal--right keep-moving" id="card3">
             <i class="fas fa-shield-alt main-icon"></i>
             <h3 data-key="c3-t">📡 Trazabilidad y Calidad</h3>
             <p data-key="c3-s">Control digital de activos y reportes técnicos.</p>
             <button class="btn-expand" onclick="toggleCard('card3')" data-key="btn-t">Ver Trazabilidad</button>
-            
+
             <div class="details">
                 <p data-key="c3-p">Gestión avanzada de activos con soporte visual:</p>
                 <div class="gallery-grid">
@@ -758,8 +800,7 @@
         </div>
 
         <!-- CARD MATERIALES: ABRE OTRA VISUAL -->
-        <!-- NEW -->
-        <div class="card reveal reveal--up" id="card4">
+        <div class="card reveal reveal--up keep-moving" id="card4">
             <i class="fas fa-boxes main-icon"></i>
             <h3 data-key="c4-t">📦 Área de Materiales</h3>
             <p data-key="c4-s">Gestión, suministro y especificación de insumos técnicos.</p>
@@ -770,8 +811,7 @@
 </div>
 
 <!-- ====== NUEVA PANTALLA / VISUAL DE MATERIALES ====== -->
-<!-- NEW: reveal para entrada suave -->
-<section id="materialsView" class="materials-view reveal reveal--up">
+<section id="materialsView" class="materials-view reveal reveal--up keep-moving">
     <div class="materials-topbar">
         <div class="materials-title">
             <i class="fas fa-boxes"></i>
@@ -798,8 +838,7 @@
         <div class="materials-catalog">
 
             <!-- GRUPO 1 -->
-            <!-- NEW -->
-            <div class="materials-group reveal reveal--left">
+            <div class="materials-group reveal reveal--left keep-moving">
                 <div class="materials-group-head">
                     <div class="materials-group-title">
                         <i class="fas fa-bolt"></i>
@@ -852,8 +891,7 @@
             </div>
 
             <!-- GRUPO 2 -->
-            <!-- NEW -->
-            <div class="materials-group reveal reveal--right">
+            <div class="materials-group reveal reveal--right keep-moving">
                 <div class="materials-group-head">
                     <div class="materials-group-title">
                         <i class="fas fa-shield-alt"></i>
@@ -906,8 +944,7 @@
             </div>
 
             <!-- GRUPO 3 -->
-            <!-- NEW -->
-            <div class="materials-group reveal reveal--left">
+            <div class="materials-group reveal reveal--left keep-moving">
                 <div class="materials-group-head">
                     <div class="materials-group-title">
                         <i class="fas fa-project-diagram"></i>
@@ -960,8 +997,7 @@
             </div>
 
             <!-- GRUPO 4 -->
-            <!-- NEW -->
-            <div class="materials-group reveal reveal--right">
+            <div class="materials-group reveal reveal--right keep-moving">
                 <div class="materials-group-head">
                     <div class="materials-group-title">
                         <i class="fas fa-globe"></i>
@@ -1013,8 +1049,8 @@
                 </div>
             </div>
 
-            <!-- ====== NUEVO: FORMULARIO DE SOLICITUD ====== -->
-            <div id="solicitud" class="request-section reveal reveal--up">
+            <!-- ====== FORMULARIO DE SOLICITUD ====== -->
+            <div id="solicitud" class="request-section reveal reveal--up keep-moving">
                 <h2>Solicitud de información</h2>
 
                 <form id="solicitudForm" class="request-form" autocomplete="on">
@@ -1083,8 +1119,124 @@
 
 <script>
     const dictionary = {
-        'es': { /* ... tu diccionario tal cual ... */ },
-        'en': { /* ... tu diccionario tal cual ... */ }
+        'es': {
+            'dir': 'Dallas, Texas', 'h-t': 'Alcance Técnico Especializado',
+            'h-s': 'Diseño Estructurado | Desarrollo RPA | Trazabilidad', 'c1-t': '🔧 Área de Diseño y Proyección',
+            'c1-s': 'Elaboración de planos, mapeo y simulaciones técnicas.', 'btn-e': 'Ver Especialidades',
+            's1-t': '1️⃣ Elaboración de Planos Técnicos', 's1-p': 'Planos eléctricos, civiles e industriales bajo normativa.',
+            'img-1': 'Plano Eléctrico', 's2-t': '2️⃣ Mapeo y Análisis Geoespacial', 's2-p': 'Georreferenciación de activos y redes en ArcGIS.',
+            'img-2': 'Mapeo Geoespacial', 's3-t': '3️⃣ Simulación y Cálculo Lumínico', 's3-p': 'Cálculos de niveles lux y optimización en DIALux.',
+            'cg-t': '⚡ Galería de Coordinación Eléctrica', 'cg-s': 'Registro fotográfico de trabajos eléctricos y supervisión de campo.',
+            'btn-g': 'Ver Galería de Trabajos', 'cg-p': 'Evidencia técnica de coordinación y ejecución de obras eléctricas:',
+            'img-3': 'Coordinación Campo', 'img-4': 'Supervisión Obra',
+            'c2-t': '⚙️ Área de Desarrollo', 'c2-s': 'Software a medida y automatización de procesos inteligentes.', 'btn-r': 'Ver Procesos de Desarrollo',
+            'dev1-t': '💻 Programas para Computadora', 'dev1-p': 'Desarrollo de aplicaciones de escritorio y herramientas técnicas locales.',
+            'img-soft-ext1': 'Vista Técnica 1', 'img-soft-ext2': 'Vista Técnica 2',
+            'dev2-t': '🤖 Robots y Procesos RPA', 'dev2-p': 'Automatización robótica con UiPath para tareas repetitivas y gestión de datos.',
+            'c3-t': '📡 Trazabilidad y Calidad', 'c3-s': 'Control digital de activos y reportes técnicos.', 'btn-t': 'Ver Trazabilidad',
+            'c3-p': 'Gestión avanzada de activos con soporte visual.',
+            'c4-t': '📦 Área de Materiales', 'c4-s': 'Gestión, suministro y especificación de insumos técnicos.', 'btn-m': 'Ver Materiales', 'c4-p': 'Control de calidad y logística de materiales especializados.',
+            'mat-title': 'Catálogo de Materiales Eléctricos',
+            'mat-back': 'Volver',
+            'mat-tag1': 'Media Tensión',
+            'mat-tag2': 'Alta Tensión',
+            'mat-tag3': 'Subestaciones',
+            'mat-tag4': 'Cables & Accesorios',
+            'mat-tag5': 'Protección',
+            'mat-g1': 'Switchgear & Maniobra',
+            'mat-g1c': '8 ítems',
+            'mat-g2': 'Protección, Medición y Control',
+            'mat-g2c': '6 ítems',
+            'mat-g3': 'Cables, Terminaciones y Accesorios',
+            'mat-g3c': '7 ítems',
+            'mat-g4': 'Puesta a Tierra & Sobretensión',
+            'mat-g4c': '6 ítems',
+            'mat-meta': 'Media/Alta Tensión',
+
+            'mat-desc-sf6': 'Interruptor de potencia para maniobra y protección en subestaciones HV/MV. Interrumpe fallas (corto circuito) y permite operación segura del sistema.',
+            'mat-desc-vcb': 'Interruptor en vacío (MV) ideal para celdas y tableros metal-clad. Muy confiable para conmutación frecuente y despeje de fallas en alimentadores.',
+            'mat-desc-disconnect': 'Seccionador para aislar equipos (transformador, barra, línea) con apertura visible. No es para cortar carga: se usa para mantenimiento y seguridad operacional.',
+            'mat-desc-recloser': 'Reconectador automático para redes de distribución. Abre ante falla y reintenta el cierre para despejar fallas temporales, reduciendo interrupciones al cliente.',
+            'mat-desc-ct': 'Transformador de corriente para medición y protección. Reduce alta corriente a valores estándar (1A/5A) para relés y medidores sin perder precisión.',
+            'mat-desc-vt': 'Transformador de potencial/tensión para medición y sincronismo. Escala la tensión a niveles seguros (ej. 120V) para relés, control y metering.',
+            'mat-desc-relay': 'Relés digitales (50/51, 27/59, 87, 21, etc.) que detectan condiciones anormales y ordenan disparo al breaker. Clave para selectividad y coordinación.',
+            'mat-desc-scada': 'Integración SCADA para monitoreo y control remoto (estados, alarmas, mediciones). Permite operación centralizada y trazabilidad de eventos en subestaciones.',
+            'mat-desc-mv-cable': 'Cable MV (XLPE/EPR) para alimentadores de subestación a cargas o switchgear. Diseñado para soportar niveles de tensión y esfuerzos térmicos.',
+            'mat-desc-hv-cable': 'Cable HV para transmisión/subtransmisión (subterránea o ductos). Requiere control de campo eléctrico, pruebas y accesorios especializados.',
+            'mat-desc-termination': 'Terminaciones (indoor/outdoor) para conectar cable a bushings/switchgear. Controlan el gradiente eléctrico y evitan descargas parciales y tracking.',
+            'mat-desc-joint': 'Empalmes para extensión o reparación de cable. Mantienen continuidad eléctrica y control de campo; críticos para confiabilidad en redes MV/HV.',
+            'mat-desc-grid': 'Malla de puesta a tierra de subestación para disipar corrientes de falla y rayos. Reduce tensiones de paso/contacto y protege personas/equipos.',
+            'mat-desc-rods': 'Varillas copper-clad para mejorar resistencia de tierra. Se usan en mallas, bajantes y puntos de puesta a tierra donde el suelo requiere refuerzo.',
+            'mat-desc-arrester': 'Pararrayos MOV para limitar sobretensiones por rayo o maniobras. Se instala cerca de transformadores y equipos críticos para proteger aislamiento.',
+            'mat-desc-spd': 'SPD para tableros de control/auxiliares (AC/DC). Protege electrónica y comunicaciones contra transientes, complementando la protección primaria MV/HV.',
+
+            'f-t': '© 2026 WM Automation Supply',
+
+            /* NUEVO: etiquetas botones */
+            'qa-vision': 'Visión',
+            'qa-mision': 'Misión',
+            'qa-contactos': 'Contactos',
+            'qa-trabajos': 'Desarrollos / Trabajos'
+        },
+        'en': {
+            'dir': 'Dallas, Texas', 'h-t': 'Specialized Technical Scope',
+            'h-s': 'Structured Design | RPA Development | Traceability', 'c1-t': '🔧 Design & Projection Area',
+            'c1-s': 'Blueprints, mapping and technical simulations.', 'btn-e': 'View Specialties',
+            's1-t': '1️⃣ Technical Drawing Production', 's1-p': 'Electrical, civil and industrial plans under regulation.',
+            'img-1': 'Electrical Plan', 's2-t': '2️⃣ Mapping & Geospatial Analysis', 's2-p': 'Asset and network georeferencing in ArcGIS.',
+            'img-2': 'Geospatial Mapping', 's3-t': '3️⃣ Lighting Simulation & Calculation', 's3-p': 'Lux level calculations and DIALux optimization.',
+            'cg-t': '⚡ Electrical Coordination Gallery', 'cg-s': 'Photo record of electrical works and field supervision.',
+            'btn-g': 'View Works Gallery', 'cg-p': 'Technical evidence of coordination and electrical execution:',
+            'img-3': 'Field Coordination', 'img-4': 'Site Supervision',
+            'c2-t': '⚙️ Development Area', 'c2-s': 'Custom software and intelligent process automation.', 'btn-r': 'View Development Processes',
+            'dev1-t': '💻 Computer Programs', 'dev1-p': 'Desktop application development and local technical tools.',
+            'img-soft-ext1': 'Technical View 1', 'img-soft-ext2': 'Technical View 2',
+            'dev2-t': '🤖 Robots & RPA Processes', 'dev2-p': 'Robotic automation with UiPath for repetitive tasks and data management.',
+            'c3-t': '📡 Traceability & Quality', 'c3-s': 'Digital asset control and technical reporting.', 'btn-t': 'View Traceability',
+            'c3-p': 'Advanced asset management with visual support.',
+            'c4-t': '📦 Materials Area', 'c4-s': 'Management, supply and specification of technical inputs.', 'btn-m': 'View Materials', 'c4-p': 'Quality control and logistics of specialized materials.',
+            'mat-title': 'Electrical Materials Catalog',
+            'mat-back': 'Back',
+            'mat-tag1': 'Medium Voltage',
+            'mat-tag2': 'High Voltage',
+            'mat-tag3': 'Substations',
+            'mat-tag4': 'Cables & Accessories',
+            'mat-tag5': 'Protection',
+            'mat-g1': 'Switchgear & Switching',
+            'mat-g1c': '8 items',
+            'mat-g2': 'Protection, Metering & Control',
+            'mat-g2c': '6 items',
+            'mat-g3': 'Cables, Terminations & Accessories',
+            'mat-g3c': '7 items',
+            'mat-g4': 'Grounding & Surge Protection',
+            'mat-g4c': '6 items',
+            'mat-meta': 'Medium/High Voltage',
+
+            'mat-desc-sf6': 'Power circuit breaker for HV/MV substations. Clears fault currents (short-circuits) and enables safe switching and system protection.',
+            'mat-desc-vcb': 'Medium-voltage vacuum breaker used in switchgear lineups. Highly reliable for frequent operations and feeder fault clearing.',
+            'mat-desc-disconnect': 'Disconnect switch used to isolate equipment with visible open gap. Not intended to interrupt load current—mainly for maintenance and safety.',
+            'mat-desc-recloser': 'Automatic recloser for distribution networks. Trips on faults and recloses to clear temporary faults, improving service continuity.',
+            'mat-desc-ct': 'Current transformer for metering and protection. Steps down primary current to standard values (1A/5A) for relays and meters with accuracy.',
+            'mat-desc-vt': 'Voltage/potential transformer for metering and control. Steps down system voltage to safe levels (e.g., 120V) for relays, synchronizing, and metering.',
+            'mat-desc-relay': 'Digital protective relays (50/51, 27/59, 87, 21, etc.) that detect abnormal conditions and trip breakers. Key for coordination and selectivity.',
+            'mat-desc-scada': 'SCADA integration for remote monitoring and control (status, alarms, measurements). Enables centralized operation and event traceability.',
+            'mat-desc-mv-cable': 'MV power cable (XLPE/EPR) for feeders from substations to loads or switchgear. Designed to withstand voltage stress and thermal loading.',
+            'mat-desc-hv-cable': 'HV power cable for transmission/subtransmission (underground or duct banks). Requires electric field control, testing, and specialized accessories.',
+            'mat-desc-termination': 'Indoor/outdoor terminations to connect cable to bushings/switchgear. Controls electrical stress to prevent partial discharge and tracking.',
+            'mat-desc-joint': 'Cable joints/splices for extension or repair. Maintains electrical continuity and stress control—critical for MV/HV reliability.',
+            'mat-desc-grid': 'Substation grounding grid to dissipate fault and lightning currents. Reduces step/touch voltages and protects people and equipment.',
+            'mat-desc-rods': 'Copper-clad ground rods to improve grounding resistance. Used in grids, down conductors, and grounding points where soil needs reinforcement.',
+            'mat-desc-arrester': 'MOV surge arrester that limits lightning/switching overvoltages. Installed near transformers and critical equipment to protect insulation.',
+            'mat-desc-spd': 'SPD for control/auxiliary panels (AC/DC). Protects electronics and communications from transients, complementing primary MV/HV protection.',
+
+            'f-t': '© 2026 WM Automation Supply',
+
+            /* NUEVO: labels botones */
+            'qa-vision': 'Vision',
+            'qa-mision': 'Mission',
+            'qa-contactos': 'Contacts',
+            'qa-trabajos': 'Development / Works'
+        }
     };
 
     function changeLang(lang, btn) {
@@ -1119,25 +1271,22 @@
         document.getElementById("materialsView").classList.add("active");
         document.getElementById("mainContent").style.display = "none";
         document.getElementById("mainHero").style.display = "none";
+        document.getElementById("quickActions").style.display = "none";
         window.scrollTo(0, 0);
 
-        /* === NEW: dispara animación al abrir materiales === */
-        requestAnimationFrame(() => {
-            // Asegura que materialsView entre visible con reveal
-            document.getElementById("materialsView").classList.add("is-visible");
-            // Re-observar/activar reveals dentro de materials
-            window.__revealRefresh && window.__revealRefresh();
-        });
+        // fuerza el reveal dentro de la vista materiales
+        window.__revealRefresh && window.__revealRefresh();
     }
 
     function closeMaterialsView() {
         document.getElementById("materialsView").classList.remove("active");
         document.getElementById("mainContent").style.display = "block";
         document.getElementById("mainHero").style.display = "block";
+        document.getElementById("quickActions").style.display = "block";
         window.scrollTo(0, 0);
     }
 
-    // ====== NUEVO: RELLENAR FORMULARIO AL CLICKEAR "MÁS INFORMACIÓN" ======
+    // ====== RELLENAR FORMULARIO AL CLICKEAR "MÁS INFORMACIÓN" ======
     document.querySelectorAll('.more-info-link').forEach(link => {
         link.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -1147,7 +1296,7 @@
         });
     });
 
-    // ====== NUEVO: ENVIAR POR MAILTO (SIN BACKEND) ======
+    // ====== ENVIAR POR MAILTO (SIN BACKEND) ======
     const TO_EMAIL = 'sales@wmautomationsupply.com';
 
     const form = document.getElementById('solicitudForm');
@@ -1182,29 +1331,14 @@
     }
 
     /* =========================================================
-       === NEW: ANIMACIÓN AUTOMÁTICA (scroll + carga + stagger)
-       No cambia estructura, solo usa las clases .reveal y .reveal-item
-    ========================================================== */
+       REVEAL OBSERVER (más lento + stagger más lento)
+       ========================================================= */
     (function(){
-        const selectReveals = () =>
-            Array.from(document.querySelectorAll('.reveal'))
-                // evita observar cosas ocultas (ej: materialsView cuando está cerrado)
-                .filter(el => {
-                    const mv = el.closest('#materialsView');
-                    if (mv && !mv.classList.contains('active')) return false;
-                    return true;
-                });
-
         const applyStagger = (el) => {
             const items = el.querySelectorAll('.reveal-item');
             items.forEach((item, idx) => {
-                item.style.transitionDelay = `${120 + (idx * 85)}ms`;
+                item.style.transitionDelay = `${220 + (idx * 140)}ms`;
             });
-        };
-
-        const revealNow = (el) => {
-            applyStagger(el);
-            el.classList.add('is-visible');
         };
 
         let io = null;
@@ -1215,28 +1349,33 @@
             io = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (!entry.isIntersecting) return;
-                    revealNow(entry.target);
-                    io.unobserve(entry.target);
+                    const el = entry.target;
+                    applyStagger(el);
+                    el.classList.add('is-visible');
+                    io.unobserve(el);
                 });
             }, { threshold: 0.18 });
 
-            selectReveals().forEach(el => {
-                // si ya está visible, no lo re-observes
+            // Solo observa lo que esté visible (materialsView solo si está activo)
+            document.querySelectorAll('.reveal').forEach(el => {
+                const inMaterials = el.closest('#materialsView');
+                if (inMaterials && !document.getElementById('materialsView').classList.contains('active')) return;
                 if (el.classList.contains('is-visible')) return;
                 io.observe(el);
             });
         };
 
-        // expone un refresh para cuando abras "Materiales"
         window.__revealRefresh = setup;
 
-        // carga inicial
         document.addEventListener('DOMContentLoaded', () => {
             setup();
 
-            // hero: aparece aunque esté arriba sin scroll
+            // Para que hero/botones se vean desde el primer frame
             const hero = document.getElementById('mainHero');
             if (hero) hero.classList.add('is-visible');
+
+            const qa = document.getElementById('quickActions');
+            if (qa) qa.classList.add('is-visible');
         });
     })();
 </script>
