@@ -661,42 +661,6 @@
             color: var(--accent);
         }
 
-        .supplier-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 22px;
-            margin-top: 8px;
-        }
-
-        .supplier-card {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 16px;
-            text-align: center;
-        }
-
-        .supplier-card h3 {
-            margin: 0 0 14px 0;
-            color: var(--primary);
-            font-size: 1rem;
-            font-weight: 900;
-            letter-spacing: 0.02em;
-        }
-
-        .supplier-card img {
-            width: 100%;
-            max-width: 150px;
-            height: 90px;
-            object-fit: contain;
-            display: block;
-            margin: 0 auto;
-            background: #ffffff;
-            border-radius: 8px;
-            padding: 8px;
-            border: 1px solid #e2e8f0;
-        }
-
         footer { background: #1e272e; color: white; padding: 30px; text-align: center; margin-top: 50px; }
 
         @keyframes wmFloat {
@@ -808,15 +772,6 @@
                 min-width: 40px;
                 width: 40px;
                 height: 40px;
-            }
-
-            .supplier-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .supplier-card img {
-                max-width: 140px;
-                height: 80px;
             }
         }
     </style>
@@ -1639,28 +1594,8 @@
             suppliers: {
                 title: 'Proveedores',
                 body: `
-                    <div class="supplier-grid">
-                        <div class="supplier-card">
-                            <h3>EATON</h3>
-                            <img src="EATON.png" alt="EATON" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','<p style=&quot;color:#64748b;font-size:0.85rem;margin-top:8px;&quot;>No se encontró EATON.png</p>');">
-                        </div>
-                        <div class="supplier-card">
-                            <h3>ABB</h3>
-                            <img src="ABB.png" alt="ABB" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','<p style=&quot;color:#64748b;font-size:0.85rem;margin-top:8px;&quot;>No se encontró ABB.png</p>');">
-                        </div>
-                        <div class="supplier-card">
-                            <h3>COPPER</h3>
-                            <img src="copper.png" alt="COPPER" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','<p style=&quot;color:#64748b;font-size:0.85rem;margin-top:8px;&quot;>No se encontró copper.png</p>');">
-                        </div>
-                        <div class="supplier-card">
-                            <h3>HUBBELL</h3>
-                            <img src="HUBBELL.png" alt="HUBBELL" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','<p style=&quot;color:#64748b;font-size:0.85rem;margin-top:8px;&quot;>No se encontró HUBBELL.png</p>');">
-                        </div>
-                        <div class="supplier-card">
-                            <h3>SIEMENS</h3>
-                            <img src="siemens.png" alt="SIEMENS" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','<p style=&quot;color:#64748b;font-size:0.85rem;margin-top:8px;&quot;>No se encontró siemens.png</p>');">
-                        </div>
-                    </div>
+                    <p>Los proveedores con los cuales trabajamos serán definidos según el tipo de producto, especificación técnica y requerimiento particular de cada solicitud.</p>
+                    <p>WM Automation Supply puede gestionar materiales y soluciones dentro de las líneas más reconocidas del mercado, seleccionando la opción más adecuada en función de disponibilidad, desempeño y necesidad del proyecto.</p>
                 `
             }
         },
@@ -1715,28 +1650,8 @@
             suppliers: {
                 title: 'Suppliers',
                 body: `
-                    <div class="supplier-grid">
-                        <div class="supplier-card">
-                            <h3>EATON</h3>
-                            <img src="EATON.png" alt="EATON" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','<p style=&quot;color:#64748b;font-size:0.85rem;margin-top:8px;&quot;>EATON.png not found</p>');">
-                        </div>
-                        <div class="supplier-card">
-                            <h3>ABB</h3>
-                            <img src="ABB.png" alt="ABB" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','<p style=&quot;color:#64748b;font-size:0.85rem;margin-top:8px;&quot;>ABB.png not found</p>');">
-                        </div>
-                        <div class="supplier-card">
-                            <h3>COPPER</h3>
-                            <img src="copper.png" alt="COPPER" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','<p style=&quot;color:#64748b;font-size:0.85rem;margin-top:8px;&quot;>copper.png not found</p>');">
-                        </div>
-                        <div class="supplier-card">
-                            <h3>HUBBELL</h3>
-                            <img src="HUBBELL.png" alt="HUBBELL" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','<p style=&quot;color:#64748b;font-size:0.85rem;margin-top:8px;&quot;>HUBBELL.png not found</p>');">
-                        </div>
-                        <div class="supplier-card">
-                            <h3>SIEMENS</h3>
-                            <img src="siemens.png" alt="SIEMENS" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','<p style=&quot;color:#64748b;font-size:0.85rem;margin-top:8px;&quot;>siemens.png not found</p>');">
-                        </div>
-                    </div>
+                    <p>The suppliers we work with will be defined according to the product type, technical specification, and particular requirement of each request.</p>
+                    <p>WM Automation Supply can source materials and solutions within the most recognized market lines, selecting the most suitable option based on availability, performance, and project needs.</p>
                 `
             }
         }
