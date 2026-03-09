@@ -99,7 +99,7 @@
             text-align: center;
         }
 
-        /* ===== NUEVO: BARRA SECUNDARIA CORPORATIVA ===== */
+        /* ===== BARRA SECUNDARIA ===== */
         .secondary-nav {
             background: var(--white);
             border-top: 4px solid var(--accent);
@@ -128,74 +128,13 @@
             font-weight: 800;
             font-size: 0.92rem;
             transition: all 0.25s ease;
+            cursor: pointer;
         }
 
         .secondary-link:hover {
             background: var(--primary);
             color: var(--white);
             transform: translateY(-2px);
-        }
-
-        /* ===== NUEVO: SECCIONES CORPORATIVAS ===== */
-        .corporate-sections {
-            padding: 30px 5% 10px 5%;
-        }
-
-        .corporate-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 22px;
-            align-items: start;
-        }
-
-        .corporate-card {
-            background: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-top: 5px solid var(--primary);
-            padding: 24px;
-        }
-
-        .corporate-card h3 {
-            margin: 0 0 12px 0;
-            color: var(--primary);
-            font-size: 1.3rem;
-        }
-
-        .corporate-card p {
-            margin: 0 0 12px 0;
-            color: var(--text);
-        }
-
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 10px;
-        }
-
-        .contact-links a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 700;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            padding: 12px 14px;
-            border-radius: 8px;
-            transition: all 0.25s ease;
-        }
-
-        .contact-links a:hover {
-            background: var(--primary);
-            color: var(--white);
-            transform: translateY(-2px);
-        }
-
-        .contact-links i {
-            color: var(--accent);
         }
 
         .container { padding: 40px 5%; }
@@ -594,6 +533,7 @@
             transform: rotate(-90deg);
         }
 
+        /* MODAL DE IMÁGENES */
         .modal {
             display: none;
             position: fixed;
@@ -614,7 +554,103 @@
             border-radius: 5px;
             animation: zoom 0.3s;
         }
-        @keyframes zoom { from {transform:scale(0)} to {transform:scale(1)} }
+
+        /* MODAL CORPORATIVO */
+        .info-modal {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            inset: 0;
+            background: rgba(0,0,0,0.72);
+            padding: 30px 16px;
+            overflow-y: auto;
+        }
+
+        .info-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-modal-box {
+            background: var(--white);
+            width: 100%;
+            max-width: 820px;
+            border-radius: 16px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+            border-top: 6px solid var(--accent);
+            position: relative;
+            animation: zoom 0.25s ease;
+        }
+
+        .info-modal-header {
+            padding: 22px 24px 10px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .info-modal-title {
+            margin: 0;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .info-close {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-modal-body {
+            padding: 0 24px 24px 24px;
+            color: var(--text);
+        }
+
+        .info-modal-body p {
+            margin: 0 0 14px 0;
+        }
+
+        .info-link-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .info-link-list a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 800;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 14px;
+            transition: all 0.25s ease;
+        }
+
+        .info-link-list a:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .info-link-list i {
+            color: var(--accent);
+        }
 
         footer { background: #1e272e; color: white; padding: 30px; text-align: center; margin-top: 50px; }
 
@@ -634,6 +670,11 @@
             0%   { transform: scale(1); }
             50%  { transform: scale(1.03); }
             100% { transform: scale(1); }
+        }
+
+        @keyframes zoom {
+            from { transform: scale(0.95); opacity: 0; }
+            to   { transform: scale(1); opacity: 1; }
         }
 
         #card1 .main-icon,
@@ -695,8 +736,14 @@
                 padding: 9px 14px;
             }
 
-            .corporate-sections {
-                padding: 24px 4% 8px 4%;
+            .info-modal-header,
+            .info-modal-body {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .info-modal-title {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -729,49 +776,11 @@
 
 <section class="secondary-nav" id="secondaryNav">
     <div class="secondary-nav-inner">
-        <a href="#missionSection" class="secondary-link" data-key="nav-mission">Misión</a>
-        <a href="#visionSection" class="secondary-link" data-key="nav-vision">Visión</a>
-        <a href="#contactSection" class="secondary-link" data-key="nav-contact">Contacto</a>
-        <a href="#" class="secondary-link" data-key="nav-partners">Aliados</a>
-        <a href="#" class="secondary-link" data-key="nav-suppliers">Proveedores</a>
-    </div>
-</section>
-
-<!-- NUEVO: SECCIONES CORPORATIVAS -->
-<section class="corporate-sections" id="corporateSections">
-    <div class="corporate-grid">
-        <div class="corporate-card" id="missionSection">
-            <h3 data-key="mission-title">Misión</h3>
-            <div id="missionContent"></div>
-        </div>
-
-        <div class="corporate-card" id="visionSection">
-            <h3 data-key="vision-title">Visión</h3>
-            <div id="visionContent"></div>
-        </div>
-
-        <div class="corporate-card" id="contactSection">
-            <h3 data-key="contact-title">Contacto</h3>
-            <p data-key="contact-intro">Ponte en comunicación con nuestro equipo para información comercial, soporte general o requerimientos administrativos.</p>
-            <div class="contact-links">
-                <a href="mailto:admin@wmautomationsupply.com">
-                    <i class="fas fa-user-shield"></i>
-                    <span data-key="contact-admin">Administración: admin@wmautomationsupply.com</span>
-                </a>
-                <a href="mailto:sales@wmautomationsupply.com">
-                    <i class="fas fa-envelope-open-text"></i>
-                    <span data-key="contact-sales">Ventas: sales@wmautomationsupply.com</span>
-                </a>
-                <a href="mailto:info@wmautomationsupply.com">
-                    <i class="fas fa-info-circle"></i>
-                    <span data-key="contact-info">Información general: info@wmautomationsupply.com</span>
-                </a>
-                <a href="tel:+12149493289">
-                    <i class="fas fa-phone-alt"></i>
-                    <span data-key="contact-phone">Teléfono: +1 2149493289</span>
-                </a>
-            </div>
-        </div>
+        <button type="button" class="secondary-link" onclick="openInfoModal('mission')" data-key="nav-mission">Misión</button>
+        <button type="button" class="secondary-link" onclick="openInfoModal('vision')" data-key="nav-vision">Visión</button>
+        <button type="button" class="secondary-link" onclick="openInfoModal('contact')" data-key="nav-contact">Contacto</button>
+        <button type="button" class="secondary-link" onclick="openInfoModal('partners')" data-key="nav-partners">Partners</button>
+        <button type="button" class="secondary-link" onclick="openInfoModal('suppliers')" data-key="nav-suppliers">Proveedores</button>
     </div>
 </section>
 
@@ -1294,6 +1303,19 @@
     <img class="modal-content" id="imgFull">
 </div>
 
+<!-- MODAL CORPORATIVO -->
+<div id="infoModal" class="info-modal" onclick="closeInfoModal(event)">
+    <div class="info-modal-box" onclick="event.stopPropagation()">
+        <div class="info-modal-header">
+            <h2 id="infoModalTitle" class="info-modal-title">Título</h2>
+            <button class="info-close" onclick="forceCloseInfoModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="infoModalBody" class="info-modal-body"></div>
+    </div>
+</div>
+
 <footer>
     <p data-key="f-t">© 2026 WM Automation Supply</p>
 </footer>
@@ -1309,17 +1331,8 @@
             'nav-mission': 'Misión',
             'nav-vision': 'Visión',
             'nav-contact': 'Contacto',
-            'nav-partners': 'Aliados',
+            'nav-partners': 'Partners',
             'nav-suppliers': 'Proveedores',
-
-            'mission-title': 'Misión',
-            'vision-title': 'Visión',
-            'contact-title': 'Contacto',
-            'contact-intro': 'Ponte en comunicación con nuestro equipo para información comercial, soporte general o requerimientos administrativos.',
-            'contact-admin': 'Administración: admin@wmautomationsupply.com',
-            'contact-sales': 'Ventas: sales@wmautomationsupply.com',
-            'contact-info': 'Información general: info@wmautomationsupply.com',
-            'contact-phone': 'Teléfono: +1 2149493289',
 
             'c1-t': '🔧 Área de Diseño y Proyección',
             'c1-s': 'Elaboración de planos, mapeo y simulaciones técnicas.',
@@ -1416,15 +1429,6 @@
             'nav-partners': 'Partners',
             'nav-suppliers': 'Suppliers',
 
-            'mission-title': 'Mission',
-            'vision-title': 'Vision',
-            'contact-title': 'Contact',
-            'contact-intro': 'Get in touch with our team for commercial information, general support, or administrative requests.',
-            'contact-admin': 'Administration: admin@wmautomationsupply.com',
-            'contact-sales': 'Sales: sales@wmautomationsupply.com',
-            'contact-info': 'General Information: info@wmautomationsupply.com',
-            'contact-phone': 'Phone: +1 2149493289',
-
             'c1-t': '🔧 Design & Projection Area',
             'c1-s': 'Blueprints, mapping and technical simulations.',
             'btn-e': 'View Specialties',
@@ -1512,43 +1516,126 @@
         }
     };
 
-    const corporateContent = {
+    const modalContent = {
         es: {
-            mission: `
-                <p>En <strong>WM Automation Supply</strong> nuestra misión es brindar soluciones integrales en <strong>automatización, ingeniería eléctrica, desarrollo técnico y suministro de materiales especializados</strong>, respondiendo a las necesidades de cada cliente con enfoque práctico, criterio técnico y compromiso profesional.</p>
-                <p>Trabajamos para aportar valor real en cada proyecto, integrando conocimiento, planificación y capacidad de respuesta para optimizar procesos, fortalecer operaciones y acompañar la ejecución de soluciones confiables en entornos industriales, comerciales y de infraestructura.</p>
-                <p>Nos enfocamos en ofrecer un servicio basado en la <strong>calidad, la eficiencia, la trazabilidad y la atención personalizada</strong>, asegurando que cada propuesta, cada desarrollo y cada suministro contribuya al desempeño, la continuidad y la mejora de los sistemas de nuestros clientes.</p>
-                <p>Más que suministrar productos o servicios, buscamos convertirnos en un respaldo técnico y estratégico, capaz de conectar la ingeniería, la automatización y el abastecimiento con resultados concretos, funcionales y sostenibles.</p>
-            `,
-            vision: `
-                <p>Nuestra visión en <strong>WM Automation Supply</strong> es consolidarnos como una empresa reconocida por su <strong>solidez técnica, capacidad de adaptación y compromiso con la excelencia</strong>, posicionándonos como un aliado estratégico en proyectos de automatización, ingeniería aplicada y suministro eléctrico especializado.</p>
-                <p>Aspiramos a construir una organización confiable, moderna y en crecimiento, capaz de atender requerimientos técnicos con alto nivel de precisión, acompañar procesos de desarrollo e integración y responder de manera eficiente a las demandas de un mercado que exige innovación, rapidez y confianza.</p>
-                <p>Buscamos expandir nuestra presencia y fortalecer nuestras relaciones con clientes, contratistas, integradores, desarrolladores y proveedores, creando una red de trabajo basada en profesionalismo, transparencia y resultados medibles. Queremos ser identificados no solo por la calidad de los materiales y servicios que ofrecemos, sino también por nuestra capacidad de comprender las necesidades reales de cada proyecto y transformarlas en soluciones viables y de alto valor.</p>
-                <p>Nuestra visión también está orientada al crecimiento sostenible, a la incorporación constante de nuevas herramientas y tecnologías, y al desarrollo de una propuesta empresarial que una <strong>ingeniería, automatización, trazabilidad y suministro</strong> bajo una misma línea de servicio confiable y competitiva.</p>
-                <p>En el mediano y largo plazo, buscamos proyectarnos como una empresa de referencia dentro del sector, con la capacidad de servir tanto a clientes locales como a oportunidades de expansión regional e internacional, manteniendo siempre una identidad basada en el trabajo bien hecho, la responsabilidad técnica y la mejora continua.</p>
-            `
+            mission: {
+                title: 'Misión',
+                body: `
+                    <p>En <strong>WM Automation Supply</strong> nuestra misión es brindar soluciones integrales en <strong>automatización, ingeniería eléctrica, desarrollo técnico y suministro de materiales especializados</strong>, respondiendo a las necesidades de cada cliente con enfoque práctico, criterio técnico y compromiso profesional.</p>
+                    <p>Trabajamos para aportar valor real en cada proyecto, integrando conocimiento, planificación y capacidad de respuesta para optimizar procesos, fortalecer operaciones y acompañar la ejecución de soluciones confiables en entornos industriales, comerciales y de infraestructura.</p>
+                    <p>Nos enfocamos en ofrecer un servicio basado en la <strong>calidad, la eficiencia, la trazabilidad y la atención personalizada</strong>, asegurando que cada propuesta, cada desarrollo y cada suministro contribuya al desempeño, la continuidad y la mejora de los sistemas de nuestros clientes.</p>
+                    <p>Más que suministrar productos o servicios, buscamos convertirnos en un respaldo técnico y estratégico, capaz de conectar la ingeniería, la automatización y el abastecimiento con resultados concretos, funcionales y sostenibles.</p>
+                `
+            },
+            vision: {
+                title: 'Visión',
+                body: `
+                    <p>Nuestra visión en <strong>WM Automation Supply</strong> es consolidarnos como una empresa reconocida por su <strong>solidez técnica, capacidad de adaptación y compromiso con la excelencia</strong>, posicionándonos como un aliado estratégico en proyectos de automatización, ingeniería aplicada y suministro eléctrico especializado.</p>
+                    <p>Aspiramos a construir una organización confiable, moderna y en crecimiento, capaz de atender requerimientos técnicos con alto nivel de precisión, acompañar procesos de desarrollo e integración y responder de manera eficiente a las demandas de un mercado que exige innovación, rapidez y confianza.</p>
+                    <p>Buscamos expandir nuestra presencia y fortalecer nuestras relaciones con clientes, contratistas, integradores, desarrolladores y proveedores, creando una red de trabajo basada en profesionalismo, transparencia y resultados medibles. Queremos ser identificados no solo por la calidad de los materiales y servicios que ofrecemos, sino también por nuestra capacidad de comprender las necesidades reales de cada proyecto y transformarlas en soluciones viables y de alto valor.</p>
+                    <p>Nuestra visión también está orientada al crecimiento sostenible, a la incorporación constante de nuevas herramientas y tecnologías, y al desarrollo de una propuesta empresarial que una <strong>ingeniería, automatización, trazabilidad y suministro</strong> bajo una misma línea de servicio confiable y competitiva.</p>
+                    <p>En el mediano y largo plazo, buscamos proyectarnos como una empresa de referencia dentro del sector, con la capacidad de servir tanto a clientes locales como a oportunidades de expansión regional e internacional, manteniendo siempre una identidad basada en el trabajo bien hecho, la responsabilidad técnica y la mejora continua.</p>
+                `
+            },
+            contact: {
+                title: 'Contacto',
+                body: `
+                    <p>Ponte en comunicación con nuestro equipo para información comercial, soporte general o requerimientos administrativos.</p>
+                    <div class="info-link-list">
+                        <a href="mailto:admin@wmautomationsupply.com">
+                            <i class="fas fa-user-shield"></i>
+                            <span>Administración: admin@wmautomationsupply.com</span>
+                        </a>
+                        <a href="mailto:sales@wmautomationsupply.com">
+                            <i class="fas fa-envelope-open-text"></i>
+                            <span>Ventas: sales@wmautomationsupply.com</span>
+                        </a>
+                        <a href="mailto:info@wmautomationsupply.com">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Información general: info@wmautomationsupply.com</span>
+                        </a>
+                        <a href="tel:+12149493289">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>Teléfono: +1 2149493289</span>
+                        </a>
+                    </div>
+                `
+            },
+            partners: {
+                title: 'Partners',
+                body: `
+                    <p>En esta sección podremos presentar las empresas, contratistas, integradores y aliados estratégicos con quienes desarrollamos proyectos o mantenemos relaciones de colaboración técnica y comercial.</p>
+                    <p>Aquí luego podemos agregar logos, descripciones, categorías de colaboración y experiencia conjunta.</p>
+                `
+            },
+            suppliers: {
+                title: 'Proveedores',
+                body: `
+                    <p>En esta sección podremos mostrar nuestra red de proveedores y fabricantes de materiales, equipos y soluciones eléctricas, destacando líneas de productos, disponibilidad y capacidad de suministro.</p>
+                    <p>Aquí después podemos incorporar marcas, especialidades, fichas comerciales y materiales destacados.</p>
+                `
+            }
         },
         en: {
-            mission: `
-                <p>At <strong>WM Automation Supply</strong>, our mission is to provide integrated solutions in <strong>automation, electrical engineering, technical development, and specialized material supply</strong>, responding to each client’s needs with a practical approach, technical judgment, and professional commitment.</p>
-                <p>We work to add real value to every project by integrating knowledge, planning, and responsiveness in order to optimize processes, strengthen operations, and support the execution of reliable solutions in industrial, commercial, and infrastructure environments.</p>
-                <p>We are focused on delivering service based on <strong>quality, efficiency, traceability, and personalized attention</strong>, ensuring that every proposal, development, and supply contributes to the performance, continuity, and improvement of our clients’ systems.</p>
-                <p>More than simply providing products or services, we seek to become a technical and strategic partner capable of connecting engineering, automation, and supply solutions with concrete, functional, and sustainable results.</p>
-            `,
-            vision: `
-                <p>Our vision at <strong>WM Automation Supply</strong> is to establish ourselves as a company recognized for its <strong>technical strength, adaptability, and commitment to excellence</strong>, positioning ourselves as a strategic partner in automation, applied engineering, and specialized electrical supply projects.</p>
-                <p>We aspire to build a reliable, modern, and growing organization capable of handling technical requirements with a high level of precision, supporting development and integration processes, and responding efficiently to the demands of a market that requires innovation, speed, and trust.</p>
-                <p>We seek to expand our presence and strengthen our relationships with clients, contractors, integrators, developers, and suppliers by creating a working network based on professionalism, transparency, and measurable results. We want to be recognized not only for the quality of the materials and services we provide, but also for our ability to understand the real needs of each project and transform them into viable, high-value solutions.</p>
-                <p>Our vision is also oriented toward sustainable growth, the continuous incorporation of new tools and technologies, and the development of a business proposal that brings together <strong>engineering, automation, traceability, and supply</strong> under one reliable and competitive service line.</p>
-                <p>In the medium and long term, we aim to project ourselves as a reference company within the sector, with the capacity to serve both local clients and regional or international expansion opportunities, while always maintaining an identity grounded in quality work, technical responsibility, and continuous improvement.</p>
-            `
+            mission: {
+                title: 'Mission',
+                body: `
+                    <p>At <strong>WM Automation Supply</strong>, our mission is to provide integrated solutions in <strong>automation, electrical engineering, technical development, and specialized material supply</strong>, responding to each client’s needs with a practical approach, technical judgment, and professional commitment.</p>
+                    <p>We work to add real value to every project by integrating knowledge, planning, and responsiveness in order to optimize processes, strengthen operations, and support the execution of reliable solutions in industrial, commercial, and infrastructure environments.</p>
+                    <p>We are focused on delivering service based on <strong>quality, efficiency, traceability, and personalized attention</strong>, ensuring that every proposal, development, and supply contributes to the performance, continuity, and improvement of our clients’ systems.</p>
+                    <p>More than simply providing products or services, we seek to become a technical and strategic partner capable of connecting engineering, automation, and supply solutions with concrete, functional, and sustainable results.</p>
+                `
+            },
+            vision: {
+                title: 'Vision',
+                body: `
+                    <p>Our vision at <strong>WM Automation Supply</strong> is to establish ourselves as a company recognized for its <strong>technical strength, adaptability, and commitment to excellence</strong>, positioning ourselves as a strategic partner in automation, applied engineering, and specialized electrical supply projects.</p>
+                    <p>We aspire to build a reliable, modern, and growing organization capable of handling technical requirements with a high level of precision, supporting development and integration processes, and responding efficiently to the demands of a market that requires innovation, speed, and trust.</p>
+                    <p>We seek to expand our presence and strengthen our relationships with clients, contractors, integrators, developers, and suppliers by creating a working network based on professionalism, transparency, and measurable results. We want to be recognized not only for the quality of the materials and services we provide, but also for our ability to understand the real needs of each project and transform them into viable, high-value solutions.</p>
+                    <p>Our vision is also oriented toward sustainable growth, the continuous incorporation of new tools and technologies, and the development of a business proposal that brings together <strong>engineering, automation, traceability, and supply</strong> under one reliable and competitive service line.</p>
+                    <p>In the medium and long term, we aim to project ourselves as a reference company within the sector, with the capacity to serve both local clients and regional or international expansion opportunities, while always maintaining an identity grounded in quality work, technical responsibility, and continuous improvement.</p>
+                `
+            },
+            contact: {
+                title: 'Contact',
+                body: `
+                    <p>Get in touch with our team for commercial information, general support, or administrative requests.</p>
+                    <div class="info-link-list">
+                        <a href="mailto:admin@wmautomationsupply.com">
+                            <i class="fas fa-user-shield"></i>
+                            <span>Administration: admin@wmautomationsupply.com</span>
+                        </a>
+                        <a href="mailto:sales@wmautomationsupply.com">
+                            <i class="fas fa-envelope-open-text"></i>
+                            <span>Sales: sales@wmautomationsupply.com</span>
+                        </a>
+                        <a href="mailto:info@wmautomationsupply.com">
+                            <i class="fas fa-info-circle"></i>
+                            <span>General Information: info@wmautomationsupply.com</span>
+                        </a>
+                        <a href="tel:+12149493289">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>Phone: +1 2149493289</span>
+                        </a>
+                    </div>
+                `
+            },
+            partners: {
+                title: 'Partners',
+                body: `
+                    <p>This section can present the companies, contractors, integrators, and strategic partners with whom we develop projects or maintain technical and commercial collaboration.</p>
+                    <p>Later, we can add logos, descriptions, collaboration categories, and shared experience.</p>
+                `
+            },
+            suppliers: {
+                title: 'Suppliers',
+                body: `
+                    <p>This section can showcase our network of suppliers and manufacturers of electrical materials, equipment, and solutions, highlighting product lines, availability, and supply capability.</p>
+                    <p>Later, we can add brands, specialties, commercial sheets, and featured materials.</p>
+                `
+            }
         }
     };
-
-    function renderCorporateContent(lang) {
-        document.getElementById('missionContent').innerHTML = corporateContent[lang].mission;
-        document.getElementById('visionContent').innerHTML = corporateContent[lang].vision;
-    }
 
     function changeLang(lang, btn) {
         currentLang = lang;
@@ -1556,12 +1643,13 @@
             const key = el.getAttribute('data-key');
             el.innerText = dictionary[lang][key] || '';
         });
-        renderCorporateContent(lang);
         document.querySelectorAll('.btn-lang').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
     }
 
-    function toggleCard(id) { document.getElementById(id).classList.toggle('open'); }
+    function toggleCard(id) { 
+        document.getElementById(id).classList.toggle('open'); 
+    }
 
     function toggleSub(id, header) {
         const sub = document.getElementById(id);
@@ -1584,7 +1672,6 @@
         document.getElementById("mainContent").style.display = "none";
         document.getElementById("mainHero").style.display = "none";
         document.getElementById("secondaryNav").style.display = "none";
-        document.getElementById("corporateSections").style.display = "none";
         window.scrollTo(0, 0);
     }
 
@@ -1593,7 +1680,6 @@
         document.getElementById("mainContent").style.display = "block";
         document.getElementById("mainHero").style.display = "block";
         document.getElementById("secondaryNav").style.display = "block";
-        document.getElementById("corporateSections").style.display = "block";
         window.scrollTo(0, 0);
     }
 
@@ -1609,6 +1695,38 @@
             const input = document.getElementById('materialInput');
             if (input) input.value = material;
         });
+    });
+
+    function openInfoModal(section) {
+        const modal = document.getElementById('infoModal');
+        const title = document.getElementById('infoModalTitle');
+        const body = document.getElementById('infoModalBody');
+        const content = modalContent[currentLang][section];
+
+        if (!content) return;
+
+        title.innerHTML = content.title;
+        body.innerHTML = content.body;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function forceCloseInfoModal() {
+        const modal = document.getElementById('infoModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function closeInfoModal(event) {
+        if (event.target.id === 'infoModal') {
+            forceCloseInfoModal();
+        }
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            forceCloseInfoModal();
+        }
     });
 
     const TO_EMAIL = 'sales@wmautomationsupply.com';
@@ -1643,8 +1761,6 @@
             if (hint) hint.textContent = 'Abriendo tu correo para enviar la solicitud...';
         });
     }
-
-    renderCorporateContent(currentLang);
 </script>
 </body>
 </html>
