@@ -15,6 +15,10 @@
             --white: #ffffff;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body { 
             font-family: 'Segoe UI', Tahoma, sans-serif; 
             margin: 0; 
@@ -130,6 +134,68 @@
             background: var(--primary);
             color: var(--white);
             transform: translateY(-2px);
+        }
+
+        /* ===== NUEVO: SECCIONES CORPORATIVAS ===== */
+        .corporate-sections {
+            padding: 30px 5% 10px 5%;
+        }
+
+        .corporate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 22px;
+            align-items: start;
+        }
+
+        .corporate-card {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary);
+            padding: 24px;
+        }
+
+        .corporate-card h3 {
+            margin: 0 0 12px 0;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .corporate-card p {
+            margin: 0 0 12px 0;
+            color: var(--text);
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .contact-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 12px 14px;
+            border-radius: 8px;
+            transition: all 0.25s ease;
+        }
+
+        .contact-links a:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .contact-links i {
+            color: var(--accent);
         }
 
         .container { padding: 40px 5%; }
@@ -424,7 +490,6 @@
             letter-spacing: 0.02em;
         }
 
-        /* ====== NUEVO: LINK "MAS INFORMACIÓN" (TEXTO AZUL) ====== */
         .more-info-link{
             color: #1e66ff;
             text-decoration: none;
@@ -438,7 +503,6 @@
             text-decoration: underline;
         }
 
-        /* ====== NUEVO: SECCIÓN FORMULARIO (NEUTRA, SIN ROMPER TU DISEÑO) ====== */
         .request-section{
             background: #ffffff;
             border: 1px solid #e2e8f0;
@@ -512,7 +576,6 @@
             font-weight: 700;
         }
 
-        /* ====== NUEVO: TARJETA DESPLEGABLE DE ILUMINACIÓN ====== */
         .materials-group-toggle{
             cursor: pointer;
         }
@@ -531,7 +594,6 @@
             transform: rotate(-90deg);
         }
 
-        /* ESTILOS DEL MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -556,14 +618,6 @@
 
         footer { background: #1e272e; color: white; padding: 30px; text-align: center; margin-top: 50px; }
 
-        /* =========================================================
-           ✅ ÚNICO CAMBIO: ANIMACIONES LENTAS (ICONOS + IMÁGENES)
-           - Solo afecta las áreas pedidas:
-             Diseño/Proyección, Coordinación Galería, Desarrollo,
-             Trazabilidad/Calidad y Materiales.
-           - Movimiento suave, continuo, NO se detiene al abrir.
-           ========================================================= */
-
         @keyframes wmFloat {
             0%   { transform: translateY(0px); }
             50%  { transform: translateY(-6px); }
@@ -582,7 +636,6 @@
             100% { transform: scale(1); }
         }
 
-        /* Iconos principales de cards (lento y suave) */
         #card1 .main-icon,
         #card_gallery .main-icon,
         #card2 .main-icon,
@@ -595,13 +648,11 @@
             will-change: transform;
         }
 
-        /* Variación leve para que no se vean "idénticos" */
         #card2 .main-icon,
         #materialsView .materials-title i {
             animation: wmDrift 6.2s ease-in-out infinite;
         }
 
-        /* Imágenes y videos en las secciones pedidas (lento y continuo) */
         #card1 .gallery-grid img,
         #card1 .gallery-grid video,
         #card_gallery .gallery-grid img,
@@ -617,7 +668,6 @@
             will-change: transform;
         }
 
-        /* Pequeño offset por tarjeta para que se vea natural */
         #card_gallery .gallery-grid img,
         #card_gallery .gallery-grid video {
             animation-duration: 8.4s;
@@ -631,7 +681,6 @@
             animation-duration: 8.8s;
         }
 
-        /* Responsive nuevo bloque */
         @media (max-width: 768px) {
             .secondary-nav {
                 padding: 12px 4%;
@@ -644,6 +693,10 @@
             .secondary-link {
                 font-size: 0.85rem;
                 padding: 9px 14px;
+            }
+
+            .corporate-sections {
+                padding: 24px 4% 8px 4%;
             }
         }
     </style>
@@ -674,14 +727,51 @@
     <p data-key="h-s">Diseño Estructurado | Desarrollo RPA | Trazabilidad | Suministro de Materiales Eléctricos</p>
 </section>
 
-<!-- NUEVO: BARRA SECUNDARIA -->
 <section class="secondary-nav" id="secondaryNav">
     <div class="secondary-nav-inner">
-        <a href="#" class="secondary-link" data-key="nav-mission">Misión</a>
-        <a href="#" class="secondary-link" data-key="nav-vision">Visión</a>
-        <a href="#" class="secondary-link" data-key="nav-contact">Contacto</a>
+        <a href="#missionSection" class="secondary-link" data-key="nav-mission">Misión</a>
+        <a href="#visionSection" class="secondary-link" data-key="nav-vision">Visión</a>
+        <a href="#contactSection" class="secondary-link" data-key="nav-contact">Contacto</a>
         <a href="#" class="secondary-link" data-key="nav-partners">Aliados</a>
         <a href="#" class="secondary-link" data-key="nav-suppliers">Proveedores</a>
+    </div>
+</section>
+
+<!-- NUEVO: SECCIONES CORPORATIVAS -->
+<section class="corporate-sections" id="corporateSections">
+    <div class="corporate-grid">
+        <div class="corporate-card" id="missionSection">
+            <h3 data-key="mission-title">Misión</h3>
+            <div id="missionContent"></div>
+        </div>
+
+        <div class="corporate-card" id="visionSection">
+            <h3 data-key="vision-title">Visión</h3>
+            <div id="visionContent"></div>
+        </div>
+
+        <div class="corporate-card" id="contactSection">
+            <h3 data-key="contact-title">Contacto</h3>
+            <p data-key="contact-intro">Ponte en comunicación con nuestro equipo para información comercial, soporte general o requerimientos administrativos.</p>
+            <div class="contact-links">
+                <a href="mailto:admin@wmautomationsupply.com">
+                    <i class="fas fa-user-shield"></i>
+                    <span data-key="contact-admin">Administración: admin@wmautomationsupply.com</span>
+                </a>
+                <a href="mailto:sales@wmautomationsupply.com">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <span data-key="contact-sales">Ventas: sales@wmautomationsupply.com</span>
+                </a>
+                <a href="mailto:info@wmautomationsupply.com">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-key="contact-info">Información general: info@wmautomationsupply.com</span>
+                </a>
+                <a href="tel:+12149493289">
+                    <i class="fas fa-phone-alt"></i>
+                    <span data-key="contact-phone">Teléfono: +1 2149493289</span>
+                </a>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -842,7 +932,6 @@
             </div>
         </div>
 
-        <!-- CARD MATERIALES: ABRE OTRA VISUAL -->
         <div class="card" id="card4">
             <i class="fas fa-boxes main-icon"></i>
             <h3 data-key="c4-t">📦 Área de Materiales</h3>
@@ -853,7 +942,6 @@
     </div>
 </div>
 
-<!-- ====== NUEVA PANTALLA / VISUAL DE MATERIALES ====== -->
 <section id="materialsView" class="materials-view">
     <div class="materials-topbar">
         <div class="materials-title">
@@ -880,7 +968,6 @@
 
         <div class="materials-catalog">
 
-            <!-- GRUPO 1 -->
             <div class="materials-group">
                 <div class="materials-group-head">
                     <div class="materials-group-title">
@@ -933,7 +1020,6 @@
                 </div>
             </div>
 
-            <!-- GRUPO 2 -->
             <div class="materials-group">
                 <div class="materials-group-head">
                     <div class="materials-group-title">
@@ -986,7 +1072,6 @@
                 </div>
             </div>
 
-            <!-- GRUPO 3 -->
             <div class="materials-group">
                 <div class="materials-group-head">
                     <div class="materials-group-title">
@@ -1039,7 +1124,6 @@
                 </div>
             </div>
 
-            <!-- GRUPO 4 -->
             <div class="materials-group">
                 <div class="materials-group-head">
                     <div class="materials-group-title">
@@ -1092,7 +1176,6 @@
                 </div>
             </div>
 
-            <!-- GRUPO 5: ILUMINACIÓN Y ALUMBRADO PÚBLICO -->
             <div class="materials-group collapsed" id="lightingGroup">
                 <div class="materials-group-head materials-group-toggle" onclick="toggleMaterialsGroup('lightingGroup')">
                     <div class="materials-group-title">
@@ -1148,7 +1231,6 @@
                 </div>
             </div>
 
-            <!-- ====== NUEVO: FORMULARIO DE SOLICITUD ====== -->
             <div id="solicitud" class="request-section">
                 <h2>Solicitud de información</h2>
 
@@ -1217,6 +1299,8 @@
 </footer>
 
 <script>
+    let currentLang = 'es';
+
     const dictionary = {
         'es': {
             'dir': 'Dallas, Texas',
@@ -1227,6 +1311,15 @@
             'nav-contact': 'Contacto',
             'nav-partners': 'Aliados',
             'nav-suppliers': 'Proveedores',
+
+            'mission-title': 'Misión',
+            'vision-title': 'Visión',
+            'contact-title': 'Contacto',
+            'contact-intro': 'Ponte en comunicación con nuestro equipo para información comercial, soporte general o requerimientos administrativos.',
+            'contact-admin': 'Administración: admin@wmautomationsupply.com',
+            'contact-sales': 'Ventas: sales@wmautomationsupply.com',
+            'contact-info': 'Información general: info@wmautomationsupply.com',
+            'contact-phone': 'Teléfono: +1 2149493289',
 
             'c1-t': '🔧 Área de Diseño y Proyección',
             'c1-s': 'Elaboración de planos, mapeo y simulaciones técnicas.',
@@ -1257,7 +1350,7 @@
             'c3-t': '📡 Trazabilidad y Calidad',
             'c3-s': 'Control digital de activos y reportes técnicos.',
             'btn-t': 'Ver Trazabilidad',
-            'c3-p': 'Gestión avanzada de activos con soporte visual.', 
+            'c3-p': 'Gestión avanzada de activos con soporte visual.',
             'c4-t': '📦 Área de Materiales',
             'c4-s': 'Gestión, suministro y especificación de insumos técnicos.',
             'btn-m': 'Ver Materiales',
@@ -1323,6 +1416,15 @@
             'nav-partners': 'Partners',
             'nav-suppliers': 'Suppliers',
 
+            'mission-title': 'Mission',
+            'vision-title': 'Vision',
+            'contact-title': 'Contact',
+            'contact-intro': 'Get in touch with our team for commercial information, general support, or administrative requests.',
+            'contact-admin': 'Administration: admin@wmautomationsupply.com',
+            'contact-sales': 'Sales: sales@wmautomationsupply.com',
+            'contact-info': 'General Information: info@wmautomationsupply.com',
+            'contact-phone': 'Phone: +1 2149493289',
+
             'c1-t': '🔧 Design & Projection Area',
             'c1-s': 'Blueprints, mapping and technical simulations.',
             'btn-e': 'View Specialties',
@@ -1339,7 +1441,7 @@
             'btn-g': 'View Works Gallery',
             'cg-p': 'Technical evidence of coordination and electrical execution:',
             'img-3': 'Field Coordination',
-            'img-4': 'Site Supervision', 
+            'img-4': 'Site Supervision',
             'c2-t': '⚙️ Development Area',
             'c2-s': 'Custom software and intelligent process automation.',
             'btn-r': 'View Development Processes',
@@ -1352,7 +1454,7 @@
             'c3-t': '📡 Traceability & Quality',
             'c3-s': 'Digital asset control and technical reporting.',
             'btn-t': 'View Traceability',
-            'c3-p': 'Advanced asset management with visual support.', 
+            'c3-p': 'Advanced asset management with visual support.',
             'c4-t': '📦 Materials Area',
             'c4-s': 'Management, supply and specification of technical inputs.',
             'btn-m': 'View Materials',
@@ -1410,11 +1512,51 @@
         }
     };
 
+    const corporateContent = {
+        es: {
+            mission: `
+                <p>En <strong>WM Automation Supply</strong> nuestra misión es brindar soluciones integrales en <strong>automatización, ingeniería eléctrica, desarrollo técnico y suministro de materiales especializados</strong>, respondiendo a las necesidades de cada cliente con enfoque práctico, criterio técnico y compromiso profesional.</p>
+                <p>Trabajamos para aportar valor real en cada proyecto, integrando conocimiento, planificación y capacidad de respuesta para optimizar procesos, fortalecer operaciones y acompañar la ejecución de soluciones confiables en entornos industriales, comerciales y de infraestructura.</p>
+                <p>Nos enfocamos en ofrecer un servicio basado en la <strong>calidad, la eficiencia, la trazabilidad y la atención personalizada</strong>, asegurando que cada propuesta, cada desarrollo y cada suministro contribuya al desempeño, la continuidad y la mejora de los sistemas de nuestros clientes.</p>
+                <p>Más que suministrar productos o servicios, buscamos convertirnos en un respaldo técnico y estratégico, capaz de conectar la ingeniería, la automatización y el abastecimiento con resultados concretos, funcionales y sostenibles.</p>
+            `,
+            vision: `
+                <p>Nuestra visión en <strong>WM Automation Supply</strong> es consolidarnos como una empresa reconocida por su <strong>solidez técnica, capacidad de adaptación y compromiso con la excelencia</strong>, posicionándonos como un aliado estratégico en proyectos de automatización, ingeniería aplicada y suministro eléctrico especializado.</p>
+                <p>Aspiramos a construir una organización confiable, moderna y en crecimiento, capaz de atender requerimientos técnicos con alto nivel de precisión, acompañar procesos de desarrollo e integración y responder de manera eficiente a las demandas de un mercado que exige innovación, rapidez y confianza.</p>
+                <p>Buscamos expandir nuestra presencia y fortalecer nuestras relaciones con clientes, contratistas, integradores, desarrolladores y proveedores, creando una red de trabajo basada en profesionalismo, transparencia y resultados medibles. Queremos ser identificados no solo por la calidad de los materiales y servicios que ofrecemos, sino también por nuestra capacidad de comprender las necesidades reales de cada proyecto y transformarlas en soluciones viables y de alto valor.</p>
+                <p>Nuestra visión también está orientada al crecimiento sostenible, a la incorporación constante de nuevas herramientas y tecnologías, y al desarrollo de una propuesta empresarial que una <strong>ingeniería, automatización, trazabilidad y suministro</strong> bajo una misma línea de servicio confiable y competitiva.</p>
+                <p>En el mediano y largo plazo, buscamos proyectarnos como una empresa de referencia dentro del sector, con la capacidad de servir tanto a clientes locales como a oportunidades de expansión regional e internacional, manteniendo siempre una identidad basada en el trabajo bien hecho, la responsabilidad técnica y la mejora continua.</p>
+            `
+        },
+        en: {
+            mission: `
+                <p>At <strong>WM Automation Supply</strong>, our mission is to provide integrated solutions in <strong>automation, electrical engineering, technical development, and specialized material supply</strong>, responding to each client’s needs with a practical approach, technical judgment, and professional commitment.</p>
+                <p>We work to add real value to every project by integrating knowledge, planning, and responsiveness in order to optimize processes, strengthen operations, and support the execution of reliable solutions in industrial, commercial, and infrastructure environments.</p>
+                <p>We are focused on delivering service based on <strong>quality, efficiency, traceability, and personalized attention</strong>, ensuring that every proposal, development, and supply contributes to the performance, continuity, and improvement of our clients’ systems.</p>
+                <p>More than simply providing products or services, we seek to become a technical and strategic partner capable of connecting engineering, automation, and supply solutions with concrete, functional, and sustainable results.</p>
+            `,
+            vision: `
+                <p>Our vision at <strong>WM Automation Supply</strong> is to establish ourselves as a company recognized for its <strong>technical strength, adaptability, and commitment to excellence</strong>, positioning ourselves as a strategic partner in automation, applied engineering, and specialized electrical supply projects.</p>
+                <p>We aspire to build a reliable, modern, and growing organization capable of handling technical requirements with a high level of precision, supporting development and integration processes, and responding efficiently to the demands of a market that requires innovation, speed, and trust.</p>
+                <p>We seek to expand our presence and strengthen our relationships with clients, contractors, integrators, developers, and suppliers by creating a working network based on professionalism, transparency, and measurable results. We want to be recognized not only for the quality of the materials and services we provide, but also for our ability to understand the real needs of each project and transform them into viable, high-value solutions.</p>
+                <p>Our vision is also oriented toward sustainable growth, the continuous incorporation of new tools and technologies, and the development of a business proposal that brings together <strong>engineering, automation, traceability, and supply</strong> under one reliable and competitive service line.</p>
+                <p>In the medium and long term, we aim to project ourselves as a reference company within the sector, with the capacity to serve both local clients and regional or international expansion opportunities, while always maintaining an identity grounded in quality work, technical responsibility, and continuous improvement.</p>
+            `
+        }
+    };
+
+    function renderCorporateContent(lang) {
+        document.getElementById('missionContent').innerHTML = corporateContent[lang].mission;
+        document.getElementById('visionContent').innerHTML = corporateContent[lang].vision;
+    }
+
     function changeLang(lang, btn) {
+        currentLang = lang;
         document.querySelectorAll('[data-key]').forEach(el => {
             const key = el.getAttribute('data-key');
             el.innerText = dictionary[lang][key] || '';
         });
+        renderCorporateContent(lang);
         document.querySelectorAll('.btn-lang').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
     }
@@ -1429,7 +1571,6 @@
         icon.classList.toggle('fa-minus-circle');
     }
 
-    // FUNCIÓN PARA AMPLIAR IMÁGENES (sirve también en materiales)
     function openModal(element) {
         const modal = document.getElementById("imgModal");
         const modalImg = document.getElementById("imgFull");
@@ -1438,12 +1579,12 @@
         modalImg.src = clickedImg.src;
     }
 
-    // ====== FUNCIONES PARA VISTA MATERIALES ======
     function openMaterialsView() {
         document.getElementById("materialsView").classList.add("active");
         document.getElementById("mainContent").style.display = "none";
         document.getElementById("mainHero").style.display = "none";
         document.getElementById("secondaryNav").style.display = "none";
+        document.getElementById("corporateSections").style.display = "none";
         window.scrollTo(0, 0);
     }
 
@@ -1452,15 +1593,14 @@
         document.getElementById("mainContent").style.display = "block";
         document.getElementById("mainHero").style.display = "block";
         document.getElementById("secondaryNav").style.display = "block";
+        document.getElementById("corporateSections").style.display = "block";
         window.scrollTo(0, 0);
     }
 
-    // ====== NUEVO: TOGGLE SOLO PARA TARJETA DE ILUMINACIÓN ======
     function toggleMaterialsGroup(id) {
         document.getElementById(id).classList.toggle('collapsed');
     }
 
-    // ====== NUEVO: RELLENAR FORMULARIO AL CLICKEAR "MÁS INFORMACIÓN" ======
     document.querySelectorAll('.more-info-link').forEach(link => {
         link.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -1471,7 +1611,6 @@
         });
     });
 
-    // ====== NUEVO: ENVIAR POR MAILTO (SIN BACKEND) ======
     const TO_EMAIL = 'sales@wmautomationsupply.com';
 
     const form = document.getElementById('solicitudForm');
@@ -1504,6 +1643,8 @@
             if (hint) hint.textContent = 'Abriendo tu correo para enviar la solicitud...';
         });
     }
+
+    renderCorporateContent(currentLang);
 </script>
 </body>
 </html>
