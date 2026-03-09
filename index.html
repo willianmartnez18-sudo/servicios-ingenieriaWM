@@ -95,6 +95,43 @@
             text-align: center;
         }
 
+        /* ===== NUEVO: BARRA SECUNDARIA CORPORATIVA ===== */
+        .secondary-nav {
+            background: var(--white);
+            border-top: 4px solid var(--accent);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+            padding: 14px 5%;
+        }
+
+        .secondary-nav-inner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .secondary-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 18px;
+            background: #f8fafc;
+            border: 1px solid #dbe7f0;
+            border-radius: 999px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.92rem;
+            transition: all 0.25s ease;
+        }
+
+        .secondary-link:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
         .container { padding: 40px 5%; }
 
         .grid {
@@ -594,8 +631,21 @@
             animation-duration: 8.8s;
         }
 
-        /* Mantener el hover EXACTO como lo tienes (no lo toco) */
-        /* .img-container:hover { transform: scale(1.03); }  <-- ya existe arriba */
+        /* Responsive nuevo bloque */
+        @media (max-width: 768px) {
+            .secondary-nav {
+                padding: 12px 4%;
+            }
+
+            .secondary-nav-inner {
+                gap: 10px;
+            }
+
+            .secondary-link {
+                font-size: 0.85rem;
+                padding: 9px 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -621,7 +671,18 @@
 
 <section class="hero" id="mainHero">
     <h1 data-key="h-t">Alcance Técnico Especializado</h1>
-    <p data-key="h-s">Diseño Estructurado | Desarrollo RPA | Trazabilidad</p>
+    <p data-key="h-s">Diseño Estructurado | Desarrollo RPA | Trazabilidad | Suministro de Materiales Eléctricos</p>
+</section>
+
+<!-- NUEVO: BARRA SECUNDARIA -->
+<section class="secondary-nav" id="secondaryNav">
+    <div class="secondary-nav-inner">
+        <a href="#" class="secondary-link" data-key="nav-mission">Misión</a>
+        <a href="#" class="secondary-link" data-key="nav-vision">Visión</a>
+        <a href="#" class="secondary-link" data-key="nav-contact">Contacto</a>
+        <a href="#" class="secondary-link" data-key="nav-partners">Aliados</a>
+        <a href="#" class="secondary-link" data-key="nav-suppliers">Proveedores</a>
+    </div>
 </section>
 
 <!-- CONTENIDO PRINCIPAL -->
@@ -1158,22 +1219,49 @@
 <script>
     const dictionary = {
         'es': {
-            'dir': 'Dallas, Texas', 'h-t': 'Alcance Técnico Especializado',
-            'h-s': 'Diseño Estructurado | Desarrollo RPA | Trazabilidad', 'c1-t': '🔧 Área de Diseño y Proyección',
-            'c1-s': 'Elaboración de planos, mapeo y simulaciones técnicas.', 'btn-e': 'Ver Especialidades',
-            's1-t': '1️⃣ Elaboración de Planos Técnicos', 's1-p': 'Planos eléctricos, civiles e industriales bajo normativa.',
-            'img-1': 'Plano Eléctrico', 's2-t': '2️⃣ Mapeo y Análisis Geoespacial', 's2-p': 'Georreferenciación de activos y redes en ArcGIS.',
-            'img-2': 'Mapeo Geoespacial', 's3-t': '3️⃣ Simulación y Cálculo Lumínico', 's3-p': 'Cálculos de niveles lux y optimización en DIALux.',
-            'cg-t': '⚡ Galería de Coordinación Eléctrica', 'cg-s': 'Registro fotográfico de trabajos eléctricos y supervisión de campo.',
-            'btn-g': 'Ver Galería de Trabajos', 'cg-p': 'Evidencia técnica de coordinación y ejecución de obras eléctricas:',
-            'img-3': 'Coordinación Campo', 'img-4': 'Supervisión Obra', 
-            'c2-t': '⚙️ Área de Desarrollo', 'c2-s': 'Software a medida y automatización de procesos inteligentes.', 'btn-r': 'Ver Procesos de Desarrollo',
-            'dev1-t': '💻 Programas para Computadora', 'dev1-p': 'Desarrollo de aplicaciones de escritorio y herramientas técnicas locales.',
-            'img-soft-ext1': 'Vista Técnica 1', 'img-soft-ext2': 'Vista Técnica 2',
-            'dev2-t': '🤖 Robots y Procesos RPA', 'dev2-p': 'Automatización robótica con UiPath para tareas repetitivas y gestión de datos.',
-            'c3-t': '📡 Trazabilidad y Calidad', 'c3-s': 'Control digital de activos y reportes técnicos.', 'btn-t': 'Ver Trazabilidad',
+            'dir': 'Dallas, Texas',
+            'h-t': 'Alcance Técnico Especializado',
+            'h-s': 'Diseño Estructurado | Desarrollo RPA | Trazabilidad | Suministro de Materiales Eléctricos',
+            'nav-mission': 'Misión',
+            'nav-vision': 'Visión',
+            'nav-contact': 'Contacto',
+            'nav-partners': 'Aliados',
+            'nav-suppliers': 'Proveedores',
+
+            'c1-t': '🔧 Área de Diseño y Proyección',
+            'c1-s': 'Elaboración de planos, mapeo y simulaciones técnicas.',
+            'btn-e': 'Ver Especialidades',
+            's1-t': '1️⃣ Elaboración de Planos Técnicos',
+            's1-p': 'Planos eléctricos, civiles e industriales bajo normativa.',
+            'img-1': 'Plano Eléctrico',
+            's2-t': '2️⃣ Mapeo y Análisis Geoespacial',
+            's2-p': 'Georreferenciación de activos y redes en ArcGIS.',
+            'img-2': 'Mapeo Geoespacial',
+            's3-t': '3️⃣ Simulación y Cálculo Lumínico',
+            's3-p': 'Cálculos de niveles lux y optimización en DIALux.',
+            'cg-t': '⚡ Galería de Coordinación Eléctrica',
+            'cg-s': 'Registro fotográfico de trabajos eléctricos y supervisión de campo.',
+            'btn-g': 'Ver Galería de Trabajos',
+            'cg-p': 'Evidencia técnica de coordinación y ejecución de obras eléctricas:',
+            'img-3': 'Coordinación Campo',
+            'img-4': 'Supervisión Obra', 
+            'c2-t': '⚙️ Área de Desarrollo',
+            'c2-s': 'Software a medida y automatización de procesos inteligentes.',
+            'btn-r': 'Ver Procesos de Desarrollo',
+            'dev1-t': '💻 Programas para Computadora',
+            'dev1-p': 'Desarrollo de aplicaciones de escritorio y herramientas técnicas locales.',
+            'img-soft-ext1': 'Vista Técnica 1',
+            'img-soft-ext2': 'Vista Técnica 2',
+            'dev2-t': '🤖 Robots y Procesos RPA',
+            'dev2-p': 'Automatización robótica con UiPath para tareas repetitivas y gestión de datos.',
+            'c3-t': '📡 Trazabilidad y Calidad',
+            'c3-s': 'Control digital de activos y reportes técnicos.',
+            'btn-t': 'Ver Trazabilidad',
             'c3-p': 'Gestión avanzada de activos con soporte visual.', 
-            'c4-t': '📦 Área de Materiales', 'c4-s': 'Gestión, suministro y especificación de insumos técnicos.', 'btn-m': 'Ver Materiales', 'c4-p': 'Control de calidad y logística de materiales especializados.',
+            'c4-t': '📦 Área de Materiales',
+            'c4-s': 'Gestión, suministro y especificación de insumos técnicos.',
+            'btn-m': 'Ver Materiales',
+            'c4-p': 'Control de calidad y logística de materiales especializados.',
             'mat-title': 'Catálogo de Materiales Eléctricos',
             'mat-back': 'Volver',
             'mat-tag1': 'Media Tensión',
@@ -1226,22 +1314,49 @@
             'f-t': '© 2026 WM Automation Supply'
         },
         'en': {
-            'dir': 'Dallas, Texas', 'h-t': 'Specialized Technical Scope',
-            'h-s': 'Structured Design | RPA Development | Traceability', 'c1-t': '🔧 Design & Projection Area',
-            'c1-s': 'Blueprints, mapping and technical simulations.', 'btn-e': 'View Specialties',
-            's1-t': '1️⃣ Technical Drawing Production', 's1-p': 'Electrical, civil and industrial plans under regulation.',
-            'img-1': 'Electrical Plan', 's2-t': '2️⃣ Mapping & Geospatial Analysis', 's2-p': 'Asset and network georeferencing in ArcGIS.',
-            'img-2': 'Geospatial Mapping', 's3-t': '3️⃣ Lighting Simulation & Calculation', 's3-p': 'Lux level calculations and DIALux optimization.',
-            'cg-t': '⚡ Electrical Coordination Gallery', 'cg-s': 'Photo record of electrical works and field supervision.',
-            'btn-g': 'View Works Gallery', 'cg-p': 'Technical evidence of coordination and electrical execution:',
-            'img-3': 'Field Coordination', 'img-4': 'Site Supervision', 
-            'c2-t': '⚙️ Development Area', 'c2-s': 'Custom software and intelligent process automation.', 'btn-r': 'View Development Processes',
-            'dev1-t': '💻 Computer Programs', 'dev1-p': 'Desktop application development and local technical tools.',
-            'img-soft-ext1': 'Technical View 1', 'img-soft-ext2': 'Technical View 2',
-            'dev2-t': '🤖 Robots & RPA Processes', 'dev2-p': 'Robotic automation with UiPath for repetitive tasks and data management.',
-            'c3-t': '📡 Traceability & Quality', 'c3-s': 'Digital asset control and technical reporting.', 'btn-t': 'View Traceability',
+            'dir': 'Dallas, Texas',
+            'h-t': 'Specialized Technical Scope',
+            'h-s': 'Structured Design | RPA Development | Traceability | Electrical Material Supply',
+            'nav-mission': 'Mission',
+            'nav-vision': 'Vision',
+            'nav-contact': 'Contact',
+            'nav-partners': 'Partners',
+            'nav-suppliers': 'Suppliers',
+
+            'c1-t': '🔧 Design & Projection Area',
+            'c1-s': 'Blueprints, mapping and technical simulations.',
+            'btn-e': 'View Specialties',
+            's1-t': '1️⃣ Technical Drawing Production',
+            's1-p': 'Electrical, civil and industrial plans under regulation.',
+            'img-1': 'Electrical Plan',
+            's2-t': '2️⃣ Mapping & Geospatial Analysis',
+            's2-p': 'Asset and network georeferencing in ArcGIS.',
+            'img-2': 'Geospatial Mapping',
+            's3-t': '3️⃣ Lighting Simulation & Calculation',
+            's3-p': 'Lux level calculations and DIALux optimization.',
+            'cg-t': '⚡ Electrical Coordination Gallery',
+            'cg-s': 'Photo record of electrical works and field supervision.',
+            'btn-g': 'View Works Gallery',
+            'cg-p': 'Technical evidence of coordination and electrical execution:',
+            'img-3': 'Field Coordination',
+            'img-4': 'Site Supervision', 
+            'c2-t': '⚙️ Development Area',
+            'c2-s': 'Custom software and intelligent process automation.',
+            'btn-r': 'View Development Processes',
+            'dev1-t': '💻 Computer Programs',
+            'dev1-p': 'Desktop application development and local technical tools.',
+            'img-soft-ext1': 'Technical View 1',
+            'img-soft-ext2': 'Technical View 2',
+            'dev2-t': '🤖 Robots & RPA Processes',
+            'dev2-p': 'Robotic automation with UiPath for repetitive tasks and data management.',
+            'c3-t': '📡 Traceability & Quality',
+            'c3-s': 'Digital asset control and technical reporting.',
+            'btn-t': 'View Traceability',
             'c3-p': 'Advanced asset management with visual support.', 
-            'c4-t': '📦 Materials Area', 'c4-s': 'Management, supply and specification of technical inputs.', 'btn-m': 'View Materials', 'c4-p': 'Quality control and logistics of specialized materials.',
+            'c4-t': '📦 Materials Area',
+            'c4-s': 'Management, supply and specification of technical inputs.',
+            'btn-m': 'View Materials',
+            'c4-p': 'Quality control and logistics of specialized materials.',
             'mat-title': 'Electrical Materials Catalog',
             'mat-back': 'Back',
             'mat-tag1': 'Medium Voltage',
@@ -1305,6 +1420,7 @@
     }
 
     function toggleCard(id) { document.getElementById(id).classList.toggle('open'); }
+
     function toggleSub(id, header) {
         const sub = document.getElementById(id);
         const icon = header.querySelector('i');
@@ -1327,6 +1443,7 @@
         document.getElementById("materialsView").classList.add("active");
         document.getElementById("mainContent").style.display = "none";
         document.getElementById("mainHero").style.display = "none";
+        document.getElementById("secondaryNav").style.display = "none";
         window.scrollTo(0, 0);
     }
 
@@ -1334,6 +1451,7 @@
         document.getElementById("materialsView").classList.remove("active");
         document.getElementById("mainContent").style.display = "block";
         document.getElementById("mainHero").style.display = "block";
+        document.getElementById("secondaryNav").style.display = "block";
         window.scrollTo(0, 0);
     }
 
@@ -1345,19 +1463,16 @@
     // ====== NUEVO: RELLENAR FORMULARIO AL CLICKEAR "MÁS INFORMACIÓN" ======
     document.querySelectorAll('.more-info-link').forEach(link => {
         link.addEventListener('click', (e) => {
-            // Evita que el click se lo "coma" el openModal del contenedor padre
             e.stopPropagation();
 
             const material = link.getAttribute('data-material') || '';
             const input = document.getElementById('materialInput');
             if (input) input.value = material;
-
-            // deja que el href #solicitud haga el scroll natural
         });
     });
 
     // ====== NUEVO: ENVIAR POR MAILTO (SIN BACKEND) ======
-    const TO_EMAIL = 'sales@wmautomationsupply.com'; // <-- CAMBIA AQUÍ si quieres otro
+    const TO_EMAIL = 'sales@wmautomationsupply.com';
 
     const form = document.getElementById('solicitudForm');
     if (form) {
