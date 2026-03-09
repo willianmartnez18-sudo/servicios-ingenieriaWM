@@ -575,7 +575,7 @@
         .info-modal-box {
             background: var(--white);
             width: 100%;
-            max-width: 820px;
+            max-width: 920px;
             border-radius: 16px;
             box-shadow: 0 18px 40px rgba(0,0,0,0.25);
             border-top: 6px solid var(--accent);
@@ -650,6 +650,42 @@
 
         .info-link-list i {
             color: var(--accent);
+        }
+
+        .supplier-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 22px;
+            margin-top: 8px;
+        }
+
+        .supplier-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .supplier-card h3 {
+            margin: 0 0 14px 0;
+            color: var(--primary);
+            font-size: 1rem;
+            font-weight: 900;
+            letter-spacing: 0.02em;
+        }
+
+        .supplier-card img {
+            width: 100%;
+            max-width: 150px;
+            height: 90px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 8px;
+            border: 1px solid #e2e8f0;
         }
 
         footer { background: #1e272e; color: white; padding: 30px; text-align: center; margin-top: 50px; }
@@ -744,6 +780,10 @@
 
             .info-modal-title {
                 font-size: 1.2rem;
+            }
+
+            .supplier-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1563,16 +1603,33 @@
             },
             partners: {
                 title: 'Partners',
-                body: `
-                    <p>En esta sección podremos presentar las empresas, contratistas, integradores y aliados estratégicos con quienes desarrollamos proyectos o mantenemos relaciones de colaboración técnica y comercial.</p>
-                    <p>Aquí luego podemos agregar logos, descripciones, categorías de colaboración y experiencia conjunta.</p>
-                `
+                body: ``
             },
             suppliers: {
                 title: 'Proveedores',
                 body: `
-                    <p>En esta sección podremos mostrar nuestra red de proveedores y fabricantes de materiales, equipos y soluciones eléctricas, destacando líneas de productos, disponibilidad y capacidad de suministro.</p>
-                    <p>Aquí después podemos incorporar marcas, especialidades, fichas comerciales y materiales destacados.</p>
+                    <div class="supplier-grid">
+                        <div class="supplier-card">
+                            <h3>EATON</h3>
+                            <img src="EATON.png" alt="EATON">
+                        </div>
+                        <div class="supplier-card">
+                            <h3>ABB</h3>
+                            <img src="ABB.png" alt="ABB">
+                        </div>
+                        <div class="supplier-card">
+                            <h3>COPPER</h3>
+                            <img src="copper.png" alt="COPPER">
+                        </div>
+                        <div class="supplier-card">
+                            <h3>HUBBELL</h3>
+                            <img src="HUBBELL.png" alt="HUBBELL">
+                        </div>
+                        <div class="supplier-card">
+                            <h3>SIEMENS</h3>
+                            <img src="siemens.png" alt="SIEMENS">
+                        </div>
+                    </div>
                 `
             }
         },
@@ -1622,16 +1679,33 @@
             },
             partners: {
                 title: 'Partners',
-                body: `
-                    <p>This section can present the companies, contractors, integrators, and strategic partners with whom we develop projects or maintain technical and commercial collaboration.</p>
-                    <p>Later, we can add logos, descriptions, collaboration categories, and shared experience.</p>
-                `
+                body: ``
             },
             suppliers: {
                 title: 'Suppliers',
                 body: `
-                    <p>This section can showcase our network of suppliers and manufacturers of electrical materials, equipment, and solutions, highlighting product lines, availability, and supply capability.</p>
-                    <p>Later, we can add brands, specialties, commercial sheets, and featured materials.</p>
+                    <div class="supplier-grid">
+                        <div class="supplier-card">
+                            <h3>EATON</h3>
+                            <img src="EATON.png" alt="EATON">
+                        </div>
+                        <div class="supplier-card">
+                            <h3>ABB</h3>
+                            <img src="ABB.png" alt="ABB">
+                        </div>
+                        <div class="supplier-card">
+                            <h3>COPPER</h3>
+                            <img src="copper.png" alt="COPPER">
+                        </div>
+                        <div class="supplier-card">
+                            <h3>HUBBELL</h3>
+                            <img src="HUBBELL.png" alt="HUBBELL">
+                        </div>
+                        <div class="supplier-card">
+                            <h3>SIEMENS</h3>
+                            <img src="siemens.png" alt="SIEMENS">
+                        </div>
+                    </div>
                 `
             }
         }
