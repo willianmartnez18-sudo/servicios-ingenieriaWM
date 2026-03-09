@@ -475,6 +475,25 @@
             font-weight: 700;
         }
 
+        /* ====== NUEVO: TARJETA DESPLEGABLE DE ILUMINACIÓN ====== */
+        .materials-group-toggle{
+            cursor: pointer;
+        }
+
+        .materials-group-toggle .toggle-icon{
+            color: var(--primary);
+            transition: transform 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .materials-group.collapsed .materials-items{
+            display: none;
+        }
+
+        .materials-group.collapsed .toggle-icon{
+            transform: rotate(-90deg);
+        }
+
         /* ESTILOS DEL MODAL */
         .modal {
             display: none;
@@ -1012,6 +1031,62 @@
                 </div>
             </div>
 
+            <!-- GRUPO 5: ILUMINACIÓN Y ALUMBRADO PÚBLICO -->
+            <div class="materials-group collapsed" id="lightingGroup">
+                <div class="materials-group-head materials-group-toggle" onclick="toggleMaterialsGroup('lightingGroup')">
+                    <div class="materials-group-title">
+                        <i class="fas fa-lightbulb"></i>
+                        <span data-key="mat-g5">Iluminación y Alumbrado Público</span>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:10px;">
+                        <span class="materials-count" data-key="mat-g5c">4 ítems</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                </div>
+
+                <div class="materials-items">
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="highbay.jpg" alt="High Bay Industriales">
+                        <div class="material-name" data-key="mat-light-1">High Bay Industriales</div>
+                        <div class="material-meta" data-key="mat-light-meta1">Industrial LED</div>
+                        <div data-key="mat-light-desc1" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Luminarias LED de gran altura para naves, galpones, almacenes y áreas industriales con techos elevados.
+                        </div>
+                        <a class="more-info-link" href="#solicitud" data-material="High Bay Industriales">Más información</a>
+                    </div>
+
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="alumbrado-publico.png" alt="Alumbrado Público Vial">
+                        <div class="material-name" data-key="mat-light-2">Alumbrado Público Vial</div>
+                        <div class="material-meta" data-key="mat-light-meta2">Street Lighting</div>
+                        <div data-key="mat-light-desc2" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Luminarias para avenidas, calles, urbanismos y proyectos de infraestructura vial con alta eficiencia y durabilidad.
+                        </div>
+                        <a class="more-info-link" href="#solicitud" data-material="Alumbrado Público Vial">Más información</a>
+                    </div>
+
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="panel-led.jpg" alt="Paneles LED Comerciales y Oficina">
+                        <div class="material-name" data-key="mat-light-3">Paneles LED Comerciales y Oficina</div>
+                        <div class="material-meta" data-key="mat-light-meta3">Office / Commercial</div>
+                        <div data-key="mat-light-desc3" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Paneles LED para oficinas, comercios, salas técnicas y espacios interiores con iluminación uniforme y moderna.
+                        </div>
+                        <a class="more-info-link" href="#solicitud" data-material="Paneles LED Comerciales y Oficina">Más información</a>
+                    </div>
+
+                    <div class="material-item img-container" onclick="openModal(this)">
+                        <img class="material-thumb" src="reflectores-exterior.jpg" alt="Reflectores para Exterior">
+                        <div class="material-name" data-key="mat-light-4">Reflectores para Exterior</div>
+                        <div class="material-meta" data-key="mat-light-meta4">Flood Lights</div>
+                        <div data-key="mat-light-desc4" style="margin-top:6px;font-size:0.78rem;color:#334155;line-height:1.35;">
+                            Reflectores LED para fachadas, estacionamientos, patios, canchas y seguridad perimetral en exteriores.
+                        </div>
+                        <a class="more-info-link" href="#solicitud" data-material="Reflectores para Exterior">Más información</a>
+                    </div>
+                </div>
+            </div>
+
             <!-- ====== NUEVO: FORMULARIO DE SOLICITUD ====== -->
             <div id="solicitud" class="request-section">
                 <h2>Solicitud de información</h2>
@@ -1114,6 +1189,8 @@
             'mat-g3c': '7 ítems',
             'mat-g4': 'Puesta a Tierra & Sobretensión',
             'mat-g4c': '6 ítems',
+            'mat-g5': 'Iluminación y Alumbrado Público',
+            'mat-g5c': '4 ítems',
             'mat-meta': 'Media/Alta Tensión',
 
             'mat-desc-sf6': 'Interruptor de potencia para maniobra y protección en subestaciones HV/MV. Interrumpe fallas (corto circuito) y permite operación segura del sistema.',
@@ -1132,6 +1209,19 @@
             'mat-desc-rods': 'Varillas copper-clad para mejorar resistencia de tierra. Se usan en mallas, bajantes y puntos de puesta a tierra donde el suelo requiere refuerzo.',
             'mat-desc-arrester': 'Pararrayos MOV para limitar sobretensiones por rayo o maniobras. Se instala cerca de transformadores y equipos críticos para proteger aislamiento.',
             'mat-desc-spd': 'SPD para tableros de control/auxiliares (AC/DC). Protege electrónica y comunicaciones contra transientes, complementando la protección primaria MV/HV.',
+
+            'mat-light-1': 'High Bay Industriales',
+            'mat-light-meta1': 'Industrial LED',
+            'mat-light-desc1': 'Luminarias LED de gran altura para naves, galpones, almacenes y áreas industriales con techos elevados.',
+            'mat-light-2': 'Alumbrado Público Vial',
+            'mat-light-meta2': 'Street Lighting',
+            'mat-light-desc2': 'Luminarias para avenidas, calles, urbanismos y proyectos de infraestructura vial con alta eficiencia y durabilidad.',
+            'mat-light-3': 'Paneles LED Comerciales y Oficina',
+            'mat-light-meta3': 'Office / Commercial',
+            'mat-light-desc3': 'Paneles LED para oficinas, comercios, salas técnicas y espacios interiores con iluminación uniforme y moderna.',
+            'mat-light-4': 'Reflectores para Exterior',
+            'mat-light-meta4': 'Flood Lights',
+            'mat-light-desc4': 'Reflectores LED para fachadas, estacionamientos, patios, canchas y seguridad perimetral en exteriores.',
 
             'f-t': '© 2026 WM Automation Supply'
         },
@@ -1167,6 +1257,8 @@
             'mat-g3c': '7 items',
             'mat-g4': 'Grounding & Surge Protection',
             'mat-g4c': '6 items',
+            'mat-g5': 'Lighting & Public Lighting',
+            'mat-g5c': '4 items',
             'mat-meta': 'Medium/High Voltage',
 
             'mat-desc-sf6': 'Power circuit breaker for HV/MV substations. Clears fault currents (short-circuits) and enables safe switching and system protection.',
@@ -1185,6 +1277,19 @@
             'mat-desc-rods': 'Copper-clad ground rods to improve grounding resistance. Used in grids, down conductors, and grounding points where soil needs reinforcement.',
             'mat-desc-arrester': 'MOV surge arrester that limits lightning/switching overvoltages. Installed near transformers and critical equipment to protect insulation.',
             'mat-desc-spd': 'SPD for control/auxiliary panels (AC/DC). Protects electronics and communications from transients, complementing primary MV/HV protection.',
+
+            'mat-light-1': 'Industrial High Bay',
+            'mat-light-meta1': 'Industrial LED',
+            'mat-light-desc1': 'High-bay LED luminaires for warehouses, industrial buildings, storage areas, and high-ceiling applications.',
+            'mat-light-2': 'Public Roadway Lighting',
+            'mat-light-meta2': 'Street Lighting',
+            'mat-light-desc2': 'Lighting fixtures for avenues, roads, urban developments, and public infrastructure projects with high efficiency and durability.',
+            'mat-light-3': 'Commercial and Office LED Panels',
+            'mat-light-meta3': 'Office / Commercial',
+            'mat-light-desc3': 'LED panels for offices, retail spaces, technical rooms, and indoor environments with modern and uniform lighting.',
+            'mat-light-4': 'Outdoor Flood Lights',
+            'mat-light-meta4': 'Flood Lights',
+            'mat-light-desc4': 'LED flood lights for facades, parking lots, yards, sports areas, and perimeter outdoor security.',
 
             'f-t': '© 2026 WM Automation Supply'
         }
@@ -1230,6 +1335,11 @@
         document.getElementById("mainContent").style.display = "block";
         document.getElementById("mainHero").style.display = "block";
         window.scrollTo(0, 0);
+    }
+
+    // ====== NUEVO: TOGGLE SOLO PARA TARJETA DE ILUMINACIÓN ======
+    function toggleMaterialsGroup(id) {
+        document.getElementById(id).classList.toggle('collapsed');
     }
 
     // ====== NUEVO: RELLENAR FORMULARIO AL CLICKEAR "MÁS INFORMACIÓN" ======
