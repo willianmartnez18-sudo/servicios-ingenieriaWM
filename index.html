@@ -131,6 +131,7 @@
         }
 
         .hero {
+            position: relative;
             background:
                 linear-gradient(135deg, rgba(8, 47, 82, 0.94), rgba(19, 77, 120, 0.84)),
                 radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08), transparent 22%),
@@ -140,8 +141,70 @@
             background-position: center;
             color: white; 
             padding: 52px 5%;
-            text-align: center;
+            min-height: 270px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            overflow: hidden;
             box-shadow: inset 0 -18px 30px rgba(0,0,0,0.08);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(5, 25, 42, 0.18);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-side {
+            position: relative;
+            width: 26%;
+            min-width: 220px;
+            max-width: 340px;
+            height: 240px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.10);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+            background: rgba(255,255,255,0.04);
+            z-index: 2;
+        }
+
+        .hero-side-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.9s ease-in-out;
+        }
+
+        .hero-side-video.active {
+            opacity: 1;
+        }
+
+        .hero-center-content {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            max-width: 620px;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        .hero-center-content h1 {
+            margin: 0 0 16px 0;
+            font-size: 2.4rem;
+        }
+
+        .hero-center-content p {
+            margin: 0;
+            font-size: 1.18rem;
+            line-height: 1.7;
         }
 
         .secondary-nav {
@@ -794,6 +857,20 @@
                 width: 260px;
                 height: 82px;
             }
+
+            .hero-side {
+                width: 24%;
+                min-width: 180px;
+                height: 210px;
+            }
+
+            .hero-center-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-center-content p {
+                font-size: 1.05rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -820,6 +897,41 @@
                 margin-left: 0;
                 margin-right: 0;
                 justify-content: flex-start;
+            }
+
+            .hero {
+                flex-direction: column;
+                min-height: auto;
+                padding: 34px 4%;
+                gap: 18px;
+            }
+
+            .hero-side {
+                width: 100%;
+                max-width: 100%;
+                min-width: 0;
+                height: 180px;
+            }
+
+            .hero-center-content {
+                order: 2;
+                max-width: 100%;
+            }
+
+            .hero-left {
+                order: 1;
+            }
+
+            .hero-right {
+                order: 3;
+            }
+
+            .hero-center-content h1 {
+                font-size: 1.7rem;
+            }
+
+            .hero-center-content p {
+                font-size: 1rem;
             }
 
             .secondary-nav {
@@ -911,8 +1023,34 @@
 </div>
 
 <section class="hero" id="mainHero">
-    <h1 data-key="h-t">Alcance Técnico Especializado</h1>
-    <p data-key="h-s">Diseño Estructurado | Desarrollo RPA | Trazabilidad | Suministro de Materiales Eléctricos</p>
+    <div class="hero-side hero-left" id="heroLeftCarousel">
+        <video class="hero-side-video active" muted autoplay loop playsinline preload="metadata">
+            <source src="cuantico.mp4" type="video/mp4">
+        </video>
+        <video class="hero-side-video" muted loop playsinline preload="metadata">
+            <source src="ligth.mp4" type="video/mp4">
+        </video>
+        <video class="hero-side-video" muted loop playsinline preload="metadata">
+            <source src="ligth2.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="hero-center-content">
+        <h1 data-key="h-t">Alcance Técnico Especializado</h1>
+        <p data-key="h-s">Diseño Estructurado | Desarrollo RPA | Trazabilidad | Suministro de Materiales Eléctricos</p>
+    </div>
+
+    <div class="hero-side hero-right" id="heroRightCarousel">
+        <video class="hero-side-video active" muted autoplay loop playsinline preload="metadata">
+            <source src="sub2.mp4" type="video/mp4">
+        </video>
+        <video class="hero-side-video" muted loop playsinline preload="metadata">
+            <source src="sub1.mp4" type="video/mp4">
+        </video>
+        <video class="hero-side-video" muted loop playsinline preload="metadata">
+            <source src="data.mp4" type="video/mp4">
+        </video>
+    </div>
 </section>
 
 <section class="secondary-nav" id="secondaryNav">
@@ -1812,7 +1950,7 @@
     function closeMaterialsView() {
         document.getElementById("materialsView").classList.remove("active");
         document.getElementById("mainContent").style.display = "block";
-        document.getElementById("mainHero").style.display = "block";
+        document.getElementById("mainHero").style.display = "flex";
         document.getElementById("secondaryNav").style.display = "block";
         window.scrollTo(0, 0);
     }
@@ -1928,7 +2066,40 @@
         logoCarouselInterval = setInterval(nextLogoCarouselVideo, 4000);
     }
 
+    function initSideCarousel(containerSelector, intervalMs = 4500) {
+        const videos = document.querySelectorAll(`${containerSelector} .hero-side-video`);
+        if (!videos.length) return;
+
+        let currentIndex = 0;
+
+        function showVideo(index) {
+            videos.forEach((video, i) => {
+                video.classList.toggle('active', i === index);
+                if (i === index) {
+                    const playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(() => {});
+                    }
+                } else {
+                    video.pause();
+                    try {
+                        video.currentTime = 0;
+                    } catch (err) {}
+                }
+            });
+        }
+
+        showVideo(currentIndex);
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % videos.length;
+            showVideo(currentIndex);
+        }, intervalMs);
+    }
+
     startLogoCarousel();
+    initSideCarousel('#heroLeftCarousel', 4200);
+    initSideCarousel('#heroRightCarousel', 4700);
 </script>
 </body>
 </html>
