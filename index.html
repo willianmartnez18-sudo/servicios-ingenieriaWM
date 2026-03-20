@@ -52,42 +52,22 @@
             flex: 1;
         }
 
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
-        .logo span { color: var(--accent); }
-
-        .logo-video-carousel {
-            position: relative;
-            width: 320px;
-            height: 92px;
-            border-radius: 12px;
-            overflow: hidden;
-            flex-shrink: 0;
-            border: 1px solid rgba(8,47,82,0.12);
-            box-shadow: 0 8px 22px rgba(8,47,82,0.14);
-            background: linear-gradient(135deg, rgba(8,47,82,0.96), rgba(19,77,120,0.92));
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: 800; 
+            color: var(--primary); 
         }
 
-        .logo-video-slide {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.9s ease-in-out;
-            pointer-events: none;
-        }
-
-        .logo-video-slide.active {
-            opacity: 1;
+        .logo span { 
+            color: var(--accent); 
         }
 
         .lang-switcher {
             display: flex;
             gap: 8px;
             margin-left: auto;
-            margin-right: 20px;
         }
+
         .btn-lang {
             padding: 6px 12px;
             border: 2px solid var(--primary);
@@ -99,6 +79,7 @@
             font-size: 0.8rem;
             transition: 0.3s;
         }
+
         .btn-lang.active {
             background: var(--primary);
             color: white;
@@ -114,13 +95,17 @@
             flex-wrap: wrap;
             box-shadow: inset 0 -2px 8px rgba(0,0,0,0.20);
         }
+
         .contact-item {
             display: flex;
             align-items: center;
             gap: 10px;
             font-size: 0.9rem;
         }
-        .contact-item i { color: var(--accent); }
+
+        .contact-item i { 
+            color: var(--accent); 
+        }
         
         .contact-item a {
             color: white;
@@ -140,10 +125,10 @@
             background-size: cover; 
             background-position: center;
             color: white; 
-            padding: 52px 5%;
-            min-height: 270px;
+            padding: 0 5%;
+            min-height: 320px;
             display: flex;
-            align-items: center;
+            align-items: stretch;
             justify-content: center;
             gap: 24px;
             overflow: hidden;
@@ -161,14 +146,14 @@
 
         .hero-side {
             position: relative;
-            width: 26%;
+            width: 27%;
             min-width: 220px;
-            max-width: 340px;
-            height: 240px;
-            border-radius: 18px;
+            max-width: 360px;
+            align-self: stretch;
+            border-radius: 0;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.10);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+            border: none;
+            box-shadow: none;
             background: rgba(255,255,255,0.04);
             z-index: 2;
         }
@@ -193,7 +178,10 @@
             flex: 1;
             max-width: 620px;
             text-align: center;
-            padding: 0 10px;
+            padding: 40px 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .hero-center-content h1 {
@@ -244,7 +232,9 @@
             transform: translateY(-2px);
         }
 
-        .container { padding: 40px 5%; }
+        .container { 
+            padding: 40px 5%; 
+        }
 
         .grid {
             display: grid;
@@ -262,8 +252,16 @@
             transition: all 0.3s ease;
         }
 
-        .card h3 { color: var(--primary); margin: 15px 0; font-size: 1.4rem; }
-        .main-icon { color: var(--accent); font-size: 2.5rem; }
+        .card h3 { 
+            color: var(--primary); 
+            margin: 15px 0; 
+            font-size: 1.4rem; 
+        }
+
+        .main-icon { 
+            color: var(--accent); 
+            font-size: 2.5rem; 
+        }
 
         .btn-expand {
             background: linear-gradient(135deg, #082f52 0%, #15517d 100%);
@@ -341,7 +339,9 @@
             transition: transform 0.2s;
         }
 
-        .img-container:hover { transform: scale(1.03); }
+        .img-container:hover { 
+            transform: scale(1.03); 
+        }
 
         .img-container img, .img-container video {
             width: 100%;
@@ -398,7 +398,9 @@
             font-size: 1.1rem;
         }
 
-        .materials-title i { color: var(--accent); }
+        .materials-title i { 
+            color: var(--accent); 
+        }
 
         .btn-back {
             background: linear-gradient(135deg, #082f52 0%, #15517d 100%);
@@ -512,7 +514,9 @@
             cursor: pointer;
         }
 
-        .material-item:hover{ transform: scale(1.02); }
+        .material-item:hover{ 
+            transform: scale(1.02); 
+        }
 
         .material-thumb{
             width: 100%;
@@ -549,6 +553,7 @@
             margin-top: 8px;
             cursor: pointer;
         }
+
         .more-info-link:hover{
             text-decoration: underline;
         }
@@ -562,14 +567,17 @@
             margin-top: 16px;
             box-shadow: 0 4px 14px rgba(8,47,82,0.04);
         }
+
         .request-section h2{
             margin: 0 0 10px 0;
             color: var(--primary);
             font-size: 1.15rem;
         }
+
         .request-form{
             max-width: 650px;
         }
+
         .request-form label{
             display:block;
             margin: 10px 0;
@@ -577,6 +585,7 @@
             color: var(--secondary);
             font-size: 0.9rem;
         }
+
         .request-form input,
         .request-form select,
         .request-form textarea{
@@ -590,16 +599,19 @@
             font-family: inherit;
             background: #ffffff;
         }
+
         .request-form textarea{
             resize: vertical;
             min-height: 110px;
         }
+
         .request-actions{
             display:flex;
             gap: 10px;
             flex-wrap: wrap;
             margin-top: 12px;
         }
+
         .btn-send{
             background: linear-gradient(135deg, #082f52 0%, #15517d 100%);
             color: white;
@@ -612,6 +624,7 @@
             align-items:center;
             gap: 10px;
         }
+
         .btn-clear{
             background: linear-gradient(180deg, #f7fbfe 0%, #edf5fb 100%);
             color: var(--primary);
@@ -621,6 +634,7 @@
             cursor: pointer;
             font-weight: 900;
         }
+
         .form-hint{
             margin: 10px 0 0 0;
             font-size: 0.9rem;
@@ -658,6 +672,7 @@
             background-color: rgba(0,0,0,0.9);
             cursor: zoom-out;
         }
+
         .modal-content {
             margin: auto;
             display: block;
@@ -843,25 +858,26 @@
         #card_gallery .gallery-grid video {
             animation-duration: 8.4s;
         }
+
         #card3 .gallery-grid img,
         #card3 .gallery-grid video {
             animation-duration: 9.0s;
         }
+
         #materialsView .materials-items img,
         #materialsView .materials-items video {
             animation-duration: 8.8s;
         }
 
         @media (max-width: 1024px) {
-            .logo-video-carousel {
-                width: 260px;
-                height: 82px;
+            .hero {
+                min-height: 290px;
+                gap: 18px;
             }
 
             .hero-side {
-                width: 24%;
+                width: 25%;
                 min-width: 180px;
-                height: 210px;
             }
 
             .hero-center-content h1 {
@@ -887,23 +903,16 @@
                 width: 100%;
             }
 
-            .logo-video-carousel {
-                width: 100%;
-                max-width: 100%;
-                height: 180px;
-            }
-
             .lang-switcher {
                 margin-left: 0;
-                margin-right: 0;
                 justify-content: flex-start;
             }
 
             .hero {
                 flex-direction: column;
                 min-height: auto;
-                padding: 34px 4%;
-                gap: 18px;
+                padding: 0;
+                gap: 0;
             }
 
             .hero-side {
@@ -916,6 +925,7 @@
             .hero-center-content {
                 order: 2;
                 max-width: 100%;
+                padding: 28px 4%;
             }
 
             .hero-left {
@@ -983,27 +993,6 @@
 <header>
     <div class="header-left">
         <div class="logo">WM<span>AUTOMATION SUPPLY</span></div>
-
-        <div class="logo-video-carousel" id="logoVideoCarousel">
-            <video class="logo-video-slide active" muted autoplay loop playsinline preload="metadata">
-                <source src="cuantico.mp4" type="video/mp4">
-            </video>
-            <video class="logo-video-slide" muted loop playsinline preload="metadata">
-                <source src="ligth.mp4" type="video/mp4">
-            </video>
-            <video class="logo-video-slide" muted loop playsinline preload="metadata">
-                <source src="ligth2.mp4" type="video/mp4">
-            </video>
-            <video class="logo-video-slide" muted loop playsinline preload="metadata">
-                <source src="sub2.mp4" type="video/mp4">
-            </video>
-            <video class="logo-video-slide" muted loop playsinline preload="metadata">
-                <source src="sub1.mp4" type="video/mp4">
-            </video>
-            <video class="logo-video-slide" muted loop playsinline preload="metadata">
-                <source src="data.mp4" type="video/mp4">
-            </video>
-        </div>
     </div>
     
     <div class="lang-switcher">
@@ -2034,38 +2023,6 @@
         });
     }
 
-    const logoCarouselVideos = document.querySelectorAll('#logoVideoCarousel .logo-video-slide');
-    let logoCarouselIndex = 0;
-    let logoCarouselInterval = null;
-
-    function playLogoCarouselVideo(index) {
-        logoCarouselVideos.forEach((video, i) => {
-            video.classList.toggle('active', i === index);
-            if (i === index) {
-                const playPromise = video.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(() => {});
-                }
-            } else {
-                video.pause();
-                try {
-                    video.currentTime = 0;
-                } catch (err) {}
-            }
-        });
-    }
-
-    function nextLogoCarouselVideo() {
-        logoCarouselIndex = (logoCarouselIndex + 1) % logoCarouselVideos.length;
-        playLogoCarouselVideo(logoCarouselIndex);
-    }
-
-    function startLogoCarousel() {
-        if (!logoCarouselVideos.length) return;
-        playLogoCarouselVideo(logoCarouselIndex);
-        logoCarouselInterval = setInterval(nextLogoCarouselVideo, 4000);
-    }
-
     function initSideCarousel(containerSelector, intervalMs = 4500) {
         const videos = document.querySelectorAll(`${containerSelector} .hero-side-video`);
         if (!videos.length) return;
@@ -2097,7 +2054,6 @@
         }, intervalMs);
     }
 
-    startLogoCarousel();
     initSideCarousel('#heroLeftCarousel', 4200);
     initSideCarousel('#heroRightCarousel', 4700);
 </script>
