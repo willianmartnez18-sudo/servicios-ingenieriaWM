@@ -986,6 +986,114 @@
                 height: 40px;
             }
         }
+
+        #wmChatbot {
+            position: relative;
+            z-index: 5000;
+        }
+
+        #chatToggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 62px;
+            height: 62px;
+            background: linear-gradient(135deg, #082f52 0%, #15517d 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6rem;
+            cursor: pointer;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+            z-index: 5001;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #chatToggle:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.30);
+        }
+
+        #chatBox {
+            position: fixed;
+            bottom: 98px;
+            right: 25px;
+            width: 310px;
+            max-width: calc(100vw - 30px);
+            background: linear-gradient(180deg, #ffffff 0%, #f8fbfe 100%);
+            border-radius: 14px;
+            box-shadow: 0 18px 35px rgba(0,0,0,0.22);
+            display: none;
+            z-index: 5001;
+            overflow: hidden;
+            border: 1px solid #dce7f0;
+        }
+
+        #chatBox.active {
+            display: block;
+            animation: zoom 0.25s ease;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #082f52 0%, #15517d 100%);
+            color: white;
+            padding: 14px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 800;
+            gap: 10px;
+        }
+
+        .chat-header i {
+            cursor: pointer;
+        }
+
+        .chat-body {
+            padding: 16px;
+            font-size: 0.92rem;
+            color: var(--text);
+        }
+
+        .chat-body p {
+            margin: 0 0 10px 0;
+        }
+
+        .chat-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin: 14px 0 10px 0;
+        }
+
+        .chat-options button {
+            background: linear-gradient(135deg, #1f5f8b 0%, #15517d 100%);
+            color: white;
+            border: none;
+            padding: 10px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 800;
+            font-family: inherit;
+            text-align: left;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .chat-options button:hover {
+            background: linear-gradient(135deg, #082f52 0%, #11466f 100%);
+            transform: translateY(-1px);
+        }
+
+        .chat-footer-text {
+            margin-top: 8px;
+            font-size: 0.78rem;
+            color: #5d7285;
+            font-weight: 700;
+            line-height: 1.45;
+        }
+
     </style>
 </head>
 <body>
@@ -1579,6 +1687,37 @@
     </div>
 </div>
 
+
+<div id="wmChatbot">
+    <div id="chatToggle" onclick="toggleChat()">
+        <i class="fas fa-robot"></i>
+    </div>
+
+    <div id="chatBox">
+        <div class="chat-header">
+            <span id="chatTitle">WM Automation</span>
+            <i class="fas fa-times" onclick="toggleChat()"></i>
+        </div>
+
+        <div class="chat-body">
+            <p><strong id="chatGreeting">Hola 👋</strong></p>
+            <p id="chatQuestion">¿En qué podemos ayudarte?</p>
+
+            <div class="chat-options">
+                <button type="button" id="chatWhatsAppBtn" onclick="goWhatsApp()">📲 WhatsApp</button>
+                <button type="button" id="chatEmailBtn" onclick="goEmail()">📧 Correo</button>
+                <button type="button" id="chatAutomationBtn" onclick="goAutomation()">🤖 Solicitar automatización</button>
+                <button type="button" id="chatMaterialsBtn" onclick="goMaterials()">📦 Consultar materiales</button>
+            </div>
+
+            <p class="chat-footer-text" id="chatFooterText">
+                Soluciones en ingeniería, automatización y suministro eléctrico.
+            </p>
+        </div>
+    </div>
+</div>
+
+
 <footer>
     <p data-key="f-t">© 2026 WM Automation Supply</p>
 </footer>
@@ -1896,6 +2035,7 @@
 
     function changeLang(lang, btn) {
         currentLang = lang;
+        updateChatbotLanguage(lang);
         document.querySelectorAll('[data-key]').forEach(el => {
             const key = el.getAttribute('data-key');
             el.innerText = dictionary[lang][key] || '';
@@ -2053,6 +2193,71 @@
 
     initSideCarousel('#heroLeftCarousel', 4200);
     initSideCarousel('#heroRightCarousel', 4700);
+
+    function toggleChat() {
+        const chatBox = document.getElementById('chatBox');
+        chatBox.classList.toggle('active');
+    }
+
+    function goWhatsApp() {
+        window.open('https://wa.me/12149493289?text=' + encodeURIComponent('Hola, quisiera obtener información sobre WM Automation Supply.'), '_blank');
+    }
+
+    function goEmail() {
+        window.location.href = 'mailto:sales@wmautomationsupply.com?subject=' + encodeURIComponent('WM Automation Supply Inquiry');
+    }
+
+    function goAutomation() {
+        const card = document.getElementById('card2');
+        if (card && !card.classList.contains('open')) {
+            toggleCard('card2');
+        }
+        card?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        toggleChat();
+    }
+
+    function goMaterials() {
+        openMaterialsView();
+        toggleChat();
+    }
+
+    function updateChatbotLanguage(lang) {
+        const chatTexts = {
+            es: {
+                title: 'WM Automation',
+                greeting: 'Hola 👋',
+                question: '¿En qué podemos ayudarte?',
+                whatsapp: '📲 WhatsApp',
+                email: '📧 Correo',
+                automation: '🤖 Solicitar automatización',
+                materials: '📦 Consultar materiales',
+                footer: 'Soluciones en ingeniería, automatización y suministro eléctrico.'
+            },
+            en: {
+                title: 'WM Automation',
+                greeting: 'Hello 👋',
+                question: 'How can we help you?',
+                whatsapp: '📲 WhatsApp',
+                email: '📧 Email',
+                automation: '🤖 Request automation',
+                materials: '📦 View materials',
+                footer: 'Solutions in engineering, automation, and electrical material supply.'
+            }
+        };
+
+        const selected = chatTexts[lang] || chatTexts.es;
+        document.getElementById('chatTitle').textContent = selected.title;
+        document.getElementById('chatGreeting').textContent = selected.greeting;
+        document.getElementById('chatQuestion').textContent = selected.question;
+        document.getElementById('chatWhatsAppBtn').textContent = selected.whatsapp;
+        document.getElementById('chatEmailBtn').textContent = selected.email;
+        document.getElementById('chatAutomationBtn').textContent = selected.automation;
+        document.getElementById('chatMaterialsBtn').textContent = selected.materials;
+        document.getElementById('chatFooterText').textContent = selected.footer;
+    }
+
+
+    updateChatbotLanguage(currentLang);
 </script>
 </body>
 </html>
