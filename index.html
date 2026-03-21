@@ -2054,5 +2054,44 @@
     initSideCarousel('#heroLeftCarousel', 4200);
     initSideCarousel('#heroRightCarousel', 4700);
 </script>
+
+<!-- CHATBOT WM -->
+<div id="wmChatbot">
+    <div id="chatToggle" onclick="toggleChat()">
+        <i class="fas fa-robot"></i>
+    </div>
+    <div id="chatBox">
+        <div class="chat-header">
+            <span>WM Automation</span>
+            <i class="fas fa-times" onclick="toggleChat()"></i>
+        </div>
+        <div class="chat-body">
+            <p><strong>Hola 👋</strong></p>
+            <p>¿En qué podemos ayudarte?</p>
+            <div class="chat-options">
+                <button onclick="goWhatsApp()">📲 WhatsApp</button>
+                <button onclick="goEmail()">📧 Correo</button>
+                <button onclick="goAutomation()">🤖 Automatización</button>
+                <button onclick="openMaterialsView()">📦 Materiales</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+#chatToggle{position:fixed;bottom:25px;right:25px;width:60px;height:60px;background:#082f52;color:white;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:1.6rem;cursor:pointer;z-index:5000;}
+#chatBox{position:fixed;bottom:95px;right:25px;width:280px;background:white;border-radius:10px;display:none;z-index:5000;}
+.chat-header{background:#082f52;color:white;padding:10px;display:flex;justify-content:space-between;}
+.chat-body{padding:10px;}
+.chat-options button{width:100%;margin-top:5px;background:#1f5f8b;color:white;border:none;padding:8px;border-radius:5px;}
+</style>
+
+<script>
+function toggleChat(){const box=document.getElementById("chatBox");box.style.display=box.style.display==="block"?"none":"block";}
+function goWhatsApp(){window.open("https://wa.me/12149493289","_blank");}
+function goEmail(){window.location.href="mailto:sales@wmautomationsupply.com";}
+function goAutomation(){alert("Solicita automatización");}
+</script>
+
 </body>
 </html>
