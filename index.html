@@ -986,6 +986,710 @@
                 height: 40px;
             }
         }
+
+        /* WM Automation Supply - local redesign preview layer */
+        :root {
+            --primary: #0b1624;
+            --secondary: #1e5f78;
+            --accent: #c87932;
+            --bg: #f4f1ea;
+            --text: #1d2730;
+            --white: #ffffff;
+            --wm-ink: #070d14;
+            --wm-panel: #111c27;
+            --wm-panel-2: #182735;
+            --wm-copper: #c87932;
+            --wm-blue: #197090;
+            --wm-surface: #fbfaf7;
+            --wm-line: rgba(23, 43, 59, 0.16);
+        }
+
+        * {
+            box-sizing: border-box;
+            letter-spacing: 0;
+        }
+
+        html {
+            background: #f4f1ea;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background:
+                linear-gradient(90deg, rgba(8, 17, 28, 0.055) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(8, 17, 28, 0.045) 1px, transparent 1px),
+                linear-gradient(135deg, #f8f6f0 0%, #eee9df 46%, #f7f7f4 100%);
+            background-size: 48px 48px, 48px 48px, auto;
+            color: var(--text);
+        }
+
+        header {
+            background: rgba(7, 13, 20, 0.96);
+            border-bottom: 1px solid rgba(200, 121, 50, 0.42);
+            box-shadow: 0 18px 40px rgba(7, 13, 20, 0.22);
+            padding: 18px 5%;
+        }
+
+        .logo {
+            color: #fffaf0;
+            font-size: 1.42rem;
+            font-weight: 900;
+        }
+
+        .logo span {
+            color: var(--wm-copper);
+        }
+
+        .btn-lang {
+            background: rgba(255, 255, 255, 0.06);
+            color: #fffaf0;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 8px;
+        }
+
+        .btn-lang.active,
+        .btn-lang:hover {
+            background: var(--wm-copper);
+            border-color: var(--wm-copper);
+            color: #09111b;
+        }
+
+        .contact-bar {
+            background:
+                linear-gradient(90deg, rgba(200, 121, 50, 0.18), transparent 26%, rgba(25, 112, 144, 0.16)),
+                linear-gradient(135deg, #0a121d 0%, #132535 100%);
+            border-bottom: 1px solid rgba(200, 121, 50, 0.32);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        .contact-item {
+            color: #eef4f6;
+            font-weight: 700;
+        }
+
+        .contact-item i,
+        .contact-item a i {
+            color: var(--wm-copper);
+        }
+
+        .hero {
+            min-height: 510px;
+            padding: 0 5%;
+            gap: 28px;
+            background:
+                linear-gradient(115deg, rgba(5, 10, 17, 0.97) 0%, rgba(12, 29, 43, 0.92) 48%, rgba(9, 18, 28, 0.96) 100%),
+                repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 120px),
+                url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            border-bottom: 1px solid rgba(200, 121, 50, 0.42);
+            box-shadow: inset 0 -40px 70px rgba(0, 0, 0, 0.28);
+        }
+
+        .hero::before {
+            background:
+                linear-gradient(90deg, rgba(200, 121, 50, 0.22), transparent 18%, transparent 82%, rgba(25, 112, 144, 0.2)),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.24));
+        }
+
+        .hero-side {
+            width: 26%;
+            max-width: 390px;
+            margin: 38px 0;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: 0 28px 70px rgba(0, 0, 0, 0.38);
+            background: #111c27;
+        }
+
+        .hero-side::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(200, 121, 50, 0.18);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+
+        .hero-side-video {
+            filter: saturate(1.05) contrast(1.08);
+        }
+
+        .hero-center-content {
+            max-width: 680px;
+            padding: 72px 16px;
+            text-shadow: 0 6px 28px rgba(0, 0, 0, 0.48);
+        }
+
+        .hero-center-content h1 {
+            font-size: 4rem;
+            line-height: 0.98;
+            margin-bottom: 22px;
+            color: #fffaf0;
+            font-weight: 900;
+        }
+
+        .hero-center-content p {
+            color: #d8e2e4;
+            font-size: 1.18rem;
+            max-width: 580px;
+            margin: 0 auto;
+        }
+
+        .secondary-nav {
+            background: rgba(251, 250, 247, 0.94);
+            border-top: 0;
+            border-bottom: 1px solid var(--wm-line);
+            box-shadow: 0 18px 40px rgba(20, 31, 42, 0.10);
+            padding: 16px 5%;
+        }
+
+        .secondary-link {
+            min-height: 44px;
+            border-radius: 10px;
+            background: #ffffff;
+            border: 1px solid rgba(17, 28, 39, 0.14);
+            color: #102033;
+            box-shadow: 0 7px 18px rgba(17, 28, 39, 0.07);
+        }
+
+        .secondary-link:hover {
+            background: #101c28;
+            border-color: rgba(200, 121, 50, 0.72);
+            color: #fffaf0;
+        }
+
+        .container {
+            max-width: 1460px;
+            margin: 0 auto;
+            padding: 58px 5%;
+        }
+
+        .grid {
+            gap: 28px;
+        }
+
+        .card,
+        .materials-intro,
+        .materials-group,
+        .request-section,
+        .info-modal-box {
+            background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(247,244,237,0.98));
+            border: 1px solid rgba(19, 35, 50, 0.14);
+            border-radius: 16px;
+            box-shadow: 0 22px 60px rgba(20, 31, 42, 0.12);
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            border-top: 0;
+            padding: 28px;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--wm-copper), var(--wm-blue));
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 75px rgba(20, 31, 42, 0.18);
+        }
+
+        .card h3,
+        .materials-title,
+        .materials-group-title,
+        .request-section h2,
+        .info-modal-title {
+            color: #101c28;
+        }
+
+        .main-icon,
+        .materials-title i,
+        .materials-group-title i,
+        .info-link-list i {
+            color: var(--wm-copper);
+        }
+
+        .btn-expand,
+        .btn-back,
+        .btn-send,
+        .info-close {
+            background: linear-gradient(135deg, #101c28 0%, #173247 100%);
+            border: 1px solid rgba(200, 121, 50, 0.38);
+            border-radius: 10px;
+            color: #fffaf0;
+            box-shadow: 0 12px 28px rgba(16, 28, 40, 0.18);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .btn-expand:hover,
+        .btn-back:hover,
+        .btn-send:hover,
+        .info-close:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 36px rgba(16, 28, 40, 0.24);
+        }
+
+        .card.open .details {
+            border-top: 1px solid rgba(16, 28, 40, 0.12);
+        }
+
+        .sub-area,
+        .img-container,
+        .material-item,
+        .info-link-list a,
+        .btn-clear {
+            background: #fffdf8;
+            border: 1px solid rgba(16, 28, 40, 0.13);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(20, 31, 42, 0.07);
+        }
+
+        .sub-header,
+        .material-name,
+        .img-container small,
+        .more-info-link {
+            color: #12263a;
+        }
+
+        .sub-content.active {
+            background: #fbfaf7;
+            border-top: 1px solid rgba(16, 28, 40, 0.10);
+        }
+
+        .img-container:hover,
+        .material-item:hover,
+        .info-link-list a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 38px rgba(20, 31, 42, 0.13);
+        }
+
+        .img-container img,
+        .img-container video,
+        .material-thumb {
+            border-radius: 10px;
+            border: 1px solid rgba(16, 28, 40, 0.12);
+        }
+
+        .materials-view {
+            background:
+                linear-gradient(90deg, rgba(8, 17, 28, 0.05) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(8, 17, 28, 0.04) 1px, transparent 1px),
+                linear-gradient(135deg, #f7f5ef 0%, #eee8dc 100%);
+            background-size: 46px 46px, 46px 46px, auto;
+        }
+
+        .materials-topbar,
+        .info-modal-header {
+            background: rgba(251, 250, 247, 0.96);
+            border-bottom: 1px solid rgba(16, 28, 40, 0.12);
+            box-shadow: 0 16px 34px rgba(20, 31, 42, 0.12);
+        }
+
+        .materials-group-head {
+            background:
+                linear-gradient(90deg, rgba(200, 121, 50, 0.14), rgba(25, 112, 144, 0.10)),
+                #fffdf8;
+        }
+
+        .materials-tag,
+        .materials-count {
+            background: #101c28;
+            border-color: rgba(200, 121, 50, 0.42);
+            color: #fffaf0;
+        }
+
+        .request-form input,
+        .request-form select,
+        .request-form textarea {
+            background: #fffdf8;
+            border: 1px solid rgba(16, 28, 40, 0.18);
+        }
+
+        .modal {
+            background-color: rgba(7, 13, 20, 0.92);
+        }
+
+        .modal-content {
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 28px 80px rgba(0,0,0,0.45);
+        }
+
+        footer {
+            margin-top: 20px;
+            background:
+                linear-gradient(90deg, rgba(200, 121, 50, 0.18), transparent 30%, rgba(25, 112, 144, 0.15)),
+                linear-gradient(135deg, #070d14 0%, #142231 100%);
+            border-top: 1px solid rgba(200, 121, 50, 0.32);
+        }
+
+        @media (max-width: 1024px) {
+            .hero {
+                min-height: 430px;
+                gap: 18px;
+            }
+
+            .hero-center-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-side {
+                min-width: 190px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 16px 5%;
+            }
+
+            .logo {
+                font-size: 1.18rem;
+            }
+
+            .hero {
+                padding: 0;
+                min-height: auto;
+            }
+
+            .hero-side {
+                height: 190px;
+                margin: 0;
+                border-radius: 0;
+                border-left: 0;
+                border-right: 0;
+            }
+
+            .hero-center-content {
+                padding: 38px 7%;
+                background: linear-gradient(180deg, rgba(7, 13, 20, 0.94), rgba(13, 29, 43, 0.96));
+            }
+
+            .hero-center-content h1 {
+                font-size: 2.2rem;
+                line-height: 1.05;
+            }
+
+            .hero-center-content p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 36px 5%;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 22px;
+            }
+        }
+
+        /* Futuristic interaction pass for preview */
+        @keyframes wmSignalSweep {
+            0% { transform: translateX(-120%) skewX(-18deg); opacity: 0; }
+            22% { opacity: 0.42; }
+            55% { opacity: 0.20; }
+            100% { transform: translateX(140%) skewX(-18deg); opacity: 0; }
+        }
+
+        @keyframes wmHoverPulse {
+            0%, 100% { box-shadow: 0 0 0 rgba(59, 210, 255, 0); }
+            50% { box-shadow: 0 0 26px rgba(59, 210, 255, 0.22); }
+        }
+
+        body {
+            background:
+                linear-gradient(90deg, rgba(45, 210, 255, 0.06) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(200, 121, 50, 0.055) 1px, transparent 1px),
+                radial-gradient(circle at 50% -10%, rgba(45, 210, 255, 0.14), transparent 34%),
+                linear-gradient(135deg, #070d14 0%, #101a25 24%, #ebe6db 24.1%, #f7f5ef 100%);
+            background-size: 56px 56px, 56px 56px, auto, auto;
+        }
+
+        .hero {
+            background:
+                linear-gradient(115deg, rgba(3, 8, 14, 0.98) 0%, rgba(8, 28, 41, 0.94) 52%, rgba(4, 9, 16, 0.98) 100%),
+                linear-gradient(90deg, rgba(45, 210, 255, 0.14) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(200, 121, 50, 0.10) 1px, transparent 1px),
+                url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover, 96px 96px, 96px 96px, cover;
+        }
+
+        .hero-side {
+            border-color: rgba(63, 214, 255, 0.28);
+            box-shadow:
+                0 28px 75px rgba(0, 0, 0, 0.42),
+                0 0 46px rgba(45, 210, 255, 0.12);
+        }
+
+        .hero-center-content h1 {
+            color: #f9fbff;
+            text-shadow:
+                0 0 22px rgba(45, 210, 255, 0.20),
+                0 10px 34px rgba(0, 0, 0, 0.56);
+        }
+
+        .secondary-nav {
+            background: rgba(7, 13, 20, 0.92);
+            border-top: 1px solid rgba(45, 210, 255, 0.18);
+            border-bottom: 1px solid rgba(200, 121, 50, 0.32);
+        }
+
+        .secondary-nav-inner {
+            gap: 12px;
+        }
+
+        .secondary-link,
+        .btn-expand {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            transform: translateY(0);
+            border: 1px solid rgba(45, 210, 255, 0.28);
+        }
+
+        .secondary-link {
+            background: linear-gradient(135deg, rgba(14, 26, 38, 0.96), rgba(19, 50, 66, 0.94));
+            color: #eefbff;
+            padding-left: 16px;
+            padding-right: 18px;
+            gap: 9px;
+            box-shadow:
+                0 12px 28px rgba(0, 0, 0, 0.22),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+
+        .secondary-link::before,
+        .btn-expand::before {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            flex: 0 0 28px;
+            border-radius: 50%;
+            background: rgba(45, 210, 255, 0.10);
+            color: #64dcff;
+            border: 1px solid rgba(45, 210, 255, 0.22);
+            text-shadow: 0 0 14px rgba(45, 210, 255, 0.38);
+        }
+
+        .secondary-link:nth-child(1)::before { content: "\f0eb"; }
+        .secondary-link:nth-child(2)::before { content: "\f140"; }
+        .secondary-link:nth-child(3)::before { content: "\f06e"; }
+        .secondary-link:nth-child(4)::before { content: "\f2a0"; }
+        .secondary-link:nth-child(5)::before { content: "\f0c0"; }
+        .secondary-link:nth-child(6)::before { content: "\f466"; }
+        .secondary-link:nth-child(7)::before { content: "\f21c"; }
+
+        .secondary-link::after,
+        .btn-expand::after {
+            content: "";
+            position: absolute;
+            inset: -30% auto -30% -55%;
+            width: 44%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+            transform: translateX(-120%) skewX(-18deg);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .secondary-link:hover,
+        .btn-expand:hover {
+            background: linear-gradient(135deg, #112536 0%, #143a4d 55%, #1b5a72 100%);
+            color: #ffffff;
+            border-color: rgba(100, 220, 255, 0.66);
+            transform: translateY(-4px);
+            animation: wmHoverPulse 1.8s ease-in-out infinite;
+        }
+
+        .secondary-link:hover::after,
+        .btn-expand:hover::after {
+            animation: wmSignalSweep 1.05s ease-out;
+        }
+
+        .btn-expand {
+            justify-content: center;
+            gap: 10px;
+            min-height: 48px;
+            background:
+                linear-gradient(135deg, rgba(13, 27, 40, 0.98), rgba(17, 50, 65, 0.96));
+            color: #f4fbff;
+            box-shadow:
+                0 16px 34px rgba(7, 13, 20, 0.18),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+
+        #card1 .btn-expand::before { content: "\f542"; }
+        #card_gallery .btn-expand::before { content: "\f03e"; }
+        #card2 .btn-expand::before { content: "\f121"; }
+        #card3 .btn-expand::before { content: "\f5fd"; }
+        #card4 .btn-expand::before { content: "\f1b3"; }
+
+        .card {
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.94), rgba(247,244,237,0.98)),
+                linear-gradient(135deg, rgba(45, 210, 255, 0.10), transparent 38%);
+            border-color: rgba(45, 210, 255, 0.16);
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 58px;
+            height: 58px;
+            border-top: 1px solid rgba(45, 210, 255, 0.30);
+            border-right: 1px solid rgba(200, 121, 50, 0.34);
+            pointer-events: none;
+        }
+
+        .main-icon {
+            filter: drop-shadow(0 0 14px rgba(200, 121, 50, 0.24));
+        }
+
+        .sub-header {
+            gap: 12px;
+        }
+
+        .sub-header i {
+            color: #197090;
+            filter: drop-shadow(0 0 10px rgba(45, 210, 255, 0.20));
+        }
+
+        .project-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .project-note {
+            position: relative;
+            overflow: hidden;
+            min-height: 168px;
+            padding: 16px;
+            border-radius: 14px;
+            background:
+                linear-gradient(135deg, rgba(8, 19, 30, 0.96), rgba(16, 54, 72, 0.92)),
+                linear-gradient(90deg, rgba(45, 210, 255, 0.12), transparent);
+            border: 1px solid rgba(45, 210, 255, 0.22);
+            color: #f4fbff;
+            box-shadow: 0 16px 36px rgba(7, 13, 20, 0.18);
+        }
+
+        .project-note::after {
+            content: "";
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 42px;
+            height: 42px;
+            border-top: 1px solid rgba(100, 220, 255, 0.42);
+            border-right: 1px solid rgba(200, 121, 50, 0.42);
+            pointer-events: none;
+        }
+
+        .project-note i {
+            color: #64dcff;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 12px rgba(45, 210, 255, 0.35));
+        }
+
+        .project-media {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 11px;
+            border: 1px solid rgba(100, 220, 255, 0.24);
+            margin-bottom: 12px;
+            box-shadow: 0 16px 34px rgba(0, 0, 0, 0.24);
+            cursor: zoom-in;
+        }
+
+        .project-media-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .project-media-grid img {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid rgba(100, 220, 255, 0.20);
+            box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22);
+            cursor: zoom-in;
+        }
+
+        .project-note strong {
+            display: block;
+            margin-bottom: 7px;
+            color: #fffaf0;
+            font-size: 0.98rem;
+        }
+
+        .project-note p {
+            margin: 0;
+            color: #d8e9ee;
+            font-size: 0.86rem;
+            line-height: 1.48;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            color: #64dcff;
+            font-weight: 900;
+            text-decoration: none;
+        }
+
+        .project-link:hover {
+            color: #fffaf0;
+            text-decoration: underline;
+        }
+
+        .lang-label {
+            color: #fffaf0;
+            font-size: 0.78rem;
+            font-weight: 900;
+            align-self: center;
+        }
+
+        .btn-lang {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .secondary-link,
+            .btn-expand {
+                width: 100%;
+            }
+
+            .secondary-link {
+                justify-content: flex-start;
+            }
+        }
     </style>
 </head>
 <body>
@@ -996,8 +1700,9 @@
     </div>
     
     <div class="lang-switcher">
-        <button class="btn-lang active" onclick="changeLang('es', this)">ES</button>
-        <button class="btn-lang" onclick="changeLang('en', this)">EN</button>
+        <span class="lang-label">Language</span>
+        <button class="btn-lang active" onclick="changeLang('es', this)" aria-label="Español">🇪🇸 Español</button>
+        <button class="btn-lang" onclick="changeLang('en', this)" aria-label="English">🇺🇸 English</button>
     </div>
 </header>
 
@@ -1007,7 +1712,12 @@
             <i class="fab fa-whatsapp"></i><span>+1 214 949 3289</span>
         </a>
     </div>
-    <div class="contact-item"><i class="fas fa-envelope"></i><span>sales@wmautomationsupply.com</span></div>
+    <div class="contact-item"><i class="fas fa-envelope"></i><span>admin@wmautomationsupply.com</span></div>
+    <div class="contact-item">
+        <a href="https://www.instagram.com/wm_automation_supply/" target="_blank" rel="noopener">
+            <i class="fab fa-instagram"></i><span>@wm_automation_supply</span>
+        </a>
+    </div>
     <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span data-key="dir">Dallas, Texas</span></div>
 </div>
 
@@ -1044,6 +1754,7 @@
 
 <section class="secondary-nav" id="secondaryNav">
     <div class="secondary-nav-inner">
+        <button type="button" class="secondary-link" onclick="openInfoModal('consulting')" data-key="nav-consulting">Consultoría</button>
         <button type="button" class="secondary-link" onclick="openInfoModal('mission')" data-key="nav-mission">Misión</button>
         <button type="button" class="secondary-link" onclick="openInfoModal('vision')" data-key="nav-vision">Visión</button>
         <button type="button" class="secondary-link" onclick="openInfoModal('contact')" data-key="nav-contact">Contacto</button>
@@ -1083,8 +1794,30 @@
                 </div>
 
                 <div class="sub-area">
+                    <div class="sub-header" onclick="toggleSub('sub_autocad_recent', this)">
+                        <span data-key="cad-recent-t">2️⃣ Proyectos recientes AutoCAD y memoria descriptiva</span>
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div id="sub_autocad_recent" class="sub-content">
+                        <p data-key="cad-recent-p">Integración de planos técnicos, criterios de diseño y memoria descriptiva para documentar alcance, materiales, cargas, ubicación de equipos y secuencia constructiva.</p>
+                        <div class="project-showcase">
+                            <div class="project-note">
+                                <i class="fas fa-file-signature"></i>
+                                <strong data-key="cad-recent-1t">Planos eléctricos y layout técnico</strong>
+                                <p data-key="cad-recent-1p">Se organizó la información de campo en planos claros para revisión, coordinación y ejecución, reduciendo ambigüedades entre diseño y obra.</p>
+                            </div>
+                            <div class="project-note">
+                                <i class="fas fa-clipboard-check"></i>
+                                <strong data-key="cad-recent-2t">Memoria descriptiva del proyecto</strong>
+                                <p data-key="cad-recent-2p">Se documentó el propósito técnico, criterios aplicados, alcance de instalación y soporte para futuras aprobaciones o ajustes del proyecto.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sub-area">
                     <div class="sub-header" onclick="toggleSub('sub2', this)">
-                        <span data-key="s2-t">2️⃣ Mapeo y Análisis Geoespacial</span>
+                        <span data-key="s2-t">3️⃣ Mapeo y Análisis Geoespacial</span>
                         <i class="fas fa-plus-circle"></i>
                     </div>
                     <div id="sub2" class="sub-content">
@@ -1100,7 +1833,7 @@
 
                 <div class="sub-area">
                     <div class="sub-header" onclick="toggleSub('sub3', this)">
-                        <span data-key="s3-t">3️⃣ Simulación y Cálculo Lumínico</span>
+                        <span data-key="s3-t">4️⃣ Simulación y Cálculo Lumínico</span>
                         <i class="fas fa-plus-circle"></i>
                     </div>
                     <div id="sub3" class="sub-content">
@@ -1166,6 +1899,45 @@
                             <div class="img-container" onclick="openModal(this)">
                                 <img src="Crest1.jpeg" alt="Software Extra 2">
                                 <small data-key="img-soft-ext2">Cress Electrical Operations Suite</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sub-area">
+                    <div class="sub-header" onclick="toggleSub('sub_dev_platforms', this)">
+                        <span data-key="dev-platforms-t">Plataformas web y soluciones API</span>
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div id="sub_dev_platforms" class="sub-content">
+                        <p data-key="dev-platforms-p">Desarrollo de plataformas operativas conectadas a datos, formularios, paneles de control y flujos web para convertir procesos manuales en sistemas consultables y medibles.</p>
+                        <div class="project-showcase">
+                            <div class="project-note" onclick="openModal(this)">
+                                <img class="project-media" src="assets/realtor-bearcer-preview.png" alt="Vista previa de Realto Bearcer">
+                                <i class="fas fa-building"></i>
+                                <strong data-key="dev-realto-t">realtor-nextl.vercel.app - plataforma inmobiliaria</strong>
+                                <p data-key="dev-realto-p">Se resolvió la organización de propiedades, consulta comercial y flujo de ventas inmobiliarias en una experiencia digital preparada para mostrar inventario y captar oportunidades.</p>
+                                <a class="project-link" href="https://realtor-nextl.vercel.app" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+                                    <i class="fas fa-arrow-up-right-from-square"></i>
+                                    <span>realtor-nextl.vercel.app</span>
+                                </a>
+                            </div>
+                            <div class="project-note" onclick="openModal(this)">
+                                <img class="project-media" src="assets/materials-api-flow.png" alt="Flujo de control y solicitud de materiales">
+                                <i class="fas fa-network-wired"></i>
+                                <strong data-key="dev-material-api-t">Control y solicitud de materiales por APIs web</strong>
+                                <p data-key="dev-material-api-p">Se resolvió la trazabilidad de solicitudes, consulta de materiales y conexión entre formularios, base de datos y procesos administrativos desde una interfaz web.</p>
+                            </div>
+                            <div class="project-note" onclick="openModal(this)">
+                                <div class="project-media-grid">
+                                    <img src="assets/motorider-registro-cliente.png" alt="MotoRider registro de cliente">
+                                    <img src="assets/motorider-registro-comercio.png" alt="MotoRider registro de comercio">
+                                    <img src="assets/motorider-panel-chofer.png" alt="MotoRider panel de chofer">
+                                    <img src="assets/motorider-pagos.png" alt="MotoRider formas de pago">
+                                </div>
+                                <i class="fas fa-motorcycle"></i>
+                                <strong data-key="dev-motorider-t">MotoRider Admin</strong>
+                                <p data-key="dev-motorider-p">Se resolvió el control administrativo de comercios, choferes, ventas, filtros por fecha y lectura de datos conectados a Supabase para seguimiento operativo.</p>
                             </div>
                         </div>
                     </div>
@@ -1592,6 +2364,7 @@
             'dir': 'Dallas, Texas',
             'h-t': 'Alcance Técnico Especializado',
             'h-s': 'Diseño Estructurado | Desarrollo RPA | Trazabilidad | Suministro de Materiales Eléctricos',
+            'nav-consulting': 'Consultoría',
             'nav-mission': 'Misión',
             'nav-vision': 'Visión',
             'nav-contact': 'Contacto',
@@ -1605,10 +2378,16 @@
             's1-t': '1️⃣ Elaboración de Planos Técnicos',
             's1-p': 'Planos eléctricos, civiles e industriales bajo normativa.',
             'img-1': 'Plano Eléctrico',
-            's2-t': '2️⃣ Mapeo y Análisis Geoespacial',
+            'cad-recent-t': '2️⃣ Proyectos recientes AutoCAD y memoria descriptiva',
+            'cad-recent-p': 'Integración de planos técnicos, criterios de diseño y memoria descriptiva para documentar alcance, materiales, cargas, ubicación de equipos y secuencia constructiva.',
+            'cad-recent-1t': 'Planos eléctricos y layout técnico',
+            'cad-recent-1p': 'Se organizó la información de campo en planos claros para revisión, coordinación y ejecución, reduciendo ambigüedades entre diseño y obra.',
+            'cad-recent-2t': 'Memoria descriptiva del proyecto',
+            'cad-recent-2p': 'Se documentó el propósito técnico, criterios aplicados, alcance de instalación y soporte para futuras aprobaciones o ajustes del proyecto.',
+            's2-t': '3️⃣ Mapeo y Análisis Geoespacial',
             's2-p': 'Georreferenciación de activos y redes en ArcGIS.',
             'img-2': 'Mapeo Geoespacial',
-            's3-t': '3️⃣ Simulación y Cálculo Lumínico',
+            's3-t': '4️⃣ Simulación y Cálculo Lumínico',
             's3-p': 'Cálculos de niveles lux y optimización en DIALux.',
             'cg-t': '⚡ Galería de Coordinación Eléctrica',
             'cg-s': 'Registro fotográfico de trabajos eléctricos y supervisión de campo.',
@@ -1623,6 +2402,14 @@
             'dev1-p': 'Desarrollo de aplicaciones de escritorio y herramientas técnicas locales.',
             'img-soft-ext1': 'Vista Técnica 1',
             'img-soft-ext2': 'Vista Técnica 2',
+            'dev-platforms-t': 'Plataformas web y soluciones API',
+            'dev-platforms-p': 'Desarrollo de plataformas operativas conectadas a datos, formularios, paneles de control y flujos web para convertir procesos manuales en sistemas consultables y medibles.',
+            'dev-realto-t': 'realtor-nextl.vercel.app - plataforma inmobiliaria',
+            'dev-realto-p': 'Se resolvió la organización de propiedades, consulta comercial y flujo de ventas inmobiliarias en una experiencia digital preparada para mostrar inventario y captar oportunidades.',
+            'dev-material-api-t': 'Control y solicitud de materiales por APIs web',
+            'dev-material-api-p': 'Se resolvió la trazabilidad de solicitudes, consulta de materiales y conexión entre formularios, base de datos y procesos administrativos desde una interfaz web.',
+            'dev-motorider-t': 'MotoRider Admin',
+            'dev-motorider-p': 'Se resolvió el control administrativo de comercios, choferes, ventas, filtros por fecha y lectura de datos conectados a Supabase para seguimiento operativo.',
             'dev2-t': '🤖 Robots y Procesos RPA',
             'dev2-p': 'Automatización robótica con UiPath para tareas repetitivas y gestión de datos.',
             'c3-t': '📡 Trazabilidad y Calidad',
@@ -1688,6 +2475,7 @@
             'dir': 'Dallas, Texas',
             'h-t': 'Specialized Technical Scope',
             'h-s': 'Structured Design | RPA Development | Traceability | Electrical Material Supply',
+            'nav-consulting': 'Consulting',
             'nav-mission': 'Mission',
             'nav-vision': 'Vision',
             'nav-contact': 'Contact',
@@ -1701,10 +2489,16 @@
             's1-t': '1️⃣ Technical Drawing Production',
             's1-p': 'Electrical, civil and industrial plans under regulation.',
             'img-1': 'Electrical Plan',
-            's2-t': '2️⃣ Mapping & Geospatial Analysis',
+            'cad-recent-t': '2️⃣ Recent AutoCAD projects and descriptive report',
+            'cad-recent-p': 'Integration of technical drawings, design criteria, and descriptive documentation to define scope, materials, loads, equipment location, and construction sequence.',
+            'cad-recent-1t': 'Electrical drawings and technical layout',
+            'cad-recent-1p': 'Field information was organized into clear drawings for review, coordination, and execution, reducing ambiguity between design and site work.',
+            'cad-recent-2t': 'Project descriptive report',
+            'cad-recent-2p': 'The technical purpose, applied criteria, installation scope, and support for future approvals or project adjustments were documented.',
+            's2-t': '3️⃣ Mapping & Geospatial Analysis',
             's2-p': 'Asset and network georeferencing in ArcGIS.',
             'img-2': 'Geospatial Mapping',
-            's3-t': '3️⃣ Lighting Simulation & Calculation',
+            's3-t': '4️⃣ Lighting Simulation & Calculation',
             's3-p': 'Lux level calculations and DIALux optimization.',
             'cg-t': '⚡ Electrical Coordination Gallery',
             'cg-s': 'Photo record of electrical works and field supervision.',
@@ -1719,6 +2513,14 @@
             'dev1-p': 'Desktop application development and local technical tools.',
             'img-soft-ext1': 'Technical View 1',
             'img-soft-ext2': 'Technical View 2',
+            'dev-platforms-t': 'Web platforms and API solutions',
+            'dev-platforms-p': 'Development of operational platforms connected to data, forms, dashboards, and web flows to turn manual processes into searchable and measurable systems.',
+            'dev-realto-t': 'realtor-nextl.vercel.app - real estate platform',
+            'dev-realto-p': 'The property organization, commercial search, and real estate sales flow were resolved in a digital experience ready to display inventory and capture opportunities.',
+            'dev-material-api-t': 'Material control and requests through web APIs',
+            'dev-material-api-p': 'Request traceability, material lookup, and the connection between forms, database, and administrative processes were resolved from a web interface.',
+            'dev-motorider-t': 'MotoRider Admin',
+            'dev-motorider-p': 'Administrative control for merchants, drivers, sales, date filters, and Supabase-connected data reading was resolved for operational tracking.',
             'dev2-t': '🤖 Robots & RPA Processes',
             'dev2-p': 'Robotic automation with UiPath for repetitive tasks and data management.',
             'c3-t': '📡 Traceability & Quality',
@@ -1784,6 +2586,24 @@
 
     const modalContent = {
         es: {
+            consulting: {
+                title: 'Consultoría',
+                body: `
+                    <p>En <strong>WM Automation Supply</strong> ayudamos a identificar, ordenar y resolver problemas operativos dentro de corporaciones, comercios y negocios en crecimiento. Analizamos procesos internos, flujos de trabajo, manejo de información, tiempos de respuesta y puntos críticos que hoy consumen recursos innecesarios.</p>
+                    <p>Diseñamos soluciones estables en el tiempo, pensadas para optimizar el uso del personal, reducir reprocesos, mejorar la trazabilidad y convertir tareas manuales en procesos más claros, medibles y sostenibles.</p>
+                    <p>Nuestro enfoque combina ingeniería, automatización, desarrollo de software, integración de datos y soporte técnico para construir herramientas que respondan a la realidad de cada operación.</p>
+                    <div class="info-link-list">
+                        <a href="https://wa.me/12149493289?text=Hola%20WM%20Automation%20Supply%2C%20quiero%20una%20consultor%C3%ADa%20para%20mejorar%20procesos%20internos." target="_blank" rel="noopener">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>Solicitar consultoría por WhatsApp</span>
+                        </a>
+                        <a href="tel:+12149493289">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>Llamar ahora: +1 214 949 3289</span>
+                        </a>
+                    </div>
+                `
+            },
             mission: {
                 title: 'Misión',
                 body: `
@@ -1812,13 +2632,13 @@
                             <i class="fas fa-user-shield"></i>
                             <span>Administración: admin@wmautomationsupply.com</span>
                         </a>
-                        <a href="mailto:sales@wmautomationsupply.com">
+                        <a href="mailto:admin@wmautomationsupply.com">
                             <i class="fas fa-envelope-open-text"></i>
-                            <span>Ventas: sales@wmautomationsupply.com</span>
+                            <span>Ventas: admin@wmautomationsupply.com</span>
                         </a>
-                        <a href="mailto:info@wmautomationsupply.com">
+                        <a href="mailto:admin@wmautomationsupply.com">
                             <i class="fas fa-info-circle"></i>
-                            <span>Información general: info@wmautomationsupply.com</span>
+                            <span>Información general: admin@wmautomationsupply.com</span>
                         </a>
                         <a href="tel:+12149493289">
                             <i class="fas fa-phone-alt"></i>
@@ -1840,6 +2660,24 @@
             }
         },
         en: {
+            consulting: {
+                title: 'Consulting',
+                body: `
+                    <p>At <strong>WM Automation Supply</strong>, we help identify, structure, and solve operational challenges inside corporations, commercial operations, and growing businesses. We analyze internal processes, workflows, information management, response times, and critical points that currently consume unnecessary resources.</p>
+                    <p>We design stable long-term solutions focused on optimizing staff time, reducing rework, improving traceability, and turning manual tasks into clearer, measurable, and sustainable processes.</p>
+                    <p>Our approach combines engineering, automation, software development, data integration, and technical support to build tools aligned with the reality of each operation.</p>
+                    <div class="info-link-list">
+                        <a href="https://wa.me/12149493289?text=Hello%20WM%20Automation%20Supply%2C%20I%20would%20like%20consulting%20to%20improve%20internal%20processes." target="_blank" rel="noopener">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>Request consulting by WhatsApp</span>
+                        </a>
+                        <a href="tel:+12149493289">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>Call now: +1 214 949 3289</span>
+                        </a>
+                    </div>
+                `
+            },
             mission: {
                 title: 'Mission',
                 body: `
@@ -1868,13 +2706,13 @@
                             <i class="fas fa-user-shield"></i>
                             <span>Administration: admin@wmautomationsupply.com</span>
                         </a>
-                        <a href="mailto:sales@wmautomationsupply.com">
+                        <a href="mailto:admin@wmautomationsupply.com">
                             <i class="fas fa-envelope-open-text"></i>
-                            <span>Sales: sales@wmautomationsupply.com</span>
+                            <span>Sales: admin@wmautomationsupply.com</span>
                         </a>
-                        <a href="mailto:info@wmautomationsupply.com">
+                        <a href="mailto:admin@wmautomationsupply.com">
                             <i class="fas fa-info-circle"></i>
-                            <span>General Information: info@wmautomationsupply.com</span>
+                            <span>General Information: admin@wmautomationsupply.com</span>
                         </a>
                         <a href="tel:+12149493289">
                             <i class="fas fa-phone-alt"></i>
@@ -1990,7 +2828,7 @@
         }
     });
 
-    const TO_EMAIL = 'sales@wmautomationsupply.com';
+    const TO_EMAIL = 'admin@wmautomationsupply.com';
 
     const form = document.getElementById('solicitudForm');
     if (form) {
@@ -2082,18 +2920,81 @@
 </div>
 
 <style>
-#chatToggle{position:fixed;bottom:25px;right:25px;width:60px;height:60px;background:#082f52;color:white;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:1.6rem;cursor:pointer;z-index:5000;}
-#chatBox{position:fixed;bottom:95px;right:25px;width:280px;background:white;border-radius:10px;display:none;z-index:5000;}
-.chat-header{background:#082f52;color:white;padding:10px;display:flex;justify-content:space-between;}
-.chat-body{padding:10px;}
-.chat-options button{width:100%;margin-top:5px;background:#1f5f8b;color:white;border:none;padding:8px;border-radius:5px;}
+#chatToggle{position:fixed;bottom:25px;right:25px;width:62px;height:62px;background:linear-gradient(135deg,#101c28,#173247);color:#fffaf0;border:1px solid rgba(200,121,50,.62);border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:1.55rem;cursor:pointer;z-index:5000;box-shadow:0 18px 42px rgba(7,13,20,.35);}
+#chatBox{position:fixed;bottom:100px;right:25px;width:292px;background:#fffdf8;border:1px solid rgba(16,28,40,.16);border-radius:14px;display:none;z-index:5000;overflow:hidden;box-shadow:0 22px 58px rgba(7,13,20,.28);}
+.chat-header{background:linear-gradient(135deg,#070d14,#142231);color:#fffaf0;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(200,121,50,.38);}
+.chat-body{padding:14px;color:#1d2730;}
+.chat-options button{width:100%;margin-top:8px;background:linear-gradient(135deg,#101c28,#173247);color:#fffaf0;border:1px solid rgba(200,121,50,.35);padding:10px;border-radius:9px;font-weight:800;cursor:pointer;}
+.chat-options button:hover{background:#c87932;color:#09111b;}
+
+@keyframes wmAssistantPulse{0%,100%{box-shadow:0 0 0 0 rgba(100,220,255,.30),0 18px 42px rgba(7,13,20,.35);}50%{box-shadow:0 0 0 12px rgba(100,220,255,0),0 0 34px rgba(100,220,255,.28),0 18px 42px rgba(7,13,20,.35);}}
+@keyframes wmAssistantOpen{from{opacity:0;transform:translateY(18px) scale(.96);}to{opacity:1;transform:translateY(0) scale(1);}}
+#chatToggle{width:66px;height:66px;background:radial-gradient(circle at 35% 25%,#64dcff 0,#197090 28%,#101c28 68%);border-color:rgba(100,220,255,.66);font-size:1.58rem;animation:wmAssistantPulse 2.2s ease-in-out infinite;}
+#chatToggle::after{content:"";position:absolute;inset:8px;border:1px solid rgba(255,255,255,.18);border-radius:50%;pointer-events:none;}
+#chatBox{bottom:104px;width:340px;max-width:calc(100vw - 32px);background:linear-gradient(180deg,rgba(7,13,20,.98),rgba(15,36,50,.98));border-color:rgba(100,220,255,.30);border-radius:18px;box-shadow:0 24px 70px rgba(0,0,0,.42),0 0 46px rgba(100,220,255,.14);animation:wmAssistantOpen .32s ease both;}
+.chat-header{background:linear-gradient(135deg,#070d14,#102a3a);border-bottom-color:rgba(100,220,255,.25);padding:14px 15px;}
+.chat-header span{display:block;font-weight:900;}
+.chat-header small{display:block;color:#64dcff;font-size:.68rem;font-weight:800;margin-top:2px;}
+.chat-header i{cursor:pointer;color:#fffaf0;}
+.chat-body{padding:15px;color:#eaf8fb;}
+.assistant-status{display:flex;align-items:center;gap:8px;margin-bottom:10px;color:#64dcff;font-size:.78rem;}
+.assistant-status span{width:8px;height:8px;border-radius:50%;background:#54ff98;box-shadow:0 0 14px rgba(84,255,152,.8);}
+.assistant-message{margin:0 0 10px 0;padding:12px;border:1px solid rgba(100,220,255,.18);border-radius:12px;background:rgba(255,255,255,.06);line-height:1.45;font-size:.88rem;}
+.assistant-message-soft{background:rgba(200,121,50,.10);border-color:rgba(200,121,50,.25);}
+.chat-options{display:grid;gap:8px;margin-top:12px;}
+.chat-options button{margin-top:0;border-color:rgba(100,220,255,.30);padding:11px;border-radius:10px;font-weight:900;display:flex;align-items:center;gap:10px;text-align:left;}
+.chat-options button i{width:18px;color:#64dcff;text-align:center;}
+.chat-options button:hover{transform:translateY(-2px);}
+.chat-options button:hover i{color:#09111b;}
+@media (max-width: 520px){#chatToggle{right:18px;bottom:18px;}#chatBox{right:16px;bottom:92px;width:calc(100vw - 32px);}}
 </style>
 
 <script>
 function toggleChat(){const box=document.getElementById("chatBox");box.style.display=box.style.display==="block"?"none":"block";}
 function goWhatsApp(){window.open("https://wa.me/12149493289","_blank");}
-function goEmail(){window.location.href="mailto:sales@wmautomationsupply.com";}
+function goEmail(){window.location.href="mailto:admin@wmautomationsupply.com";}
 function goAutomation(){alert("Solicita automatización");}
+
+function activateWMAssistant(){
+    const header = document.querySelector('#chatBox .chat-header');
+    const body = document.querySelector('#chatBox .chat-body');
+    const box = document.getElementById('chatBox');
+    if (!header || !body || !box) return;
+
+    header.innerHTML = `
+        <div>
+            <span>WM Assistant</span>
+            <small>online / advisory mode</small>
+        </div>
+        <i class="fas fa-times" onclick="toggleChat()"></i>
+    `;
+
+    body.innerHTML = `
+        <div class="assistant-status">
+            <span></span>
+            <strong>Analizando tus posibles intereses</strong>
+        </div>
+        <p class="assistant-message">
+            Hola, soy el asistente de WM Automation Supply. Si visitas esta página, probablemente buscas optimizar procesos, desarrollar una plataforma, automatizar tareas, solicitar materiales técnicos o conectar una operación digital como MotoRider.
+        </p>
+        <p class="assistant-message assistant-message-soft">
+            Podemos ayudarte a convertir procesos internos de tu negocio en soluciones estables, medibles y sostenibles en el tiempo.
+        </p>
+        <div class="chat-options">
+            <button onclick="openInfoModal('consulting')"><i class="fas fa-lightbulb"></i> Consultoría</button>
+            <button onclick="goWhatsApp()"><i class="fab fa-whatsapp"></i> Hablar por WhatsApp</button>
+            <button onclick="openInfoModal('consulting')"><i class="fas fa-microchip"></i> Automatización y software</button>
+            <button onclick="openMaterialsView()"><i class="fas fa-boxes"></i> Materiales técnicos</button>
+            <button onclick="goEmail()"><i class="fas fa-envelope"></i> Enviar correo</button>
+        </div>
+    `;
+
+    setTimeout(() => {
+        if (box.style.display !== 'block') box.style.display = 'block';
+    }, 1400);
+}
+
+window.addEventListener('load', activateWMAssistant);
 </script>
 
 </body>
