@@ -1393,6 +1393,40 @@
             }
         }
 
+        @media (max-width: 768px) {
+            .hero {
+                align-items: center;
+                padding: 14px 0 0 0;
+                background:
+                    linear-gradient(180deg, rgba(7, 13, 20, 0.96), rgba(13, 29, 43, 0.98)),
+                    linear-gradient(90deg, rgba(45, 210, 255, 0.10) 1px, transparent 1px);
+                background-size: auto, 72px 72px;
+            }
+
+            .hero-side {
+                width: calc(100% - 28px);
+                max-width: 460px;
+                height: 225px;
+                margin: 0 auto 14px auto;
+                border-radius: 18px;
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                box-shadow: 0 18px 44px rgba(0, 0, 0, 0.34);
+            }
+
+            .hero-side-video {
+                object-position: center center;
+            }
+
+            .hero-center-content {
+                width: 100%;
+                padding: 34px 7%;
+            }
+
+            .hero-right {
+                margin-top: 14px;
+            }
+        }
+
         /* Futuristic interaction pass for preview */
         @keyframes wmSignalSweep {
             0% { transform: translateX(-120%) skewX(-18deg); opacity: 0; }
@@ -2743,6 +2777,7 @@
         });
         document.querySelectorAll('.btn-lang').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+        activateWMAssistant({ autoOpen: false });
     }
 
     function toggleCard(id) { 
@@ -2994,7 +3029,71 @@ function activateWMAssistant(){
     }, 1400);
 }
 
-window.addEventListener('load', activateWMAssistant);
+const assistantContent = {
+    es: {
+        mode: 'online / modo asesor',
+        status: 'Analizando tus posibles intereses',
+        message: 'Hola, soy el asistente de WM Automation Supply. Si visitas esta página, probablemente buscas optimizar procesos, desarrollar una plataforma, automatizar tareas, solicitar materiales técnicos o conectar una operación digital como MotoRider.',
+        soft: 'Podemos ayudarte a convertir procesos internos de tu negocio en soluciones estables, medibles y sostenibles en el tiempo.',
+        consulting: 'Consultoría',
+        whatsapp: 'Hablar por WhatsApp',
+        automation: 'Automatización y software',
+        materials: 'Materiales técnicos',
+        email: 'Enviar correo'
+    },
+    en: {
+        mode: 'online / advisory mode',
+        status: 'Analyzing your possible interests',
+        message: 'Hi, I am the WM Automation Supply assistant. If you are visiting this page, you may be looking to optimize processes, build a platform, automate tasks, request technical materials, or connect a digital operation like MotoRider.',
+        soft: 'We can help turn your internal business processes into stable, measurable, and sustainable long-term solutions.',
+        consulting: 'Consulting',
+        whatsapp: 'Chat on WhatsApp',
+        automation: 'Automation and software',
+        materials: 'Technical materials',
+        email: 'Send email'
+    }
+};
+
+function renderWMAssistant(options = {}){
+    const header = document.querySelector('#chatBox .chat-header');
+    const body = document.querySelector('#chatBox .chat-body');
+    const box = document.getElementById('chatBox');
+    if (!header || !body || !box) return;
+    const content = assistantContent[currentLang] || assistantContent.es;
+
+    header.innerHTML = `
+        <div>
+            <span>WM Assistant</span>
+            <small>${content.mode}</small>
+        </div>
+        <i class="fas fa-times" onclick="toggleChat()"></i>
+    `;
+
+    body.innerHTML = `
+        <div class="assistant-status">
+            <span></span>
+            <strong>${content.status}</strong>
+        </div>
+        <p class="assistant-message">${content.message}</p>
+        <p class="assistant-message assistant-message-soft">${content.soft}</p>
+        <div class="chat-options">
+            <button onclick="openInfoModal('consulting')"><i class="fas fa-lightbulb"></i> ${content.consulting}</button>
+            <button onclick="goWhatsApp()"><i class="fab fa-whatsapp"></i> ${content.whatsapp}</button>
+            <button onclick="openInfoModal('consulting')"><i class="fas fa-microchip"></i> ${content.automation}</button>
+            <button onclick="openMaterialsView()"><i class="fas fa-boxes"></i> ${content.materials}</button>
+            <button onclick="goEmail()"><i class="fas fa-envelope"></i> ${content.email}</button>
+        </div>
+    `;
+
+    if (options.autoOpen === false) return;
+    setTimeout(() => {
+        if (box.style.display !== 'block') box.style.display = 'block';
+    }, 1400);
+}
+
+goAutomation = function(){ openInfoModal('consulting'); };
+activateWMAssistant = renderWMAssistant;
+window.addEventListener('load', renderWMAssistant);
 </script>
 
 </body>
